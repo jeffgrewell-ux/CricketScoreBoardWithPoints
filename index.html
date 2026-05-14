@@ -177,6 +177,14 @@ vertical-align: top;
 </style></head>
 
 <script>
+window.oncontextmenu = function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    return false;
+};
+</script>
+
+<script>
 window.addEventListener("resize", () => {
 adjustCellSize();
 //console.log(`New size: ${window.innerWidth}x${window.innerHeight}`);
