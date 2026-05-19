@@ -230,6 +230,19 @@ vertical-align: top;
   }
 
 </style></head>
+<script>
+const xelement = document.querySelectorAll('.x');
+xelement.forEach(img => {
+xelement.addEventListener('pointerdown', (e) => {
+  // Keeps tracking the pointer even if the user moves slightly off the element
+  xelement.setPointerCapture(e.pointerId);
+});
+
+xelement.addEventListener('pointerup', (e) => {
+  xelement.releasePointerCapture(e.pointerId);
+});
+});
+</script>
 
 <script>
 const ximages = document.querySelectorAll('.x');
