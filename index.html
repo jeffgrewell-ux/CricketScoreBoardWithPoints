@@ -1296,39 +1296,42 @@ function removeColumn(tableId, colIndex) {
 
 // Call the function
 //removeColumn('dynamicTable', 4); 
-
 async function reloadData() {
     try {
-	    //const response = await fetch('./index.html');
-
-        // Fetch a JSON file instead of HTML (e.g., data.json)
         const response = await fetch('./data.json');
         
-        // Check if the HTTP request was successful
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        const data = await response.json(); // Parses the response
-        
+        const data = await response.json(); 
         const tbody = document.getElementById('tableBody');
-        tbody.innerHTML = ''; // Clear current rows safely
+        tbody.innerHTML = ''; 
 
-        // Use DocumentFragment to batch DOM updates for better performance
         const fragment = document.createDocumentFragment();
 
         data.forEach(item => {
             const tr = document.createElement('tr');
-            tr.innerHTML = `<td>${item.id}</td><td>${item.name}</td>`;
+            
+            // Create cells individually and use textContent to prevent XSS
+            const tdId = document.createElement('td');
+            tdId.textContent = item.id;
+            
+            const tdName = document.createElement('td');
+            tdName.textContent = item.name;
+            
+            tr.appendChild(tdId);
+            tr.appendChild(tdName);
             fragment.appendChild(tr);
         });
 
         tbody.appendChild(fragment);
         
     } catch (error) {
-        console.error('Error reloading data:', error); // Catches network or parsing errors
+        console.error('Error reloading data:', error);
     }
 }
+
 
 
 </script>
