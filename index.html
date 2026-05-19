@@ -25,6 +25,13 @@ pre[name=Cricket] {
 	max-width: 100%; /* Ensures it doesn't exceed container */
 	max-height: 100%; /* Ensures it doesn't exceed container */
 	display: inline;
+		/* Prevents text selection highlighting */
+	-webkit-user-select: none;  
+    user-select: none; /* Prevents text selection while holding */
+	  /* Prevents the iOS-specific context menu (copy, share, etc.) */
+  -webkit-touch-callout: none; 
+    /* prevent the browser from interpreting the interaction as a scroll on facebook  */
+  touch-action: none; 
 
 }
 
@@ -50,6 +57,13 @@ pre[name=Bull] {
 	max-width: 100%; /* Ensures it doesn't exceed container */
 	max-height: 100%; /* Ensures it doesn't exceed container */
 	display: inline;
+		/* Prevents text selection highlighting */
+	-webkit-user-select: none;  
+    user-select: none; /* Prevents text selection while holding */
+	  /* Prevents the iOS-specific context menu (copy, share, etc.) */
+  -webkit-touch-callout: none; 
+    /* prevent the browser from interpreting the interaction as a scroll on facebook  */
+  touch-action: none; 
 }
 
 pre[name=Numbers] {
@@ -60,6 +74,13 @@ pre[name=Numbers] {
 	max-width: 100%; /* Ensures it doesn't exceed container */
 	max-height: 100%; /* Ensures it doesn't exceed container */
 	display: inline;
+		/* Prevents text selection highlighting */
+	-webkit-user-select: none;  
+    user-select: none; /* Prevents text selection while holding */
+	  /* Prevents the iOS-specific context menu (copy, share, etc.) */
+  -webkit-touch-callout: none; 
+    /* prevent the browser from interpreting the interaction as a scroll on facebook  */
+  touch-action: none; 
 }
 
 td {
@@ -141,7 +162,13 @@ display: inline;
 	margin: 0;
 	max-width: 100%; /* Ensures it doesn't exceed container */
 		max-height: 100%; /* Ensures it doesn't exceed container */
-
+	/* Prevents text selection highlighting */
+	-webkit-user-select: none;  
+    user-select: none; /* Prevents text selection while holding */
+	  /* Prevents the iOS-specific context menu (copy, share, etc.) */
+  -webkit-touch-callout: none; 
+    /* prevent the browser from interpreting the interaction as a scroll on facebook  */
+  touch-action: none; 
 
 }
 
@@ -190,10 +217,12 @@ vertical-align: top;
 	/* Prevents text selection highlighting */
 	-webkit-user-select: none;  
     user-select: none; /* Prevents text selection while holding */
-	  /* Prevents the iOS-specific context menu (copy, share, etc.) */
-  -webkit-touch-callout: none; 
+	/* Prevents the iOS-specific context menu (copy, share, etc.) */
+	-webkit-touch-callout: none; 
     /* prevent the browser from interpreting the interaction as a scroll on facebook  */
-  touch-action: none; 
+	touch-action: none; 
+	draggable: false;
+	  -webkit-user-drag: none; /* Safari and older Chrome */
   }
   
   .s20 {
@@ -201,6 +230,53 @@ vertical-align: top;
   }
 
 </style></head>
+
+<script>
+const ximages = document.querySelectorAll('.x');
+ximages.forEach(img => {
+    img.ondragstart = () => { return false; };
+});
+</script>
+
+<script>
+// Prevents the right-click/long-press context menu on the entire document or a specific image
+document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+});
+</script>
+
+<script>
+//To reduce touchmove sensitivity in HTML and JavaScript, you can implement a pixel-movement threshold so the move event only triggers after a specific distance is dragged. 
+//Calculate the distance of the drag using \(Math.abs()\). Only execute your logic when the drag exceeds a set pixel distance \(d\).
+let startX, startY;
+const sensitivityThreshold = 20; // Set your desired pixel threshold
+
+document.addEventListener('touchstart', (e) => {
+    // Record starting touch position
+    startX = e.touches[0].pageX;
+    startY = e.touches[0].pageY;
+});
+
+document.addEventListener('touchmove', (e) => {
+    let currentX = e.touches[0].pageX;
+    let currentY = e.touches[0].pageY;
+
+    // Calculate the distance moved 
+    let diffX = startX - currentX;
+    let diffY = startY - currentY;
+
+    // Only trigger if movement is greater than sensitivityThreshold
+    if (Math.abs(diffX) > sensitivityThreshold || Math.abs(diffY) > sensitivityThreshold) {
+        
+        // Prevent default scrolling only if dragging
+        e.preventDefault(); 
+        
+        // Add your custom touch move logic here
+        console.log("Dragging action engaged.");
+    }
+}, { passive: false });
+
+</script>
 
 <script>
 window.oncontextmenu = function(event) {
@@ -492,7 +568,7 @@ let AdTimer = setTimeout(loop, 5000);
 								  //image.addEventListener("touchcancel", stopHold);
 								  
 								  // Touch Events (for mouse and touch inputs)
-								  image.addEventListener("pointerdown", startHold);
+								  image.addEventListener('pointerdown',startHold);
 								  image.addEventListener("pointermove", stopHold);
 								  image.addEventListener("pointerup", stopHold);
 								  image.addEventListener("pointercancel", stopHold);
