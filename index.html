@@ -394,7 +394,7 @@ let AdTimer = setTimeout(loop, 5000);
 </script>
 -->
 <body onload="adjustCellSize();adjustFontSize(editor1);adjustFontSize(editor2);adjustFontSize(editor3);adjustFontSize(editor4);adjustCenterFontSize();adjustpointsPFontSize();PointsZero();">
-
+<div id="myTableContainer">
 <table id="dynamicTable" align="center">
 
 <tbody id="tableBody">
@@ -1246,7 +1246,7 @@ console.log(PointsZero)
 </script>
 
 
-</tbody></table>
+</tbody></table></div>
 <script>
     
         function alertPlayerCount() {
@@ -1260,22 +1260,19 @@ console.log(PointsZero)
             alert("You selected: " + selectedText);
 			
 						if (selectedText == "4 Players") {
-			reloadData();
+				location.reload();
 			};
 			
 			if (selectedText == "3 Players") {
-			reloadData();
 			removeColumn('dynamicTable', 4);
 			};
 			
 			if (selectedText == "2 Players") {
-			reloadData();
 			removeColumn('dynamicTable', 4);
 			removeColumn('dynamicTable', 3);
 			};
 			
 			if (selectedText == "1 Player") {
-			reloadData();
 			removeColumn('dynamicTable', 4);
 			removeColumn('dynamicTable', 3);
 			removeColumn('dynamicTable', 1);
@@ -1296,43 +1293,6 @@ function removeColumn(tableId, colIndex) {
 
 // Call the function
 //removeColumn('dynamicTable', 4); 
-async function reloadData() {
-    try {
-        const response = await fetch('./data.json');
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json(); 
-        const tbody = document.getElementById('tableBody');
-        tbody.innerHTML = ''; 
-
-        const fragment = document.createDocumentFragment();
-
-        data.forEach(item => {
-            const tr = document.createElement('tr');
-            
-            // Create cells individually and use textContent to prevent XSS
-            const tdId = document.createElement('td');
-            tdId.textContent = item.id;
-            
-            const tdName = document.createElement('td');
-            tdName.textContent = item.name;
-            
-            tr.appendChild(tdId);
-            tr.appendChild(tdName);
-            fragment.appendChild(tr);
-        });
-
-        tbody.appendChild(fragment);
-        
-    } catch (error) {
-        console.error('Error reloading data:', error);
-    }
-}
-
-
 
 </script>
 
