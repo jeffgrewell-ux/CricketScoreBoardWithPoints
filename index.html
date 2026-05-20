@@ -32,6 +32,7 @@ pre[name=Cricket] {
   -webkit-touch-callout: none; 
     /* prevent the browser from interpreting the interaction as a scroll on facebook  */
   touch-action: none; 
+  	background-color: yellow !important;
 
 }
 
@@ -41,11 +42,20 @@ pre[name=Cricket] {
     padding: 0;
 	max-width: 100%; /* Ensures it doesn't exceed container */
 	max-height: 100%; /* Ensures it doesn't exceed container */
-   width: 222px;  /* Set your desired width */
-  height: 50px; /* Set your desired height */
-  object-fit: cover; /* Trims edges to fit container */
+   width: 100%;  /* Set your desired width */
+  /* height: auto; /* Set your desired height */
+  /* object-fit: cover; /* Trims edges to fit container */
   object-position: center; /* Optional: decides which part to keep */
-
+	display: inline;
+			/* Prevents text selection highlighting */
+	-webkit-user-select: none;  
+    user-select: none; /* Prevents text selection while holding */
+	  /* Prevents the iOS-specific context menu (copy, share, etc.) */
+  -webkit-touch-callout: none; 
+    /* prevent the browser from interpreting the interaction as a scroll on facebook  */
+  touch-action: none;  
+	  -webkit-user-drag: none; /* Safari and older Chrome */
+}
 }
 
 
@@ -244,6 +254,16 @@ vertical-align: top;
   touch-action: none; 
 }
 
+#for-player-count{
+  		/* Prevents text selection highlighting */
+	-webkit-user-select: none;  
+    user-select: none; /* Prevents text selection while holding */
+	  /* Prevents the iOS-specific context menu (copy, share, etc.) */
+  -webkit-touch-callout: none; 
+    /* prevent the browser from interpreting the interaction as a scroll on facebook  */
+  touch-action: none; 
+}
+
 </style></head>
 
 
@@ -403,15 +423,19 @@ let AdTimer = setTimeout(loop, 5000);
 
 	<td class="top-align"><table><tr><td><pre class="no-outline" id="editor1" contenteditable="plaintext-only">P1</pre></td></tr><tr><td><pre id="pointsP1"></pre></td></tr></table></td>
 	<td class="top-align"><table><tr><td><pre class="no-outline" id="editor2" contenteditable="plaintext-only">P2</pre></td></tr><tr><td><pre id="pointsP2"></pre></td></tr></table></td>
-	<td class="top-align"><table><tr><td><pre id="Cricket" name="Cricket">Cricket</pre></td></tr><tr><td><pre id="pointsPDummy"><!--<a id="cycle-link" href="https://www.facebook.com/share/g/1asjVGTq6k/?mibextid=wwXIfr"><img id="cycle-img" src="data:image/jpeg;base64,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" alt="Cycling Image"></a>--></pre>    
-	<label id="for-player-count" for="player-count"># of players:</label>
-    <select autocomplete="off" id="player-count" onchange="alertPlayerCount()">
-        <option value="" disabled selected>Choose...</option>
-        <option value="1">1 Player</option>
-        <option value="2">2 Players</option>
-        <option value="3">3 Players</option>
-        <option value="4">4 Players</option>
-    </select></td></tr></table></td>
+	<td class="top-align"><pre id="Cricket" name="Cricket">Cricket</pre>
+		<br>
+		<pre id="pointsPDummy"><a id="cycle-link" href="https://www.facebook.com/share/g/1asjVGTq6k/?mibextid=wwXIfr"><img draggable="false" id="cycle-img" src="data:image/jpeg;base64,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" alt="Cycling Image"></a></pre>
+		<br>    
+		<label id="for-player-count" for="player-count"># of players:</label>
+		<select autocomplete="off" id="player-count" onchange="alertPlayerCount()">
+			<option value="" disabled selected>Choose...</option>
+			<option value="1">1 Player</option>
+			<option value="2">2 Players</option>
+			<option value="3">3 Players</option>
+			<option value="4">4 Players</option>
+		</select>
+	</td>
 	<td class="top-align"><table><tr><td><pre class="no-outline" id="editor3" contenteditable="plaintext-only">P3</pre></td></tr><tr><td><pre id="pointsP3"></pre></td></tr></table></td>
 	<td class="top-align"><table><tr><td><pre class="no-outline" id="editor4" contenteditable="plaintext-only">P4</pre></td></tr><tr><td><pre id="pointsP4"></pre></td></tr></table></td>
 	
