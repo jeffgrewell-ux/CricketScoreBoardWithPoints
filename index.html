@@ -420,7 +420,7 @@ vertical-align: top;
 
 
     <script>
-		document.querySelectorAll('[id^="color-choice"]').addEventListener(`input`, changeColumnColor);
+		document.querySelectorAll('[id^="color-choice"]').addEventListener(`input`, changeColumnColor(color, columnIndex));
 			
         function changeColumnColor(color, columnIndex) {
 		console.log(`function changeColumnColor: ${color}, ${columnIndex}`)
