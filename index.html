@@ -420,7 +420,17 @@ vertical-align: top;
 
 
     <script>
-		document.querySelectorAll('[id^="color-choice"]').addEventListener(`input`, changeColumnColor(color, columnIndex));
+		document.addEventListener('input', (event) => {
+  if (event.target.matches('[id^="color-choice"]')) {
+    // Example: pulling data attributes from the changed element
+    const color = event.target.value;
+    const columnIndex = event.target.dataset.columnIndex; 
+    
+    changeColumnColor(color, columnIndex);
+  }
+});
+
+
 			
         function changeColumnColor(color, columnIndex) {
 		console.log(`function changeColumnColor: ${color}, ${columnIndex}`)
