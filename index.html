@@ -360,12 +360,11 @@ vertical-align: top;
 	max-height: 100%; /* Ensures it doesn't exceed container */
   padding: 0;      /* Removes default browser padding */
   			/* Prevents text selection highlighting */
-	-webkit-user-select: none;  
-    user-select: none; /* Prevents text selection while holding */
+	/*-webkit-user-select: none;  
+    /*user-select: none; /* Prevents text selection while holding */
 	  /* Prevents the iOS-specific context menu (copy, share, etc.) */
   -webkit-touch-callout: none; 
     /* prevent the browser from interpreting the interaction as a scroll on facebook  */
-  touch-action: none;  
 	  -webkit-user-drag: none; /* Safari and older Chrome */
   -khtml-user-drag: none;
   -moz-user-drag: none;
@@ -386,12 +385,12 @@ vertical-align: top;
 	height: 20%;
   padding: 0;      /* Removes default browser padding */
   			/* Prevents text selection highlighting */
-	-webkit-user-select: none;  
-    user-select: none; /* Prevents text selection while holding */
+	/*-webkit-user-select: none;  
+
 	  /* Prevents the iOS-specific context menu (copy, share, etc.) */
   -webkit-touch-callout: none; 
     /* prevent the browser from interpreting the interaction as a scroll on facebook  */
-  touch-action: none;  
+  
 	  -webkit-user-drag: none; /* Safari and older Chrome */
   -khtml-user-drag: none;
   -moz-user-drag: none;
@@ -412,6 +411,14 @@ vertical-align: top;
   border-spacing: 0px;
   margin-left: auto;
   margin-right: auto;
+}
+input[type="color"] {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  width: 40px;
+  height: 40px;
+  background: transparent; /* Prevents a forced default white background */
 }
 
 </style></head>
@@ -434,7 +441,7 @@ vertical-align: top;
         }
             });
         }
-		document.getElementById('color-choice1').addEventListener('pointerdown', (e) => changeColumnColor(e.target.value, 0));
+		document.getElementById('color-choice1').addEventListener('input', (e) => changeColumnColor(e.target.value, 0));
 
     </script>
 
