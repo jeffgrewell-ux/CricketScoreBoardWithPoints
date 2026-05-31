@@ -13,7 +13,7 @@ html{
 	  /* Prevents the iOS-specific context menu (copy, share, etc.) */
   -webkit-touch-callout: none; 
     /* prevent the browser from interpreting the interaction as a scroll on facebook  */
-  /*touch-action: none;  
+  touch-action: none;  
   -webkit-user-drag: none;
   -khtml-user-drag: none;
   -moz-user-drag: none;
@@ -361,11 +361,11 @@ vertical-align: top;
   padding: 0;      /* Removes default browser padding */
   			/* Prevents text selection highlighting */
 	-webkit-user-select: none;  
-    /*user-select: none; /* Prevents text selection while holding */
+    user-select: none; /* Prevents text selection while holding */
 	  /* Prevents the iOS-specific context menu (copy, share, etc.) */
   -webkit-touch-callout: none; 
     /* prevent the browser from interpreting the interaction as a scroll on facebook  */
-  /*touch-action: none;  
+  touch-action: none;  
 	  -webkit-user-drag: none; /* Safari and older Chrome */
   -khtml-user-drag: none;
   -moz-user-drag: none;
@@ -391,7 +391,7 @@ vertical-align: top;
 	  /* Prevents the iOS-specific context menu (copy, share, etc.) */
   -webkit-touch-callout: none; 
     /* prevent the browser from interpreting the interaction as a scroll on facebook  */
-  /*touch-action: none;  
+  touch-action: none;  
 	  -webkit-user-drag: none; /* Safari and older Chrome */
   -khtml-user-drag: none;
   -moz-user-drag: none;
@@ -412,14 +412,6 @@ vertical-align: top;
   border-spacing: 0px;
   margin-left: auto;
   margin-right: auto;
-}
-input[type="color"] {
-  -webkit-appearance: none;
-  appearance: none;
-  border: none;
-  width: 40px;
-  height: 40px;
-  background: transparent; /* Prevents a forced default white background */
 }
 
 </style></head>
@@ -442,8 +434,6 @@ input[type="color"] {
         }
             });
         }
-		document.getElementById('color-choice1').addEventListener('input', (e) => changeColumnColor(e.target.value, 0));
-
     </script>
 
 
