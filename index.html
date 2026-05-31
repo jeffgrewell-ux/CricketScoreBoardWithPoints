@@ -442,6 +442,11 @@ input[type="color"] {
         }
             });
         }
+		// Safely targets the element holding the listener
+document.getElementById('color-choice1').addEventListener('pointerdown', (e) => {
+  changeColumnColor(e.currentTarget.value, 0);
+});
+
     </script>
 
 
