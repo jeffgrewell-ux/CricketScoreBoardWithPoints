@@ -428,7 +428,35 @@ vertical-align: top;
   cursor: pointer;
   background-color: var(--color1-value); /* Replace with your color */
 }
+#color-choice1 {
+  opacity: 0;
+  position: absolute;
+  pointer-events: none; /* Passes the touch/click directly to the label */
+  width: 0;
+  height: 0;
+}
+#color-choice2 {
+  opacity: 0;
+  position: absolute;
+  pointer-events: none; /* Passes the touch/click directly to the label */
+  width: 0;
+  height: 0;
+}
+#color-choice3 {
+  opacity: 0;
+  position: absolute;
+  pointer-events: none; /* Passes the touch/click directly to the label */
+  width: 0;
+  height: 0;
+}
 
+#color-choice4 {
+  opacity: 0;
+  position: absolute;
+  pointer-events: none; /* Passes the touch/click directly to the label */
+  width: 0;
+  height: 0;
+}
 
 </style></head>
 
@@ -676,71 +704,41 @@ document.querySelectorAll(".PickAColorimage").forEach(img => {
 </script>
 <script>
 
-document.addEventListener('DOMContentLoaded', function() {
-    const colorChoice1 = document.getElementById('color-choice1');
-    
-    if (colorChoice1) {
-        // Use 'input' instead of 'change' for instant updates on iOS
-        colorChoice1.addEventListener('input', function(e) {
-            changeColumnColor(e.target.value, 0);
-        });
+const colorInput1 = document.getElementById('color-choice1');
 
-        // Fallback for older iOS versions
-        colorChoice1.addEventListener('change', function(e) {
-            changeColumnColor(e.target.value, 0);
-        });
-    }
+// 'input' fires while selecting, 'change' fires when finished
+['input', 'change'].forEach(evt => {
+  colorInput1.addEventListener(evt, function(e) {
+    changeColumnColor(e.target.value, 0);
+  });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    const colorChoice2 = document.getElementById('color-choice2');
-    
-    if (colorChoice2) {
-        // Use 'input' instead of 'change' for instant updates on iOS
-        colorChoice2.addEventListener('input', function(e) {
-            changeColumnColor(e.target.value, 1);
-        });
+const colorInput2 = document.getElementById('color-choice2');
 
-        // Fallback for older iOS versions
-        colorChoice2.addEventListener('change', function(e) {
-            changeColumnColor(e.target.value, 1);
-        });
-    }
+// 'input' fires while selecting, 'change' fires when finished
+['input', 'change'].forEach(evt => {
+  colorInput2.addEventListener(evt, function(e) {
+    changeColumnColor(e.target.value, 1);
+  });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    const colorChoice3 = document.getElementById('color-choice3');
-    
-    if (colorChoice3) {
-        // Use 'input' instead of 'change' for instant updates on iOS
-        colorChoice3.addEventListener('input', function(e) {
-            changeColumnColor(e.target.value, 3);
-        });
+const colorInput3 = document.getElementById('color-choice3');
 
-        // Fallback for older iOS versions
-        colorChoice3.addEventListener('change', function(e) {
-            changeColumnColor(e.target.value, 3);
-        });
-    }
+// 'input' fires while selecting, 'change' fires when finished
+['input', 'change'].forEach(evt => {
+  colorInput3.addEventListener(evt, function(e) {
+    changeColumnColor(e.target.value, 3);
+  });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    const colorChoice4 = document.getElementById('color-choice4');
-    
-    if (colorChoice4) {
-        // Use 'input' instead of 'change' for instant updates on iOS
-        colorChoice4.addEventListener('input', function(e) {
-            changeColumnColor(e.target.value, 4);
-        });
+const colorInput4 = document.getElementById('color-choice4');
 
-        // Fallback for older iOS versions
-        colorChoice4.addEventListener('change', function(e) {
-            changeColumnColor(e.target.value, 4);
-        });
-    }
+// 'input' fires while selecting, 'change' fires when finished
+['input', 'change'].forEach(evt => {
+  colorInput4.addEventListener(evt, function(e) {
+    changeColumnColor(e.target.value, 4);
+  });
 });
-
-
 
 </script>
 
