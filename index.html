@@ -2127,38 +2127,47 @@ window.confirm = function(message) {
         overlay.style.justifyContent = 'center';
         overlay.style.zIndex = '9999';
 
-        // 2. Create popup box
+        // 2. Create popup box (Increased padding and added min-width)
         const box = document.createElement('div');
         box.style.backgroundColor = 'white';
-        box.style.padding = '20px';
-        box.style.borderRadius = '8px';
+        box.style.padding = '40px 50px';
+        box.style.minWidth = '400px'; // Ensures the box doesn't get too narrow
+        box.style.borderRadius = '12px';
         box.style.textAlign = 'center';
-        box.style.boxShadow = '0 4px 6px rgba(0,0,0,0.2)';
+        box.style.boxShadow = '0 10px 20px rgba(0,0,0,0.2)';
         box.style.fontFamily = 'sans-serif';
 
-        // 3. Add text
-        box.innerHTML = `<p>${message}</p>`;
-        
+        // 3. Add text (Increased font size)
+        const text = document.createElement('p');
+        text.innerText = message;
+        text.style.fontSize = '20px';
+        text.style.margin = '0 0 30px 0';
+        box.appendChild(text);
+
         // Button container
         const btnContainer = document.createElement('div');
         btnContainer.style.marginTop = '15px';
 
-        // 4. Create Cancel button (resolves with false)
+        // 4. Create Cancel button (Made buttons larger)
         const cancelBtn = document.createElement('button');
         cancelBtn.innerText = 'Cancel';
-        cancelBtn.style.padding = '8px 16px';
-        cancelBtn.style.marginRight = '10px';
+        cancelBtn.style.padding = '12px 24px';
+        cancelBtn.style.marginRight = '15px';
         cancelBtn.style.cursor = 'pointer';
+        cancelBtn.style.fontSize = '16px';
+        cancelBtn.style.borderRadius = '6px';
         cancelBtn.onclick = function() {
             document.body.removeChild(overlay);
             resolve(false);
         };
 
-        // 5. Create OK button (resolves with true)
+        // 5. Create OK button (Made buttons larger)
         const okBtn = document.createElement('button');
         okBtn.innerText = 'OK';
-        okBtn.style.padding = '8px 16px';
+        okBtn.style.padding = '12px 24px';
         okBtn.style.cursor = 'pointer';
+        okBtn.style.fontSize = '16px';
+        okBtn.style.borderRadius = '6px';
         okBtn.onclick = function() {
             document.body.removeChild(overlay);
             resolve(true);
@@ -2172,6 +2181,7 @@ window.confirm = function(message) {
         document.body.appendChild(overlay);
     });
 };
+
 
 </script>
 
