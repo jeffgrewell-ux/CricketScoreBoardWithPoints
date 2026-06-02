@@ -436,20 +436,23 @@ vertical-align: top;
 
 
     <script>
-        function changeColumnColor(color, columnIndex) {
-		console.log(`function changeColumnColor: ${color}, ${columnIndex}`)
-            // Select all rows in the table
-            const rows = document.querySelectorAll('#dynamicTable > tbody > tr');
-            
-            rows.forEach(row => {
-                // Target the specific column cell (td or th) based on index
-                const cell = row.children[columnIndex];
-        // Ensure the cell exists and is not a nested table cell
-        if (cell && cell.tagName === 'TD' || cell.tagName === 'TH') {
+ function changeColumnColor(color, columnIndex) {
+    console.log(`function changeColumnColor: ${color}, ${columnIndex}`);
+    
+    // Select all rows in the table body
+    const rows = document.querySelectorAll('#dynamicTable > tbody > tr');
+    
+    rows.forEach(row => {
+        // Use the .cells array to safely target the specific column
+        const cell = row.cells[columnIndex];
+        
+        // Ensure cell exists and check the tag name with correct logical grouping
+        if (cell && (cell.tagName === 'TD' || cell.tagName === 'TH')) {
             cell.style.backgroundColor = color;
         }
-            });
-        }
+    });
+}
+
     </script>
 
 
