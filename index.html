@@ -2127,61 +2127,80 @@ window.confirm = function(message) {
         overlay.style.justifyContent = 'center';
         overlay.style.zIndex = '9999';
 
-        // 2. Create popup box (Increased padding and added min-width)
+        // 2. Create popup box (Larger padding, wider minimums)
         const box = document.createElement('div');
         box.style.backgroundColor = 'white';
-        box.style.padding = '40px 50px';
-        box.style.minWidth = '400px'; // Ensures the box doesn't get too narrow
-        box.style.borderRadius = '12px';
+        box.style.padding = '50px 65px';
+        box.style.minWidth = '550px'; 
+        box.style.maxWidth = '90vw';
+        box.style.borderRadius = '16px';
         box.style.textAlign = 'center';
-        box.style.boxShadow = '0 10px 20px rgba(0,0,0,0.2)';
+        box.style.boxShadow = '0 15px 30px rgba(0,0,0,0.3)';
         box.style.fontFamily = 'sans-serif';
 
-        // 3. Add text (Increased font size)
+        // 3. Add text (Larger font size and adjusted spacing)
         const text = document.createElement('p');
         text.innerText = message;
-        text.style.fontSize = '20px';
-        text.style.margin = '0 0 30px 0';
+        text.style.fontSize = '26px';
+        text.style.margin = '0 0 40px 0';
+        text.style.wordWrap = 'break-word';
         box.appendChild(text);
 
         // Button container
         const btnContainer = document.createElement('div');
-        btnContainer.style.marginTop = '15px';
+        btnContainer.style.marginTop = '20px';
 
-        // 4. Create Cancel button (Made buttons larger)
+        // 4. Create Cancel button (Larger padding, font size, and border radius)
         const cancelBtn = document.createElement('button');
         cancelBtn.innerText = 'Cancel';
-        cancelBtn.style.padding = '12px 24px';
-        cancelBtn.style.marginRight = '15px';
+        cancelBtn.style.padding = '16px 32px';
+        cancelBtn.style.marginRight = '20px';
         cancelBtn.style.cursor = 'pointer';
-        cancelBtn.style.fontSize = '16px';
-        cancelBtn.style.borderRadius = '6px';
-        cancelBtn.onclick = function() {
-            document.body.removeChild(overlay);
-            resolve(false);
-        };
+        cancelBtn.style.fontSize = '18px';
+        cancelBtn.style.borderRadius = '8px';
+        cancelBtn.style.border = '1px solid #ccc';
+        cancelBtn.style.backgroundColor = '#fff';
+        cancelBtn.style.transition = 'background 0.2s';
 
-        // 5. Create OK button (Made buttons larger)
+        // 5. Create OK button (Styled consistently with Cancel button)
         const okBtn = document.createElement('button');
         okBtn.innerText = 'OK';
-        okBtn.style.padding = '12px 24px';
+        okBtn.style.padding = '16px 32px';
         okBtn.style.cursor = 'pointer';
-        okBtn.style.fontSize = '16px';
-        okBtn.style.borderRadius = '6px';
-        okBtn.onclick = function() {
-            document.body.removeChild(overlay);
-            resolve(true);
-        };
+        okBtn.style.fontSize = '18px';
+        okBtn.style.borderRadius = '8px';
+        okBtn.style.border = 'none';
+        okBtn.style.backgroundColor = '#007BFF';
+        okBtn.style.color = '#fff';
+        okBtn.style.transition = 'background 0.2s';
 
-        // Append everything together
+        // 6. Append buttons to container, then container to box
         btnContainer.appendChild(cancelBtn);
         btnContainer.appendChild(okBtn);
         box.appendChild(btnContainer);
+
+        // 7. Append box to overlay, and overlay to document
         overlay.appendChild(box);
         document.body.appendChild(overlay);
+
+        // 8. Handle button clicks
+        cancelBtn.onclick = () => {
+            document.body.removeChild(overlay);
+            resolve(false); // Returns false when Cancel is clicked
+        };
+
+        okBtn.onclick = () => {
+            document.body.removeChild(overlay);
+            resolve(true); // Returns true when OK is clicked
+        };
+        
+        // Optional: Hover effects for larger buttons
+        cancelBtn.onmouseover = () => cancelBtn.style.backgroundColor = '#f0f0f0';
+        cancelBtn.onmouseout = () => cancelBtn.style.backgroundColor = '#fff';
+        okBtn.onmouseover = () => okBtn.style.backgroundColor = '#0056b3';
+        okBtn.onmouseout = () => okBtn.style.backgroundColor = '#007BFF';
     });
 };
-
 
 </script>
 
