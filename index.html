@@ -2069,157 +2069,128 @@ editor4.addEventListener('input', function() {
 </script>
 <script>
 window.alert = function(message) {
-  return new Promise((resolve) => {
-    // 1. Create overlay
-    const overlay = document.createElement('div');
-    overlay.style.position = 'fixed';
-    overlay.style.top = '0';
-    overlay.style.left = '0';
-    overlay.style.width = '100%';
-    overlay.style.height = '100%';
-    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-    overlay.style.display = 'flex';
-    overlay.style.alignItems = 'center';
-    overlay.style.justifyContent = 'center';
-    overlay.style.zIndex = '9999';
+    return new Promise((resolve) => {
+        // 1. Create overlay 
+        const overlay = document.createElement('div');
+        overlay.style.position = 'fixed';
+        overlay.style.top = '0';
+        overlay.style.left = '0';
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+        overlay.style.display = 'flex';
+        overlay.style.alignItems = 'center';
+        overlay.style.justifyContent = 'center';
+        overlay.style.zIndex = '9999';
 
-    // 2. Create popup box (Larger padding, wider minimums)
-    const box = document.createElement('div');
-    box.style.backgroundColor = 'white';
-    box.style.padding = '100px 130px';
-    box.style.minWidth = '1100px';
-    box.style.maxWidth = '90vw';
-    box.style.borderRadius = '32px';
-    box.style.textAlign = 'center';
-    box.style.boxShadow = '0 30px 60px rgba(0,0,0,0.3)';
-    box.style.fontFamily = 'sans-serif';
+        // 2. Create popup box
+        const box = document.createElement('div');
+        box.style.backgroundColor = 'white';
+        box.style.padding = '40px 50px';
+        box.style.minWidth = '400px';
+        box.style.borderRadius = '12px';
+        box.style.textAlign = 'center';
+        box.style.boxShadow = '0 10px 20px rgba(0,0,0,0.2)';
+        box.style.fontFamily = 'sans-serif';
 
-    // 3. Add text (Larger font size and adjusted spacing)
-    const text = document.createElement('p');
-    text.innerText = message;
-    text.style.fontSize = '52px';
-    text.style.margin = '0 0 80px 0';
-    text.style.wordWrap = 'break-word';
-    box.appendChild(text);
+        // 3. Add text
+        const text = document.createElement('p');
+        text.innerText = message;
+        text.style.fontSize = '20px';
+        text.style.margin = '0 0 30px 0';
+        box.appendChild(text);
 
-    // Button container
-    const btnContainer = document.createElement('div');
-    btnContainer.style.display = 'flex';
-    btnContainer.style.justifyContent = 'center';
-    btnContainer.style.marginTop = '20px';
+        // 4. Create OK button
+        const okBtn = document.createElement('button');
+        okBtn.innerText = 'OK';
+        okBtn.style.padding = '12px 36px';
+        okBtn.style.cursor = 'pointer';
+        okBtn.style.fontSize = '16px';
+        okBtn.style.borderRadius = '6px';
+        okBtn.style.backgroundColor = '#007BFF';
+        okBtn.style.color = 'white';
+        okBtn.style.border = 'none';
+        okBtn.onclick = function() {
+            document.body.removeChild(overlay);
+            resolve(true);
+        };
 
-    // 4. Create OK button
-    const okBtn = document.createElement('button');
-    okBtn.innerText = 'OK';
-    okBtn.style.padding = '32px 64px';
-    okBtn.style.cursor = 'pointer';
-    okBtn.style.fontSize = '36px';
-    okBtn.style.borderRadius = '16px';
-    okBtn.style.border = 'none';
-    okBtn.style.backgroundColor = '#007BFF';
-    okBtn.style.color = '#fff';
-
-    okBtn.onmouseover = () => okBtn.style.backgroundColor = '#0056b3';
-    okBtn.onmouseout = () => okBtn.style.backgroundColor = '#007BFF';
-    okBtn.onclick = () => {
-      document.body.removeChild(overlay);
-      resolve(true); // Resolves when the user acknowledges the alert
-    };
-
-    // Assemble everything
-    btnContainer.appendChild(okBtn);
-    box.appendChild(btnContainer);
-    overlay.appendChild(box);
-    document.body.appendChild(overlay);
-  });
+        box.appendChild(okBtn);
+        overlay.appendChild(box);
+        document.body.appendChild(overlay);
+    });
 };
-
 
 </script>
 <script>
 window.confirm = function(message) {
-  return new Promise((resolve) => {
-    // 1. Create overlay
-    const overlay = document.createElement('div');
-    overlay.style.position = 'fixed';
-    overlay.style.top = '0';
-    overlay.style.left = '0';
-    overlay.style.width = '100%';
-    overlay.style.height = '100%';
-    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-    overlay.style.display = 'flex';
-    overlay.style.alignItems = 'center';
-    overlay.style.justifyContent = 'center';
-    overlay.style.zIndex = '9999';
+    return new Promise((resolve) => {
+        // 1. Create overlay 
+        const overlay = document.createElement('div');
+        overlay.style.position = 'fixed';
+        overlay.style.top = '0';
+        overlay.style.left = '0';
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+        overlay.style.display = 'flex';
+        overlay.style.alignItems = 'center';
+        overlay.style.justifyContent = 'center';
+        overlay.style.zIndex = '9999';
 
-    // 2. Create popup box (Larger padding, wider minimums)
-    const box = document.createElement('div');
-    box.style.backgroundColor = 'white';
-    box.style.padding = '100px 130px';
-    box.style.minWidth = '1100px';
-    box.style.maxWidth = '90vw';
-    box.style.borderRadius = '32px';
-    box.style.textAlign = 'center';
-    box.style.boxShadow = '0 30px 60px rgba(0,0,0,0.3)';
-    box.style.fontFamily = 'sans-serif';
+        // 2. Create popup box (Increased padding and added min-width)
+        const box = document.createElement('div');
+        box.style.backgroundColor = 'white';
+        box.style.padding = '40px 50px';
+        box.style.minWidth = '400px'; // Ensures the box doesn't get too narrow
+        box.style.borderRadius = '12px';
+        box.style.textAlign = 'center';
+        box.style.boxShadow = '0 10px 20px rgba(0,0,0,0.2)';
+        box.style.fontFamily = 'sans-serif';
 
-    // 3. Add text (Larger font size and adjusted spacing)
-    const text = document.createElement('p');
-    text.innerText = message;
-    text.style.fontSize = '52px';
-    text.style.margin = '0 0 80px 0';
-    text.style.wordWrap = 'break-word';
-    box.appendChild(text);
+        // 3. Add text (Increased font size)
+        const text = document.createElement('p');
+        text.innerText = message;
+        text.style.fontSize = '20px';
+        text.style.margin = '0 0 30px 0';
+        box.appendChild(text);
 
-    // Button container
-    const btnContainer = document.createElement('div');
-    btnContainer.style.display = 'flex';
-    btnContainer.style.justifyContent = 'center';
-    btnContainer.style.marginTop = '20px';
+        // Button container
+        const btnContainer = document.createElement('div');
+        btnContainer.style.marginTop = '15px';
 
-    // 4. Create Cancel button
-    const cancelBtn = document.createElement('button');
-    cancelBtn.innerText = 'Cancel';
-    cancelBtn.style.padding = '32px 64px';
-    cancelBtn.style.marginRight = '40px';
-    cancelBtn.style.cursor = 'pointer';
-    cancelBtn.style.fontSize = '36px';
-    cancelBtn.style.borderRadius = '16px';
-    cancelBtn.style.border = '1px solid #ccc';
-    cancelBtn.style.backgroundColor = '#fff';
-    
-    cancelBtn.onmouseover = () => cancelBtn.style.backgroundColor = '#f0f0f0';
-    cancelBtn.onmouseout = () => cancelBtn.style.backgroundColor = '#fff';
-    cancelBtn.onclick = () => {
-      document.body.removeChild(overlay);
-      resolve(false); // Returns false for Cancel
-    };
+        // 4. Create Cancel button (Made buttons larger)
+        const cancelBtn = document.createElement('button');
+        cancelBtn.innerText = 'Cancel';
+        cancelBtn.style.padding = '12px 24px';
+        cancelBtn.style.marginRight = '15px';
+        cancelBtn.style.cursor = 'pointer';
+        cancelBtn.style.fontSize = '16px';
+        cancelBtn.style.borderRadius = '6px';
+        cancelBtn.onclick = function() {
+            document.body.removeChild(overlay);
+            resolve(false);
+        };
 
-    // 5. Create OK button
-    const okBtn = document.createElement('button');
-    okBtn.innerText = 'OK';
-    okBtn.style.padding = '32px 64px';
-    okBtn.style.cursor = 'pointer';
-    okBtn.style.fontSize = '36px';
-    okBtn.style.borderRadius = '16px';
-    okBtn.style.border = 'none';
-    okBtn.style.backgroundColor = '#007BFF';
-    okBtn.style.color = '#fff';
+        // 5. Create OK button (Made buttons larger)
+        const okBtn = document.createElement('button');
+        okBtn.innerText = 'OK';
+        okBtn.style.padding = '12px 24px';
+        okBtn.style.cursor = 'pointer';
+        okBtn.style.fontSize = '16px';
+        okBtn.style.borderRadius = '6px';
+        okBtn.onclick = function() {
+            document.body.removeChild(overlay);
+            resolve(true);
+        };
 
-    okBtn.onmouseover = () => okBtn.style.backgroundColor = '#0056b3';
-    okBtn.onmouseout = () => okBtn.style.backgroundColor = '#007BFF';
-    okBtn.onclick = () => {
-      document.body.removeChild(overlay);
-      resolve(true); // Returns true for OK
-    };
-
-    // Assemble everything
-    btnContainer.appendChild(cancelBtn);
-    btnContainer.appendChild(okBtn);
-    box.appendChild(btnContainer);
-    overlay.appendChild(box);
-    document.body.appendChild(overlay);
-  });
+        // Append everything together
+        btnContainer.appendChild(cancelBtn);
+        btnContainer.appendChild(okBtn);
+        box.appendChild(btnContainer);
+        overlay.appendChild(box);
+        document.body.appendChild(overlay);
+    });
 };
 
 </script>
