@@ -665,6 +665,7 @@ let AdTimer = setTimeout(loop, 10000);
 
 
 <body onload="adjustCellSize();adjustFontSize(editor1);adjustFontSize(editor2);adjustFontSize(editor3);adjustFontSize(editor4);adjustCenterFontSize();adjustpointsPFontSize();PointsZero();">
+
 <div id="myTableContainer">
 <table id="dynamicTable" align="center">
 
@@ -2068,6 +2069,7 @@ editor4.addEventListener('input', function() {
 </script>
 <script>
 window.alert = function(message) {
+  return new Promise((resolve) => {
     // 1. Create overlay
     const overlay = document.createElement('div');
     overlay.style.position = 'fixed';
@@ -2081,34 +2083,57 @@ window.alert = function(message) {
     overlay.style.justifyContent = 'center';
     overlay.style.zIndex = '9999';
 
-    // 2. Create popup box
+    // 2. Create popup box (Larger padding, wider minimums)
     const box = document.createElement('div');
     box.style.backgroundColor = 'white';
-    box.style.padding = '20px';
-    box.style.borderRadius = '8px';
+    box.style.padding = '100px 130px';
+    box.style.minWidth = '1100px';
+    box.style.maxWidth = '90vw';
+    box.style.borderRadius = '32px';
     box.style.textAlign = 'center';
-    box.style.boxShadow = '0 4px 6px rgba(0,0,0,0.2)';
+    box.style.boxShadow = '0 30px 60px rgba(0,0,0,0.3)';
     box.style.fontFamily = 'sans-serif';
 
-    // 3. Add text and button
-    box.innerHTML = `<p>${message}</p>`;
+    // 3. Add text (Larger font size and adjusted spacing)
+    const text = document.createElement('p');
+    text.innerText = message;
+    text.style.fontSize = '52px';
+    text.style.margin = '0 0 80px 0';
+    text.style.wordWrap = 'break-word';
+    box.appendChild(text);
+
+    // Button container
+    const btnContainer = document.createElement('div');
+    btnContainer.style.display = 'flex';
+    btnContainer.style.justifyContent = 'center';
+    btnContainer.style.marginTop = '20px';
+
+    // 4. Create OK button
     const okBtn = document.createElement('button');
     okBtn.innerText = 'OK';
-    okBtn.style.padding = '8px 16px';
-    okBtn.style.marginTop = '10px';
+    okBtn.style.padding = '32px 64px';
     okBtn.style.cursor = 'pointer';
-    
-    // 4. Remove overlay on click
-    okBtn.onclick = function() {
-		document.body.removeChild(overlay);
-}
-     
-    box.appendChild(okBtn);
+    okBtn.style.fontSize = '36px';
+    okBtn.style.borderRadius = '16px';
+    okBtn.style.border = 'none';
+    okBtn.style.backgroundColor = '#007BFF';
+    okBtn.style.color = '#fff';
+
+    okBtn.onmouseover = () => okBtn.style.backgroundColor = '#0056b3';
+    okBtn.onmouseout = () => okBtn.style.backgroundColor = '#007BFF';
+    okBtn.onclick = () => {
+      document.body.removeChild(overlay);
+      resolve(true); // Resolves when the user acknowledges the alert
+    };
+
+    // Assemble everything
+    btnContainer.appendChild(okBtn);
+    box.appendChild(btnContainer);
     overlay.appendChild(box);
     document.body.appendChild(overlay);
-	
-	
+  });
 };
+
 
 </script>
 <script>
