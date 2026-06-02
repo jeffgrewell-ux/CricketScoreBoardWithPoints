@@ -680,52 +680,22 @@ document.querySelectorAll(".PickAColorimage").forEach(img => {
 </script>
 <script>
 
-
-document.addEventListener("DOMContentLoaded", () => {
-    const colorInput1 = document.getElementById("color-choice1");
-    
-    if (colorInput1) {
-        // iOS Safari captures 'input' best through explicit event listeners
-        colorInput1.addEventListener("input", (event) => {
-		alert("colorInput1.addEventListener");
-            changeColumnColor(event.target.value, 0);
-        });
-    }
+document.getElementById('color-choice1').addEventListener('change', function(e) {
+    changeColumnColor(e.target.value, 0);
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-    const colorInput2 = document.getElementById("color-choice2");
-    
-    if (colorInput2) {
-        // iOS Safari captures 'input' best through explicit event listeners
-        colorInput2.addEventListener("input", (event) => {
-            changeColumnColor(event.target.value, 1);
-        });
-    }
+document.getElementById('color-choice2').addEventListener('change', function(e) {
+    changeColumnColor(e.target.value, 1);
 });
 
-
-document.addEventListener("DOMContentLoaded", () => {
-    const colorInput3 = document.getElementById("color-choice3");
-    
-    if (colorInput3) {
-        // iOS Safari captures 'input' best through explicit event listeners
-        colorInput3.addEventListener("input", (event) => {
-            changeColumnColor(event.target.value, 3);
-        });
-    }
+document.getElementById('color-choice3').addEventListener('change', function(e) {
+    changeColumnColor(e.target.value, 3);
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-    const colorInput4 = document.getElementById("color-choice4");
-    
-    if (colorInput4) {
-        // iOS Safari captures 'input' best through explicit event listeners
-        colorInput4.addEventListener("input", (event) => {
-            changeColumnColor(event.target.value, 4);
-        });
-    }
+document.getElementById('color-choice4').addEventListener('change', function(e) {
+    changeColumnColor(e.target.value, 4);
 });
+
 
 </script>
 
