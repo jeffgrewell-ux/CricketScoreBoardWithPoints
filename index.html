@@ -414,26 +414,19 @@ vertical-align: top;
   margin-right: auto;
 }
 
-/* Container styling */
-input[type="color"] {
-  -webkit-appearance: none;
-  border: none;
-  width: 44px;
-  height: 44px; /* Minimum recommended target size for iOS touch */
+/* Hide the default checkbox/radio */
+.color-input {
+  display: none;
+}
+
+/* Style your label to look like your color-choice1 element */
+.color-label {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   cursor: pointer;
-  padding: 0;
-  overflow: hidden;
-}
-
-/* WebKit-specific inner swatch adjustments */
-input[type="color"]::-webkit-color-swatch-wrapper {
-  padding: 0;
-}
-
-input[type="color"]::-webkit-color-swatch {
-  border: none;
-  border-radius: 50%;
+  background-color: var(--color1-value); /* Replace with your color */
 }
 
 
