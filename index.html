@@ -465,7 +465,19 @@ vertical-align: top;
 
 </style></head>
 
+<script>
+let lastTouchTime = 0;
+document.addEventListener('touchend', (event) => {
+  const currentTime = new Date().getTime();
+  const tapLength = currentTime - lastTouchTime;
+  
+  if (tapLength < 500 && tapLength > 0) {
+    event.preventDefault(); // Prevents the double-tap zoom
+  }
+  lastTouchTime = currentTime;
+});
 
+</script>
 
 
     <script>
