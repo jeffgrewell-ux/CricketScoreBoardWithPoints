@@ -323,10 +323,24 @@ vertical-align: top;
 }
 
 #pointsPDummy{
-  display: flex;
-  justify-content: centered;
+  text-align: center;      /* Horizontal alignment */
+	vertical-align: top;
     margin: 0;
     padding: 0;
+	width: 100%;
+	max-width: 100%; /* Ensures it doesn't exceed container */
+	max-height: 100%; /* Ensures it doesn't exceed container */
+	display: inline;
+		/* Prevents text selection highlighting */
+	-webkit-user-select: none;  
+    user-select: none; /* Prevents text selection while holding */
+	  /* Prevents the iOS-specific context menu (copy, share, etc.) */
+	-webkit-touch-callout: none; 
+    /* prevent the browser from interpreting the interaction as a scroll on facebook  */
+	touch-action: none; 
+	background-color: black !important;
+	color: white;
+	text-decoration: none;
 }
 
 #cycle-link{
