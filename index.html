@@ -34,6 +34,8 @@ html{
   user-select: none;
   /*touch-action: manipulation; To prevent double-tap zoom on iPads and Android devices*/
   touch-action: none;
+      overscroll-behavior: none; /* Prevents bouncing/rubber-banding */
+    overflow: hidden;
 }
 
 body{
@@ -2001,6 +2003,16 @@ let players = urlParams.get('numberofplayers');
 
 // Call the function
 //removeColumn('dynamicTable', 4); 
+
+</script>
+
+<script>
+document.addEventListener('touchmove', function(event) {
+    // Prevent zooming/bouncing except on explicitly scrollable elements
+    if (event.scale !== 1) {
+        event.preventDefault();
+    }
+}, { passive: false });
 
 </script>
 
