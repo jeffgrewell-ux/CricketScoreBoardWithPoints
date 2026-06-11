@@ -853,14 +853,10 @@ let AdTimer = setTimeout(loop, 10000);
 								  // Function to start the timer
 								  function startHold(image) {
 									timer = setTimeout(() => {
-
-										
-										// Using .then()
-confirm("Do you want to proceed with undo?").then(isConfirmed => {
-    if (isConfirmed) {
-        console.log("User clicked OK!");
-
 										isHeld = true;
+											if (confirm("Do you want to proceed with undo?")) {
+											console.log("User clicked Yes (OK)");
+
 																					  //alert("Long press detected!");
 																					  //this.style.setProperty("background-color", "red", "important");
 																						var parent = this.parentElement;
@@ -1174,7 +1170,7 @@ confirm("Do you want to proceed with undo?").then(isConfirmed => {
 										console.log("User clicked No (Cancel)");
 
 										}
-										});
+										
 									}, holdDuration);
 	
 									}
@@ -1910,67 +1906,5 @@ window.alert = function(message) {
 };
 
 </script>
-<script>
-window.confirm = function(message) {
-    return new Promise((resolve) => {
-        // 1. Create overlay 
-        const overlay = document.createElement('div');
-        overlay.style.position = 'fixed';
-        overlay.style.top = '0';
-        overlay.style.left = '0';
-        overlay.style.width = '100%';
-        overlay.style.height = '100%';
-        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-        overlay.style.display = 'flex';
-        overlay.style.alignItems = 'center';
-        overlay.style.justifyContent = 'center';
-        overlay.style.zIndex = '9999';
 
-        // 2. Create popup box
-        const box = document.createElement('div');
-        box.style.backgroundColor = 'white';
-        box.style.padding = '20px';
-        box.style.borderRadius = '8px';
-        box.style.textAlign = 'center';
-        box.style.boxShadow = '0 4px 6px rgba(0,0,0,0.2)';
-        box.style.fontFamily = 'sans-serif';
-
-        // 3. Add text
-        box.innerHTML = `<p>${message}</p>`;
-        
-        // Button container
-        const btnContainer = document.createElement('div');
-        btnContainer.style.marginTop = '15px';
-
-        // 4. Create Cancel button (resolves with false)
-        const cancelBtn = document.createElement('button');
-        cancelBtn.innerText = 'Cancel';
-        cancelBtn.style.padding = '8px 16px';
-        cancelBtn.style.marginRight = '10px';
-        cancelBtn.style.cursor = 'pointer';
-        cancelBtn.onclick = function() {
-            document.body.removeChild(overlay);
-            resolve(false);
-        };
-
-        // 5. Create OK button (resolves with true)
-        const okBtn = document.createElement('button');
-        okBtn.innerText = 'OK';
-        okBtn.style.padding = '8px 16px';
-        okBtn.style.cursor = 'pointer';
-        okBtn.onclick = function() {
-            document.body.removeChild(overlay);
-            resolve(true);
-        };
-
-        // Append everything together
-        btnContainer.appendChild(cancelBtn);
-        btnContainer.appendChild(okBtn);
-        box.appendChild(btnContainer);
-        overlay.appendChild(box);
-        document.body.appendChild(overlay);
-    });
-};
-
-</script>
 
