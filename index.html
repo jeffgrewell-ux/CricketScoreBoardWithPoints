@@ -509,12 +509,14 @@ vertical-align: top;
 
 .ad-container {
 	display: flex;
+	
+  height: fit-content; /* Optional: prevents height from stretching in flex/grid layouts */
  background-color: grey !important;
 	aspect-ratio: 1 / 1 !important;
   width: 100%;
   max-width: 140px !important; /* Limits maximum scaling */
   max-height: 140px !important; /* Limits maximum scaling */
-  height: auto;
+  /*height: auto;*/
       min-width: 0; /* Forces Safari to respect max-width */
 	  min-height: 0; /* Forces Safari to respect max-width */
 	  position: relative; 
