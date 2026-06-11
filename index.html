@@ -1080,9 +1080,9 @@ const colorInput4 = document.getElementById('color-choice4');
 									stopHold(event);
 									});
 								  //image.addEventListener("pointercancel", stopHold);
-								  image.addEventListener("pointerup", (event) => {
-									stopHold(event);
-									});
+								  //image.addEventListener("pointerup", (event) => {
+									//stopHold(event);
+									//});
     }
   let isHeld = false;
 						let timer;
@@ -1093,13 +1093,14 @@ const colorInput4 = document.getElementById('color-choice4');
 								  let holdDuration = 1500; 
 
 								  // Function to start the timer
-									function startHold(event) {
+									function startHold(image) {
 									
 
 									timer = setTimeout(() => {
 
 										
 										// Using .then()
+										isConfirmed = false
 confirm("Do you want to proceed with undo?").then(isConfirmed => {
 
     if (isConfirmed) {
