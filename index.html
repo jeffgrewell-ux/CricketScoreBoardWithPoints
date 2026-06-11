@@ -20,7 +20,7 @@ html{
 	  /* Prevents the iOS-specific context menu (copy, share, etc.) */
   -webkit-touch-callout: none; 
     /* prevent the browser from interpreting the interaction as a scroll on facebook  */
-  touch-action: none;  
+  touch-action: none; 
   -webkit-user-drag: none;
   -khtml-user-drag: none;
   -moz-user-drag: none;
@@ -32,6 +32,7 @@ html{
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  touch-action: manipulation; /* To prevent double-tap zoom on iPads and Android devices*/
 }
 
 body{
@@ -499,7 +500,7 @@ vertical-align: top;
 
 .ad-container {
 	display: inline-block;
- background-color: white !important;
+ background-color: grey !important;
 	aspect-ratio: 1 / 1 !important;
   width: 100%;
   max-width: 140px !important; /* Limits maximum scaling */
@@ -655,10 +656,10 @@ document.addEventListener("click", (event) => {
 									const pointsP2 = document.getElementById('pointsP2');
 									const pointsP3 = document.getElementById('pointsP3');
 									const pointsP4 = document.getElementById('pointsP4');
-									try {pointsP1.textContent = Number(y20pointsP1.textContent) + Number(y19pointsP1.textContent) + Number(y18pointsP1.textContent) + Number(y17pointsP1.textContent) + Number(y16pointsP1.textContent) + Number(y15pointsP1.textContent) + Number(yBullpointsP1.textContent);} catch (error) {console.warn("pointsP1 is not defined yet, skipping execution.");}
-									try {pointsP2.textContent = Number(y20pointsP2.textContent) + Number(y19pointsP2.textContent) + Number(y18pointsP2.textContent) + Number(y17pointsP2.textContent) + Number(y16pointsP2.textContent) + Number(y15pointsP2.textContent) + Number(yBullpointsP2.textContent);} catch (error) {console.warn("pointsP2 is not defined yet, skipping execution.");}
-									try {pointsP3.textContent = Number(y20pointsP3.textContent) + Number(y19pointsP3.textContent) + Number(y18pointsP3.textContent) + Number(y17pointsP3.textContent) + Number(y16pointsP3.textContent) + Number(y15pointsP3.textContent) + Number(yBullpointsP3.textContent);} catch (error) {console.warn("pointsP3 is not defined yet, skipping execution.");}
-									try {pointsP4.textContent = Number(y20pointsP4.textContent) + Number(y19pointsP4.textContent) + Number(y18pointsP4.textContent) + Number(y17pointsP4.textContent) + Number(y16pointsP4.textContent) + Number(y15pointsP4.textContent) + Number(yBullpointsP4.textContent);} catch (error) {console.warn("pointsP4 is not defined yet, skipping execution.");}
+									try {pointsP1.innerText = Number(y20pointsP1.innerText) + Number(y19pointsP1.innerText) + Number(y18pointsP1.innerText) + Number(y17pointsP1.innerText) + Number(y16pointsP1.innerText) + Number(y15pointsP1.innerText) + Number(yBullpointsP1.innerText);} catch (error) {console.warn("pointsP1 is not defined yet, skipping execution.");}
+									if (pointsP2) {try {pointsP2.innerText = Number(y20pointsP2.innerText) + Number(y19pointsP2.innerText) + Number(y18pointsP2.innerText) + Number(y17pointsP2.innerText) + Number(y16pointsP2.innerText) + Number(y15pointsP2.innerText) + Number(yBullpointsP2.innerText);} catch (error) {console.warn("pointsP2 is not defined yet, skipping execution.");}};
+									if (pointsP3) {try {pointsP3.innerText = Number(y20pointsP3.innerText) + Number(y19pointsP3.innerText) + Number(y18pointsP3.innerText) + Number(y17pointsP3.innerText) + Number(y16pointsP3.innerText) + Number(y15pointsP3.innerText) + Number(yBullpointsP3.innerText);} catch (error) {console.warn("pointsP3 is not defined yet, skipping execution.");}};
+									if (pointsP4) {try {pointsP4.innerText = Number(y20pointsP4.innerText) + Number(y19pointsP4.innerText) + Number(y18pointsP4.innerText) + Number(y17pointsP4.innerText) + Number(y16pointsP4.innerText) + Number(y15pointsP4.innerText) + Number(yBullpointsP4.innerText);} catch (error) {console.warn("pointsP4 is not defined yet, skipping execution.");}};
 
 									WinnerP1();
 									WinnerP2();
@@ -1089,12 +1090,19 @@ const colorInput4 = document.getElementById('color-choice4');
 								  let holdDuration = 1500; 
 
 								  // Function to start the timer
-								  function startHold(image) {
-									timer = setTimeout(() => {
-										isHeld = true;
-											if (confirm("Do you want to proceed with undo?")) {
-											console.log("User clicked Yes (OK)");
+									function startHold(event) {
+									
 
+									timer = setTimeout(() => {
+
+										
+										// Using .then()
+confirm("Do you want to proceed with undo?").then(isConfirmed => {
+
+    if (isConfirmed) {
+        console.log("User clicked OK!");
+
+										isHeld = true;
 																					  //alert("Long press detected!");
 																					  //this.style.setProperty("background-color", "red", "important");
 																						var parent = this.parentElement;
@@ -1403,12 +1411,17 @@ const colorInput4 = document.getElementById('color-choice4');
 																							}
 																							 
 }
+
+
+			
 										} else {
 
 										console.log("User clicked No (Cancel)");
 
 										}
+										});
 										
+
 									}, holdDuration);
 isHeld = false;
 									}
@@ -1422,10 +1435,10 @@ isHeld = false;
 									const pointsP2 = document.getElementById('pointsP2');
 									const pointsP3 = document.getElementById('pointsP3');
 									const pointsP4 = document.getElementById('pointsP4');
-									try {pointsP1.textContent = Number(y20pointsP1.textContent) + Number(y19pointsP1.textContent) + Number(y18pointsP1.textContent) + Number(y17pointsP1.textContent) + Number(y16pointsP1.textContent) + Number(y15pointsP1.textContent) + Number(yBullpointsP1.textContent);} catch (error) {console.warn("pointsP1 is not defined yet, skipping execution.");};
-									try {pointsP2.textContent = Number(y20pointsP2.textContent) + Number(y19pointsP2.textContent) + Number(y18pointsP2.textContent) + Number(y17pointsP2.textContent) + Number(y16pointsP2.textContent) + Number(y15pointsP2.textContent) + Number(yBullpointsP2.textContent);} catch (error) {console.warn("pointsP2 is not defined yet, skipping execution.");};
-									try {pointsP3.textContent = Number(y20pointsP3.textContent) + Number(y19pointsP3.textContent) + Number(y18pointsP3.textContent) + Number(y17pointsP3.textContent) + Number(y16pointsP3.textContent) + Number(y15pointsP3.textContent) + Number(yBullpointsP3.textContent);} catch (error) {console.warn("pointsP3 is not defined yet, skipping execution.");};
-									try {pointsP4.textContent = Number(y20pointsP4.textContent) + Number(y19pointsP4.textContent) + Number(y18pointsP4.textContent) + Number(y17pointsP4.textContent) + Number(y16pointsP4.textContent) + Number(y15pointsP4.textContent) + Number(yBullpointsP4.textContent);} catch (error) {console.warn("pointsP4 is not defined yet, skipping execution.");};
+									try {pointsP1.innerText = Number(y20pointsP1.innerText) + Number(y19pointsP1.innerText) + Number(y18pointsP1.innerText) + Number(y17pointsP1.innerText) + Number(y16pointsP1.innerText) + Number(y15pointsP1.innerText) + Number(yBullpointsP1.innerText);} catch (error) {console.warn("pointsP1 is not defined yet, skipping execution.");}
+									if (pointsP2) {try {pointsP2.innerText = Number(y20pointsP2.innerText) + Number(y19pointsP2.innerText) + Number(y18pointsP2.innerText) + Number(y17pointsP2.innerText) + Number(y16pointsP2.innerText) + Number(y15pointsP2.innerText) + Number(yBullpointsP2.innerText);} catch (error) {console.warn("pointsP2 is not defined yet, skipping execution.");}};
+									if (pointsP3) {try {pointsP3.innerText = Number(y20pointsP3.innerText) + Number(y19pointsP3.innerText) + Number(y18pointsP3.innerText) + Number(y17pointsP3.innerText) + Number(y16pointsP3.innerText) + Number(y15pointsP3.innerText) + Number(yBullpointsP3.innerText);} catch (error) {console.warn("pointsP3 is not defined yet, skipping execution.");}};
+									if (pointsP4) {try {pointsP4.innerText = Number(y20pointsP4.innerText) + Number(y19pointsP4.innerText) + Number(y18pointsP4.innerText) + Number(y17pointsP4.innerText) + Number(y16pointsP4.innerText) + Number(y15pointsP4.innerText) + Number(yBullpointsP4.innerText);} catch (error) {console.warn("pointsP4 is not defined yet, skipping execution.");}};
 									
 									}
 function WinnerP1() {								
@@ -1449,15 +1462,15 @@ function WinnerP1() {
 			});
 			console.log('Are all images matching condition?', allOpen1);
 			// 3. Safe score extraction with fallback values
-			const score1 = Number(document.getElementById('pointsP1')?.textContent || '0');
+			const score1 = Number(document.getElementById('pointsP1')?.innerText || '0');
 			console.log(`score1: ${score1}`);
-			const score2 = Number(document.getElementById('pointsP2')?.textContent || '0');
+			const score2 = Number(document.getElementById('pointsP2')?.innerText || '0');
 			console.log(`score2: ${score2}`);
-			const score3 = Number(document.getElementById('pointsP3')?.textContent || '0');
+			const score3 = Number(document.getElementById('pointsP3')?.innerText || '0');
 			console.log(`score3: ${score3}`);
-			const score4 = Number(document.getElementById('pointsP4')?.textContent || '0');
+			const score4 = Number(document.getElementById('pointsP4')?.innerText || '0');
 			console.log(`score4: ${score4}`);
-			const winnerName1 = document.getElementById('editor1')?.textContent || "Player 1";
+			const winnerName1 = document.getElementById('editor1')?.innerText || "Player 1";
 			console.log(`allOpen1: ${allOpen1}`); // Returns true if EVERY element has an img ending with the target string
 			// 4. Final evaluation
 			if (score1 >= score2 && score1 >= score3 && score1 >= score4 && allOpen1) {
@@ -1486,15 +1499,15 @@ function WinnerP2() {
 			});
 			console.log('Are all images matching condition?', allOpen2);
 			// 3. Safe score extraction with fallback values
-			const score1 = Number(document.getElementById('pointsP1')?.textContent || '0');
+			const score1 = Number(document.getElementById('pointsP1')?.innerText || '0');
 			console.log(`score1: ${score1}`);
-			const score2 = Number(document.getElementById('pointsP2')?.textContent || '0');
+			const score2 = Number(document.getElementById('pointsP2')?.innerText || '0');
 			console.log(`score2: ${score2}`);
-			const score3 = Number(document.getElementById('pointsP3')?.textContent || '0');
+			const score3 = Number(document.getElementById('pointsP3')?.innerText || '0');
 			console.log(`score3: ${score3}`);
-			const score4 = Number(document.getElementById('pointsP4')?.textContent || '0');
+			const score4 = Number(document.getElementById('pointsP4')?.innerText || '0');
 			console.log(`score4: ${score4}`);
-			const winnerName2 = document.getElementById('editor2')?.textContent || "Player 2";
+			const winnerName2 = document.getElementById('editor2')?.innerText || "Player 2";
 			console.log(`allOpen2: ${allOpen2}`); // Returns true if EVERY element has an img ending with the target string
 			// 4. Final evaluation
 			if (score2 >= score1 && score2 >= score3 && score2 >= score4 && allOpen2) {
@@ -1524,15 +1537,15 @@ function WinnerP3() {
 			});
 			console.log('Are all images matching condition?', allOpen3);
 			// 3. Safe score extraction with fallback values
-			const score1 = Number(document.getElementById('pointsP1')?.textContent || '0');
+			const score1 = Number(document.getElementById('pointsP1')?.innerText || '0');
 			console.log(`score1: ${score1}`);
-			const score2 = Number(document.getElementById('pointsP2')?.textContent || '0');
+			const score2 = Number(document.getElementById('pointsP2')?.innerText || '0');
 			console.log(`score2: ${score2}`);
-			const score3 = Number(document.getElementById('pointsP3')?.textContent || '0');
+			const score3 = Number(document.getElementById('pointsP3')?.innerText || '0');
 			console.log(`score3: ${score3}`);
-			const score4 = Number(document.getElementById('pointsP4')?.textContent || '0');
+			const score4 = Number(document.getElementById('pointsP4')?.innerText || '0');
 			console.log(`score4: ${score4}`);
-			const winnerName3 = document.getElementById('editor3')?.textContent || "Player 3";
+			const winnerName3 = document.getElementById('editor3')?.innerText || "Player 3";
 			console.log(`allOpen3: ${allOpen3}`); // Returns true if EVERY element has an img ending with the target string
 			// 4. Final evaluation
 			if (score3 >= score1 && score3 >= score2 && score3 >= score4 && allOpen3) {
@@ -1562,15 +1575,15 @@ function WinnerP4() {
 			});
 			console.log('Are all images matching condition?', allOpen4);
 			// 3. Safe score extraction with fallback values
-			const score1 = Number(document.getElementById('pointsP1')?.textContent || '0');
+			const score1 = Number(document.getElementById('pointsP1')?.innerText || '0');
 			console.log(`score1: ${score1}`);
-			const score2 = Number(document.getElementById('pointsP2')?.textContent || '0');
+			const score2 = Number(document.getElementById('pointsP2')?.innerText || '0');
 			console.log(`score2: ${score2}`);
-			const score3 = Number(document.getElementById('pointsP3')?.textContent || '0');
+			const score3 = Number(document.getElementById('pointsP3')?.innerText || '0');
 			console.log(`score3: ${score3}`);
-			const score4 = Number(document.getElementById('pointsP4')?.textContent || '0');
+			const score4 = Number(document.getElementById('pointsP4')?.innerText || '0');
 			console.log(`score4: ${score4}`);
-			const winnerName4 = document.getElementById('editor4')?.textContent || "Player 4";
+			const winnerName4 = document.getElementById('editor4')?.innerText || "Player 4";
 			console.log(`allOpen4: ${allOpen4}`); // Returns true if EVERY element has an img ending with the target string
 			// 4. Final evaluation
 			if (score4 >= score1 && score4 >= score2 && score4 >= score3 && allOpen4) {
@@ -1705,7 +1718,7 @@ if (filledCells.length === newlength) {
 			var pointDisplay = this.closest('td').querySelector('pre');
 			// Check if the element actually exists before reading its properties
 			if (pointDisplay) {
-			var pointDisplaynum = Number(pointDisplay.textContent);
+			var pointDisplaynum = Number(pointDisplay.innerText);
 			console.log(`pointDisplaynum: ${pointDisplaynum}`);
 			} else {
 			console.error(`No element found at index: ${index}`);
@@ -1713,7 +1726,7 @@ if (filledCells.length === newlength) {
 			//console.log(`pointDisplaynum: ${pointDisplaynum}`);
 			points = pointDisplaynum + 20;
 					//points++;
-			pointDisplay.textContent = points; // Update display
+			pointDisplay.innerText = points; // Update display
 			console.log("Points incremented: " + points);
 			}
 			
@@ -1725,14 +1738,14 @@ if (filledCells.length === newlength) {
 			var pointDisplay = this.closest('td').querySelector('pre');
 			// Check if the element actually exists before reading its properties
 			if (pointDisplay) {
-			var pointDisplaynum = Number(pointDisplay.textContent);
+			var pointDisplaynum = Number(pointDisplay.innerText);
 			console.log(`pointDisplaynum: ${pointDisplaynum}`);
 			} else {
 			console.error(`No element found at index: ${index}`);
 			}
 			points = pointDisplaynum + 19;
 					//points++;
-			pointDisplay.textContent = points; // Update display
+			pointDisplay.innerText = points; // Update display
 			console.log("Points incremented: " + points);
 			}
 			if (Score.id === "s18") {
@@ -1742,14 +1755,14 @@ if (filledCells.length === newlength) {
 			var pointDisplay = this.closest('td').querySelector('pre');
 			// Check if the element actually exists before reading its properties
 			if (pointDisplay) {
-			var pointDisplaynum = Number(pointDisplay.textContent);
+			var pointDisplaynum = Number(pointDisplay.innerText);
 			console.log(`pointDisplaynum: ${pointDisplaynum}`);
 			} else {
 			console.error(`No element found at index: ${index}`);
 			}
 			points = pointDisplaynum + 18;
 					//points++;
-			pointDisplay.textContent = points; // Update display
+			pointDisplay.innerText = points; // Update display
 			console.log("Points incremented: " + points);
 			}
 			if (Score.id === "s17") {
@@ -1759,14 +1772,14 @@ if (filledCells.length === newlength) {
 			var pointDisplay = this.closest('td').querySelector('pre');
 			// Check if the element actually exists before reading its properties
 			if (pointDisplay) {
-			var pointDisplaynum = Number(pointDisplay.textContent);
+			var pointDisplaynum = Number(pointDisplay.innerText);
 			console.log(`pointDisplaynum: ${pointDisplaynum}`);
 			} else {
 			console.error(`No element found at index: ${index}`);
 			}
 			points = pointDisplaynum + 17;
 					//points++;
-			pointDisplay.textContent = points; // Update display
+			pointDisplay.innerText = points; // Update display
 			console.log("Points incremented: " + points);
 			}		
 			if (Score.id === "s16") {
@@ -1776,14 +1789,14 @@ if (filledCells.length === newlength) {
 			var pointDisplay = this.closest('td').querySelector('pre');
 			// Check if the element actually exists before reading its properties
 			if (pointDisplay) {
-			var pointDisplaynum = Number(pointDisplay.textContent);
+			var pointDisplaynum = Number(pointDisplay.innerText);
 			console.log(`pointDisplaynum: ${pointDisplaynum}`);
 			} else {
 			console.error(`No element found at index: ${index}`);
 			}
 			points = pointDisplaynum + 16;
 					//points++;
-			pointDisplay.textContent = points; // Update display
+			pointDisplay.innerText = points; // Update display
 			console.log("Points incremented: " + points);
 			}
 			if (Score.id === "s15") {
@@ -1793,14 +1806,14 @@ if (filledCells.length === newlength) {
 			var pointDisplay = this.closest('td').querySelector('pre');
 			// Check if the element actually exists before reading its properties
 			if (pointDisplay) {
-			var pointDisplaynum = Number(pointDisplay.textContent);
+			var pointDisplaynum = Number(pointDisplay.innerText);
 			console.log(`pointDisplaynum: ${pointDisplaynum}`);
 			} else {
 			console.error(`No element found at index: ${index}`);
 			}
 			points = pointDisplaynum + 15;
 					//points++;
-			pointDisplay.textContent = points; // Update display
+			pointDisplay.innerText = points; // Update display
 			console.log("Points incremented: " + points);
 			}
 			if (Score.id === "s25") {
@@ -1810,14 +1823,14 @@ if (filledCells.length === newlength) {
 			var pointDisplay = this.closest('td').querySelector('pre');
 			// Check if the element actually exists before reading its properties
 			if (pointDisplay) {
-			var pointDisplaynum = Number(pointDisplay.textContent);
+			var pointDisplaynum = Number(pointDisplay.innerText);
 			console.log(`pointDisplaynum: ${pointDisplaynum}`);
 			} else {
 			console.error(`No element found at index: ${index}`);
 			}
 			points = pointDisplaynum + 25;
 					//points++;
-			pointDisplay.textContent = points; // Update display
+			pointDisplay.innerText = points; // Update display
 			console.log("Points incremented: " + points);
 			}
 			adjustpointsPFontSize();
@@ -1838,76 +1851,73 @@ const pointsP1 = document.getElementById('pointsP1');
 const pointsP2 = document.getElementById('pointsP2');
 const pointsP3 = document.getElementById('pointsP3');
 const pointsP4 = document.getElementById('pointsP4');
-  pointsP1.textContent = "0";
-   if (pointsP2){pointsP2.textContent = "0";};
-    if (pointsP3){pointsP3.textContent = "0";};
-	 if (pointsP4){pointsP4.textContent = "0";};
+  pointsP1.innerText = "0";
+   if (pointsP2){pointsP2.innerText = "0";};
+    if (pointsP3){pointsP3.innerText = "0";};
+	 if (pointsP4){pointsP4.innerText = "0";};
 	 
 const y20pointsP1 = document.getElementById('y20pointsP1');
 const y20pointsP2 = document.getElementById('y20pointsP2');
 const y20pointsP3 = document.getElementById('y20pointsP3');
 const y20pointsP4 = document.getElementById('y20pointsP4');	 
-	y20pointsP1.textContent = "0";
-		if (y20pointsP2) {y20pointsP2.textContent = "0";};
-			if (y20pointsP3){y20pointsP3.textContent = "0";};
-				if (y20pointsP4){y20pointsP4.textContent = "0";};
+	y20pointsP1.innerText = "0";
+		if (y20pointsP2) {y20pointsP2.innerText = "0";};
+			if (y20pointsP3){y20pointsP3.innerText = "0";};
+				if (y20pointsP4){y20pointsP4.innerText = "0";};
 const y19pointsP1 = document.getElementById('y19pointsP1');
 const y19pointsP2 = document.getElementById('y19pointsP2');
 const y19pointsP3 = document.getElementById('y19pointsP3');
 const y19pointsP4 = document.getElementById('y19pointsP4');	
-   y19pointsP1.textContent = "0";
-      if (y19pointsP2) {y19pointsP2.textContent = "0";};
-	     if (y19pointsP3) {y19pointsP3.textContent = "0";};
-		    if (y19pointsP4) {y19pointsP4.textContent = "0";};
+   y19pointsP1.innerText = "0";
+      if (y19pointsP2) {y19pointsP2.innerText = "0";};
+	     if (y19pointsP3) {y19pointsP3.innerText = "0";};
+		    if (y19pointsP4) {y19pointsP4.innerText = "0";};
 const y18pointsP1 = document.getElementById('y18pointsP1');
 const y18pointsP2 = document.getElementById('y18pointsP2');
 const y18pointsP3 = document.getElementById('y18pointsP3');
 const y18pointsP4 = document.getElementById('y18pointsP4');	
-    y18pointsP1.textContent = "0";
-	    if (y18pointsP2) {y18pointsP2.textContent = "0";};
-		    if (y18pointsP3) {y18pointsP3.textContent = "0";};
-			    if (y18pointsP4) {y18pointsP4.textContent = "0";};
+    y18pointsP1.innerText = "0";
+	    if (y18pointsP2) {y18pointsP2.innerText = "0";};
+		    if (y18pointsP3) {y18pointsP3.innerText = "0";};
+			    if (y18pointsP4) {y18pointsP4.innerText = "0";};
 const y17pointsP1 = document.getElementById('y17pointsP1');
 const y17pointsP2 = document.getElementById('y17pointsP2');
 const y17pointsP3 = document.getElementById('y17pointsP3');
 const y17pointsP4 = document.getElementById('y17pointsP4');	
-	 y17pointsP1.textContent = "0";
-	 	 if (y17pointsP2) {y17pointsP2.textContent = "0";};
-		 	 if (y17pointsP3) {y17pointsP3.textContent = "0";};
-			 	 if (y17pointsP4) {y17pointsP4.textContent = "0";};
+	 y17pointsP1.innerText = "0";
+	 	 if (y17pointsP2) {y17pointsP2.innerText = "0";};
+		 	 if (y17pointsP3) {y17pointsP3.innerText = "0";};
+			 	 if (y17pointsP4) {y17pointsP4.innerText = "0";};
 const y16pointsP1 = document.getElementById('y16pointsP1');
 const y16pointsP2 = document.getElementById('y16pointsP2');
 const y16pointsP3 = document.getElementById('y16pointsP3');
 const y16pointsP4 = document.getElementById('y16pointsP4');	
-	   y16pointsP1.textContent = "0";
-	   	   if (y16pointsP2) {y16pointsP2.textContent = "0";};
-		   	   if (y16pointsP3) {y16pointsP3.textContent = "0";};
-			   	   if (y16pointsP4) {y16pointsP4.textContent = "0";};
+	   y16pointsP1.innerText = "0";
+	   	   if (y16pointsP2) {y16pointsP2.innerText = "0";};
+		   	   if (y16pointsP3) {y16pointsP3.innerText = "0";};
+			   	   if (y16pointsP4) {y16pointsP4.innerText = "0";};
 const y15pointsP1 = document.getElementById('y15pointsP1');
 const y15pointsP2 = document.getElementById('y15pointsP2');
 const y15pointsP3 = document.getElementById('y15pointsP3');
 const y15pointsP4 = document.getElementById('y15pointsP4');	
-   y15pointsP1.textContent = "0";
-     if (y15pointsP2) {y15pointsP2.textContent = "0";};
-	   if (y15pointsP3) {y15pointsP3.textContent = "0";};
-	     if (y15pointsP4) {y15pointsP4.textContent = "0";};
+   y15pointsP1.innerText = "0";
+     if (y15pointsP2) {y15pointsP2.innerText = "0";};
+	   if (y15pointsP3) {y15pointsP3.innerText = "0";};
+	     if (y15pointsP4) {y15pointsP4.innerText = "0";};
 const yBullpointsP1 = document.getElementById('yBullpointsP1');
 const yBullpointsP2 = document.getElementById('yBullpointsP2');
 const yBullpointsP3 = document.getElementById('yBullpointsP3');
 const yBullpointsP4 = document.getElementById('yBullpointsP4');	
-    yBullpointsP1.textContent = "0";
-	    if (yBullpointsP2) {yBullpointsP2.textContent = "0";};
-		    if (yBullpointsP3) {yBullpointsP3.textContent = "0";};
-			    if (yBullpointsP4) {yBullpointsP4.textContent = "0";};
+    yBullpointsP1.innerText = "0";
+	    if (yBullpointsP2) {yBullpointsP2.innerText = "0";};
+		    if (yBullpointsP3) {yBullpointsP3.innerText = "0";};
+			    if (yBullpointsP4) {yBullpointsP4.innerText = "0";};
 }
 </script>
 
 
 </tbody></table></div>
 <script>
-    
-
-
 // Function to remove a column by its index (e.g., the 2nd column, index 1)
 function removeColumn(tableId, colIndex) {
   var table = document.getElementById(tableId);
@@ -2217,14 +2227,14 @@ window.alert = function(message) {
 
         // 3. Add text
         const text = document.createElement('p');
-        text.textContent = message;
+        text.innerText = message;
         text.style.fontSize = '20px';
         text.style.margin = '0 0 30px 0';
         box.appendChild(text);
 
         // 4. Create OK button
         const okBtn = document.createElement('button');
-        okBtn.textContent = 'OK';
+        okBtn.innerText = 'OK';
         okBtn.style.padding = '12px 36px';
         okBtn.style.cursor = 'pointer';
         okBtn.style.fontSize = '16px';
@@ -2244,80 +2254,83 @@ window.alert = function(message) {
 };
 
 </script>
-<!--
 <script>
 window.confirm = function(message) {
-    return new Promise((resolve) => {
-        // 1. Create overlay 
-        const overlay = document.createElement('div');
-        overlay.style.position = 'fixed';
-        overlay.style.top = '0';
-        overlay.style.left = '0';
-        overlay.style.width = '100%';
-        overlay.style.height = '100%';
-        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-        overlay.style.display = 'flex';
-        overlay.style.alignItems = 'center';
-        overlay.style.justifyContent = 'center';
-        overlay.style.zIndex = '9999';
+  return new Promise((resolve) => {
+    // 1. Create overlay
+    const overlay = document.createElement('div');
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+    overlay.style.display = 'flex';
+    overlay.style.alignItems = 'center';
+    overlay.style.justifyContent = 'center';
+    overlay.style.zIndex = '9999';
 
-        // 2. Create popup box (Increased padding and added min-width)
-        const box = document.createElement('div');
-        box.style.backgroundColor = 'white';
-        box.style.padding = '40px 50px';
-        box.style.minWidth = '400px'; // Ensures the box doesn't get too narrow
-        box.style.borderRadius = '12px';
-        box.style.textAlign = 'center';
-        box.style.boxShadow = '0 10px 20px rgba(0,0,0,0.2)';
-        box.style.fontFamily = 'sans-serif';
+    // 2. Create popup box
+    const box = document.createElement('div');
+    box.style.backgroundColor = 'white';
+    box.style.padding = '40px 50px';
+    box.style.minWidth = '400px';
+    box.style.borderRadius = '12px';
+    box.style.textAlign = 'center';
+    box.style.boxShadow = '0 10px 20px rgba(0,0,0,0.2)';
+    box.style.fontFamily = 'sans-serif';
 
-        // 3. Add text (Increased font size)
-        const text = document.createElement('p');
-        text.textContent = message;
-        text.style.fontSize = '20px';
-        text.style.margin = '0 0 30px 0';
-        box.appendChild(text);
+    // 3. Add text
+    const text = document.createElement('p');
+    text.innerText = message;
+    text.style.fontSize = '20px';
+    text.style.margin = '0 0 30px 0';
+    box.appendChild(text);
 
-        // Button container
-        const btnContainer = document.createElement('div');
-        btnContainer.style.marginTop = '15px';
+    // Button container
+    const btnContainer = document.createElement('div');
+    btnContainer.style.marginTop = '15px';
 
-        // 4. Create Cancel button (Made buttons larger)
-        const cancelBtn = document.createElement('button');
-        cancelBtn.textContent = 'Cancel';
-        cancelBtn.style.padding = '12px 24px';
-        cancelBtn.style.marginRight = '15px';
-        cancelBtn.style.cursor = 'pointer';
-        cancelBtn.style.fontSize = '16px';
-        cancelBtn.style.borderRadius = '6px';
-        cancelBtn.onclick = function() {
-            document.body.removeChild(overlay);
-            resolve(false);
-        };
+    // 4. Create Cancel button
+    const cancelBtn = document.createElement('button');
+    cancelBtn.innerText = 'Cancel';
+    cancelBtn.style.padding = '12px 24px';
+    cancelBtn.style.marginRight = '15px';
+    cancelBtn.style.cursor = 'pointer';
+    cancelBtn.style.fontSize = '16px';
+    cancelBtn.style.borderRadius = '6px';
+    cancelBtn.onclick = function() {
+      document.body.removeChild(overlay);
+      resolve(false); // Reslies the promise with false
+    };
 
-        // 5. Create OK button (Made buttons larger)
-        const okBtn = document.createElement('button');
-        okBtn.textContent = 'OK';
-        okBtn.style.padding = '12px 24px';
-        okBtn.style.cursor = 'pointer';
-        okBtn.style.fontSize = '16px';
-        okBtn.style.borderRadius = '6px';
-        okBtn.onclick = function() {
-            document.body.removeChild(overlay);
-            resolve(true);
-        };
+    // 5. Create OK button
+    const okBtn = document.createElement('button');
+    okBtn.innerText = 'OK';
+    okBtn.style.padding = '12px 24px';
+    okBtn.style.cursor = 'pointer';
+    okBtn.style.fontSize = '16px';
+    okBtn.style.borderRadius = '6px';
+    okBtn.style.backgroundColor = '#007bff';
+    okBtn.style.color = 'white';
+    okBtn.style.border = 'none';
+    okBtn.onclick = function() {
+      document.body.removeChild(overlay);
+      resolve(true); // Resolves the promise with true
+    };
 
-        // Append everything together
-        btnContainer.appendChild(cancelBtn);
-        btnContainer.appendChild(okBtn);
-        box.appendChild(btnContainer);
-        overlay.appendChild(box);
-        document.body.appendChild(overlay);
-    });
+    // Append buttons and layout
+    btnContainer.appendChild(cancelBtn);
+    btnContainer.appendChild(okBtn);
+    box.appendChild(btnContainer);
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+  });
 };
 
+
 </script>
--->
+
 <script>
 window.addEventListener("resize", () => {
     //console.log("Real dimensions:", window.innerWidth, window.innerHeight);
