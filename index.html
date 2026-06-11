@@ -2226,14 +2226,14 @@ window.alert = function(message) {
 
         // 3. Add text
         const text = document.createElement('p');
-        text.textContent = message;
+        text.innerText = message;
         text.style.fontSize = '20px';
         text.style.margin = '0 0 30px 0';
         box.appendChild(text);
 
         // 4. Create OK button
         const okBtn = document.createElement('button');
-        okBtn.textContent = 'OK';
+        okBtn.innerText = 'OK';
         okBtn.style.padding = '12px 36px';
         okBtn.style.cursor = 'pointer';
         okBtn.style.fontSize = '16px';
@@ -2253,6 +2253,7 @@ window.alert = function(message) {
 };
 
 </script>
+
 <!--
 <script>
 window.confirm = function(message) {
