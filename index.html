@@ -1100,10 +1100,13 @@ const colorInput4 = document.getElementById('color-choice4');
 
 										
 										// Using .then()
-confirm("Do you want to proceed with undo?").then(isConfirmed => {
+//confirm("Do you want to proceed with undo?").then(isConfirmed => {
 
-    if (isConfirmed) {
-        console.log("User clicked OK!");
+   // if (isConfirmed) {
+    //    console.log("User clicked OK!");
+	
+												if (confirm("Do you want to proceed with undo?")) {
+											console.log("User clicked Yes (OK)");
 
 										isHeld = true;
 																					  //alert("Long press detected!");
@@ -1422,7 +1425,7 @@ confirm("Do you want to proceed with undo?").then(isConfirmed => {
 										console.log("User clicked No (Cancel)");
 
 										}
-										});
+										//});
 										
 
 									}, holdDuration);
