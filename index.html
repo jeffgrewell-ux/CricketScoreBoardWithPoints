@@ -660,9 +660,9 @@ document.addEventListener("click", (event) => {
 									const pointsP3 = document.getElementById('pointsP3');
 									const pointsP4 = document.getElementById('pointsP4');
 									try {pointsP1.textContent = Number(y20pointsP1.textContent) + Number(y19pointsP1.textContent) + Number(y18pointsP1.textContent) + Number(y17pointsP1.textContent) + Number(y16pointsP1.textContent) + Number(y15pointsP1.textContent) + Number(yBullpointsP1.textContent);} catch (error) {console.warn("pointsP1 is not defined yet, skipping execution.");}
-									if (pointsP2) {try {pointsP2.textContent = Number(y20pointsP2.textContent) + Number(y19pointsP2.textContent) + Number(y18pointsP2.textContent) + Number(y17pointsP2.textContent) + Number(y16pointsP2.textContent) + Number(y15pointsP2.textContent) + Number(yBullpointsP2.textContent);} catch (error) {console.warn("pointsP2 is not defined yet, skipping execution.");}};
-									if (pointsP3) {try {pointsP3.textContent = Number(y20pointsP3.textContent) + Number(y19pointsP3.textContent) + Number(y18pointsP3.textContent) + Number(y17pointsP3.textContent) + Number(y16pointsP3.textContent) + Number(y15pointsP3.textContent) + Number(yBullpointsP3.textContent);} catch (error) {console.warn("pointsP3 is not defined yet, skipping execution.");}};
-									if (pointsP4) {try {pointsP4.textContent = Number(y20pointsP4.textContent) + Number(y19pointsP4.textContent) + Number(y18pointsP4.textContent) + Number(y17pointsP4.textContent) + Number(y16pointsP4.textContent) + Number(y15pointsP4.textContent) + Number(yBullpointsP4.textContent);} catch (error) {console.warn("pointsP4 is not defined yet, skipping execution.");}};
+									try {pointsP2.textContent = Number(y20pointsP2.textContent) + Number(y19pointsP2.textContent) + Number(y18pointsP2.textContent) + Number(y17pointsP2.textContent) + Number(y16pointsP2.textContent) + Number(y15pointsP2.textContent) + Number(yBullpointsP2.textContent);} catch (error) {console.warn("pointsP2 is not defined yet, skipping execution.");}
+									try {pointsP3.textContent = Number(y20pointsP3.textContent) + Number(y19pointsP3.textContent) + Number(y18pointsP3.textContent) + Number(y17pointsP3.textContent) + Number(y16pointsP3.textContent) + Number(y15pointsP3.textContent) + Number(yBullpointsP3.textContent);} catch (error) {console.warn("pointsP3 is not defined yet, skipping execution.");}
+									try {pointsP4.textContent = Number(y20pointsP4.textContent) + Number(y19pointsP4.textContent) + Number(y18pointsP4.textContent) + Number(y17pointsP4.textContent) + Number(y16pointsP4.textContent) + Number(y15pointsP4.textContent) + Number(yBullpointsP4.textContent);} catch (error) {console.warn("pointsP4 is not defined yet, skipping execution.");}
 
 									WinnerP1();
 									WinnerP2();
@@ -1105,8 +1105,7 @@ const colorInput4 = document.getElementById('color-choice4');
 
     //if (isConfirmed) {
       //  console.log("User clicked OK!");
-	  											if (confirm("Do you want to proceed with undo?")) {
-											console.log("User clicked Yes (OK)");
+
 
 										isHeld = true;
 																					  //alert("Long press detected!");
@@ -1116,6 +1115,10 @@ const colorInput4 = document.getElementById('color-choice4');
 																						var index = Array.prototype.indexOf.call(parent.parentNode.children, parent);
 																								Score = this.parentElement.parentElement.querySelector('[id^="s"]');
 		console.log(Score.id);
+		
+			  											if (confirm("Do you want to proceed with undo?")) {
+											console.log("User clicked Yes (OK)");
+											
 			if (Score.id === "s20") {
 			//const pointDisplay = document.querySelectorAll('[id^="20pointsP"]')[index];
 			var pointDisplay = this.closest('td').querySelector('pre');
