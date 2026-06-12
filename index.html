@@ -38,8 +38,8 @@ body{
     margin: 0;
 }
 
-img[name=JRGImage] {
-	touch-action: none;
+img[name=JRGImage]:hover {
+	cursor:pointer;
 }
 
 pre {
@@ -1067,8 +1067,8 @@ const colorInput4 = document.getElementById('color-choice4');
 
 <script>
 
-      //Select all elements on the page with the name attribute equal to JRGImage
-    var images = document.querySelectorAll('[name=JRGImage]');
+      //Select all elements on the page with the class attribute equal to x
+     var images = document.querySelectorAll('.x');
 	
     //For each image bind the click event
     for(var i=0; i < images.length; i++)
@@ -1090,18 +1090,13 @@ const colorInput4 = document.getElementById('color-choice4');
 								  
 								  // Touch Events (for mouse and touch inputs)
 								  image.addEventListener('pointerdown',startHold);
-								  //image.addEventListener('pointerdown', (event) => {
-									  //event.preventDefault(); // Blocks iOS default drag and scroll hijacking
-									//  startHold(event);
-									//});
-									
 								  image.addEventListener("pointermove", stopHold);
 								  //image.addEventListener("pointerup", stopHold);
 								  image.addEventListener("pointerup", (event) => {
 									stopHold(event);
 									});
 								  //image.addEventListener("pointercancel", stopHold);
-								  image.addEventListener("pointercancel", (event) => {
+								  image.addEventListener("pointerup", (event) => {
 									stopHold(event);
 									});
     }
@@ -1114,9 +1109,7 @@ const colorInput4 = document.getElementById('color-choice4');
 								  let holdDuration = 1500; 
 
 								  // Function to start the timer
-								  function startHold() {
-								   // 1. Lock the pointer to the image
-									this.setPointerCapture(this.pointerId);
+								  function startHold(image) {
 									timer = setTimeout(() => {
 										isHeld = true;
 											if (confirm("Do you want to proceed with undo?")) {
@@ -1443,13 +1436,7 @@ isHeld = false;
 
 								  // Function to stop the timer
 								  function stopHold() {
-								  console.log(`stopHoldexecuting: ${this}`) 
 									clearTimeout(timer);
-									  // The browser automatically releases the capture on pointerup/pointercancel, 
-									  // but it is safe to ensure it's cleared if you are managing manual resets.
-									  if (image.hasPointerCapture(event.pointerId)) {
-										image.releasePointerCapture(event.pointerId);
-									  }
 									//this.style.setProperty("background-color", "transparent", "important");
 									const pointsP1 = document.getElementById('pointsP1');
 									const pointsP2 = document.getElementById('pointsP2');
