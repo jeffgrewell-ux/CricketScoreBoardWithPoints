@@ -1147,7 +1147,7 @@ const colorInput4 = document.getElementById('color-choice4');
 																						var index = Array.prototype.indexOf.call(parent.parentNode.children, parent);
 																								Score = image.target.parentElement.parentElement.querySelector('[id^="s"]');
 		console.log(Score.id);
-			if (Score.id === "s20") {
+			if (Score.id) {
 			//const pointDisplay = document.querySelectorAll('[id^="20pointsP"]')[index];
 			var pointDisplay = image.target.closest('td').querySelector('pre');
 																						//const pointDisplay = document.querySelectorAll('[id^="pointsP"]')[index];
@@ -1166,12 +1166,12 @@ const colorInput4 = document.getElementById('color-choice4');
 																										// Code to run if pointDisplaynum IS 0
 																										    console.log("No points to display.");
 
-																											if (image.target.getAttribute('src').endsWith('iVBORw0KGgoAAAANSUhEUgAAANAAAADQCAYAAAB2pO90AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA31pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDcuMS1jMDAwIDc5LjgzZmFlNjQsIDIwMjIvMDIvMTUtMDg6MDc6MzIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6M2Q1MDAwZmItYWMxNC00ODQ2LWJkMjgtNGYxYzQ4OWYyM2RkIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjlEMEY1MTdCRDc4RDExRjBBNjE5QThDQjVBNkZGNkM3IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjlEMEY1MTdBRDc4RDExRjBBNjE5QThDQjVBNkZGNkM3IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBFbGVtZW50cyAyMS4wIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjNkNTAwMGZiLWFjMTQtNDg0Ni1iZDI4LTRmMWM0ODlmMjNkZCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozZDUwMDBmYi1hYzE0LTQ4NDYtYmQyOC00ZjFjNDg5ZjIzZGQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5IaPbdAAABsklEQVR42uzTQQ0AAAjEMMC/58MDCb9WwpJ1kgJuRgIwEBgIDAQGAgwEBgIDgYEAA4GBwEBgIDAQYCAwEBgIDAQYCAwEBgIDAQYCA4GBwEBgIMBAYCAwEBgIMBAYCAwEBgIMBAYCA4GBwECAgcBAYCAwEGAgMBAYCAwEBgIMBAYCA4GBAAOBgcBAYCDAQGAgMBAYCAwEGAgMBAYCAwEGAgOBgcBAgIHAQGAgMBAYCDAQGAgMBAYCDAQGAgOBgcBAgIHAQGAgMBBgIDAQGAgMBBgIDAQGAgOBgQADgYHAQGAgwEBgIDAQGAgwEBgIDAQGAgMBBgIDgYHAQICBwEBgIDAQGAgwEBgIDAQGAgwEBgIDgYEAA4GBwEBgIDAQYCAwEBgIDAQYCAwEBgIDAQYCA4GBwEBgIMBAYCAwEBgIMBAYCAwEBgIDAQYCA4GBwECAgcBAYCAwEGAgMBAYCAwEBgIMBAYCA4GBAAOBgcBAYCDAQGAgMBAYCAwEGAgMBAYCAwEGAgOBgcBAYCDAQGAgMBAYCDAQGAgMBAYCDAQGAgOBgcBAgIHAQGAgMBBgIPixAgwAoEcEnQhQ4UsAAAAASUVORK5CYII=')) {
+																											if (image.target.getAttribute('src').endsWith('lEMEY1MTdBRDc4RDExRjBBNjE5QThDQjVBNkZGNkM3IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBFbGVtZW50cyAyMS4wIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjNkNTAwMGZiLWFjMTQtNDg0Ni1iZDI4LTRmMWM0ODlmMjNkZCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozZDUwMDBmYi1hYzE0LTQ4NDYtYmQyOC00ZjFjNDg5ZjIzZGQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5IaPbdAAABsklEQVR42uzTQQ0AAAjEMMC/58MDCb9WwpJ1kgJuRgIwEBgIDAQGAgwEBgIDgYEAA4GBwEBgIDAQYCAwEBgIDAQYCAwEBgIDAQYCA4GBwEBgIMBAYCAwEBgIMBAYCAwEBgIMBAYCA4GBwECAgcBAYCAwEGAgMBAYCAwEBgIMBAYCA4GBAAOBgcBAYCDAQGAgMBAYCAwEGAgMBAYCAwEGAgOBgcBAgIHAQGAgMBAYCDAQGAgMBAYCDAQGAgOBgcBAgIHAQGAgMBBgIDAQGAgMBBgIDAQGAgOBgQADgYHAQGAgwEBgIDAQGAgwEBgIDAQGAgMBBgIDgYHAQICBwEBgIDAQGAgwEBgIDAQGAgwEBgIDgYEAA4GBwEBgIDAQYCAwEBgIDAQYCAwEBgIDAQYCA4GBwEBgIMBAYCAwEBgIMBAYCAwEBgIDAQYCA4GBwECAgcBAYCAwEGAgMBAYCAwEBgIMBAYCA4GBAAOBgcBAYCDAQGAgMBAYCAwEGAgMBAYCAwEGAgOBgcBAYCDAQGAgMBAYCDAQGAgMBAYCDAQGAgOBgcBAgIHAQGAgMBBgIPixAgwAoEcEnQhQ4UsAAAAASUVORK5CYII=')) {
 																											console.log(`image.target is image0`);
 																											image.target.src = img[0];
 																											counter = 0;
 																											}
-																											if (image.target.getAttribute('src').endsWith('iVBORw0KGgoAAAANSUhEUgAAANAAAADQCAYAAAB2pO90AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA31pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDcuMS1jMDAwIDc5LjgzZmFlNjQsIDIwMjIvMDIvMTUtMDg6MDc6MzIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6M2Q1MDAwZmItYWMxNC00ODQ2LWJkMjgtNGYxYzQ4OWYyM2RkIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjg3OEVFQTI4REE5RTExRjBBRDNBOEY2ODA5NjY3RDBCIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjg3OEVFQTI3REE5RTExRjBBRDNBOEY2ODA5NjY3RDBCIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBFbGVtZW50cyAyMS4wIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOmY1M2YwYWJmLTg2MDQtNGM0Yy04ZjA0LTk0NmMwN2U4ZmY3NCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozZDUwMDBmYi1hYzE0LTQ4NDYtYmQyOC00ZjFjNDg5ZjIzZGQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7HbQfxAAADMklEQVR42uzdQWoDMQxA0XGY+1/ZWWUxoSkk9liW/f6q0EXD0IcoUaNSaz0k/dbDI5AAkgCSAJIAkgSQBJAEkASQJIAkgCSAJIAkgCQBJAEkASQBJAkgCSAJIAkgSQBJAEkASQBJAEkCSAJIAkgCSNLfndEvoJTy6Vuvw0Xljp/rLpJWnkD1w9cSQF/ggUgANeKBSAA14oFIAHWCAZEAagQBkQAKgCctB6hAJIAgEkAQSZn/BoJIAEEkgCCS0gKCSABBJIAgklIDgkgAQSSAIJIunQlfc2nAUF8I//kshlvzWQwmkEkkJQcEkQCCSABBJIAgknYGBJEAgkgAQSSAIJJ2BgSRhhS+ytN7teVtRafL2o+04wQyiQQQRAIIIgEEkV8X7Q4IIgEEkQCCSABBJIAOiCASQBAJIIgEEEQCCCKIBBBEAggiAQSRAIIIIgEEkbp0egRfIUp7FaIlFyVMIJNIAEEkgCCCCCBBJIAgEkAQCSCIBBBEEAEkiAQQRBrRcqs8UWsnrkKYQDKJBBBEAggiiAASRAAJIgEEkQCCCCKAdHifByCFITKFABJEAAkigDwCiAQQRAJIEAGkqCACSIc3WgESRAAJIgEEkQCCCCKABBFAgkgAQSSAIIIIIEEEkCACSBAJIIggAkgQASSIABJEAggiiAASRAAJooU6PYLlETWfmnw7XzmkqFOdJpBMIoAEEUCCCCBBBBFAggggQQSQIAJIEEEEkCACSBDFZZWnU1lWTy5qris6XdZ+TCCZRCYRQIIIIEEEkCACSBBBBJAgAkgQASSIABJEmyMCSBABJIgAEkQACaKdEAEkiAASRAAJIoAE0U6I/Eeq7kA07APto/8T2ASSSQSQIAJIEKVDBJAgAkgQASSI0iECSBABJIgAEkTpEAEkiBqyyrNxEWswq32gvQkkkwggbYrIBJJ+xDDFPSKAlBHRNMe8AFI2RFNdwgNImRBNd0YSIGVBNOUNVoCUAdG0B4xLxuvSkgkkASQBJAkgCSAJIAkgSQBJAEkASQBJAkgCSAJIAkgCSBJAEkASQBJAkgCSAJIAkgCSBJAEkASQBJAEkCSApBE9BRgA12G5rFnunR0AAAAASUVORK5CYII=')) {
+																											if (image.target.getAttribute('src').endsWith('g3OEVFQTI3REE5RTExRjBBRDNBOEY2ODA5NjY3RDBCIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBFbGVtZW50cyAyMS4wIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOmY1M2YwYWJmLTg2MDQtNGM0Yy04ZjA0LTk0NmMwN2U4ZmY3NCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozZDUwMDBmYi1hYzE0LTQ4NDYtYmQyOC00ZjFjNDg5ZjIzZGQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7HbQfxAAADMklEQVR42uzdQWoDMQxA0XGY+1/ZWWUxoSkk9liW/f6q0EXD0IcoUaNSaz0k/dbDI5AAkgCSAJIAkgSQBJAEkASQJIAkgCSAJIAkgCQBJAEkASQBJAkgCSAJIAkgSQBJAEkASQBJAEkCSAJIAkgCSNLfndEvoJTy6Vuvw0Xljp/rLpJWnkD1w9cSQF/ggUgANeKBSAA14oFIAHWCAZEAagQBkQAKgCctB6hAJIAgEkAQSZn/BoJIAEEkgCCS0gKCSABBJIAgklIDgkgAQSSAIJIunQlfc2nAUF8I//kshlvzWQwmkEkkJQcEkQCCSABBJIAgknYGBJEAgkgAQSSAIJJ2BgSRhhS+ytN7teVtRafL2o+04wQyiQQQRAIIIgEEkV8X7Q4IIgEEkQCCSABBJIAOiCASQBAJIIgEEEQCCCKIBBBEAggiAQSRAIIIIgEEkbp0egRfIUp7FaIlFyVMIJNIAEEkgCCCCCBBJIAgEkAQCSCIBBBEEAEkiAQQRBrRcqs8UWsnrkKYQDKJBBBEAggiiAASRAAJIgEEkQCCCCKAdHifByCFITKFABJEAAkigDwCiAQQRAJIEAGkqCACSIc3WgESRAAJIgEEkQCCCCKABBFAgkgAQSSAIIIIIEEEkCACSBAJIIggAkgQASSIABJEAggiiAASRAAJooU6PYLlETWfmnw7XzmkqFOdJpBMIoAEEUCCCCBBBBFAggggQQSQIAJIEEEEkCACSBDFZZWnU1lWTy5qris6XdZ+TCCZRCYRQIIIIEEEkCACSBBBBJAgAkgQASSIABJEmyMCSBABJIgAEkQACaKdEAEkiAASRAAJIoAE0U6I/Eeq7kA07APto/8T2ASSSQSQIAJIEKVDBJAgAkgQASSI0iECSBABJIgAEkTpEAEkiBqyyrNxEWswq32gvQkkkwggbYrIBJJ+xDDFPSKAlBHRNMe8AFI2RFNdwgNImRBNd0YSIGVBNOUNVoCUAdG0B4xLxuvSkgkkASQBJAkgCSAJIAkgSQBJAEkASQBJAkgCSAJIAkgCSBJAEkASQBJAkgCSAJIAkgCSBJAEkASQBJAEkCSApBE9BRgA12G5rFnunR0AAAAASUVORK5CYII=')) {
 																											console.log(`image.target is image1`);
 																											image.target.src = img[0];
 																											counter = 1;
@@ -1190,264 +1190,7 @@ const colorInput4 = document.getElementById('color-choice4');
 																							}
 																							 
 }
-			if (Score.id === "s19") {
 
-			var pointDisplay = image.target.closest('td').querySelector('pre');
-																						//const pointDisplay = document.querySelectorAll('[id^="pointsP"]')[index];
-																						const pointDisplaynum = Number(pointDisplay.textContent);
-																						console.log(image.target.parentElement.parentElement);
-																						
-																							if (pointDisplaynum !==0){
-																								Score = image.target.parentElement.parentElement.querySelector('[id^="s"]');
-																								let SubNum = Score.id.slice(1);
-																								console.log(`SubNum: ${SubNum}`);			
-																								points = pointDisplaynum - SubNum;
-																								if (points < 0) {points = 0;};
-																								pointDisplay.textContent = points; // Update display
-																								console.log("Points incremented: " + points);
-																								}else {
-																										// Code to run if pointDisplaynum IS 0
-																										    console.log("No points to display.");
-
-																											if (image.target.getAttribute('src').endsWith('iVBORw0KGgoAAAANSUhEUgAAANAAAADQCAYAAAB2pO90AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA31pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDcuMS1jMDAwIDc5LjgzZmFlNjQsIDIwMjIvMDIvMTUtMDg6MDc6MzIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6M2Q1MDAwZmItYWMxNC00ODQ2LWJkMjgtNGYxYzQ4OWYyM2RkIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjlEMEY1MTdCRDc4RDExRjBBNjE5QThDQjVBNkZGNkM3IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjlEMEY1MTdBRDc4RDExRjBBNjE5QThDQjVBNkZGNkM3IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBFbGVtZW50cyAyMS4wIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjNkNTAwMGZiLWFjMTQtNDg0Ni1iZDI4LTRmMWM0ODlmMjNkZCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozZDUwMDBmYi1hYzE0LTQ4NDYtYmQyOC00ZjFjNDg5ZjIzZGQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5IaPbdAAABsklEQVR42uzTQQ0AAAjEMMC/58MDCb9WwpJ1kgJuRgIwEBgIDAQGAgwEBgIDgYEAA4GBwEBgIDAQYCAwEBgIDAQYCAwEBgIDAQYCA4GBwEBgIMBAYCAwEBgIMBAYCAwEBgIMBAYCA4GBwECAgcBAYCAwEGAgMBAYCAwEBgIMBAYCA4GBAAOBgcBAYCDAQGAgMBAYCAwEGAgMBAYCAwEGAgOBgcBAgIHAQGAgMBAYCDAQGAgMBAYCDAQGAgOBgcBAgIHAQGAgMBBgIDAQGAgMBBgIDAQGAgOBgQADgYHAQGAgwEBgIDAQGAgwEBgIDAQGAgMBBgIDgYHAQICBwEBgIDAQGAgwEBgIDAQGAgwEBgIDgYEAA4GBwEBgIDAQYCAwEBgIDAQYCAwEBgIDAQYCA4GBwEBgIMBAYCAwEBgIMBAYCAwEBgIDAQYCA4GBwECAgcBAYCAwEGAgMBAYCAwEBgIMBAYCA4GBAAOBgcBAYCDAQGAgMBAYCAwEGAgMBAYCAwEGAgOBgcBAYCDAQGAgMBAYCDAQGAgMBAYCDAQGAgOBgcBAgIHAQGAgMBBgIPixAgwAoEcEnQhQ4UsAAAAASUVORK5CYII=')) {
-																											console.log(`image.target is image0`);
-																											image.target.src = img[0];
-																											counter = 0;
-																											}
-																											if (image.target.getAttribute('src').endsWith('iVBORw0KGgoAAAANSUhEUgAAANAAAADQCAYAAAB2pO90AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA31pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDcuMS1jMDAwIDc5LjgzZmFlNjQsIDIwMjIvMDIvMTUtMDg6MDc6MzIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6M2Q1MDAwZmItYWMxNC00ODQ2LWJkMjgtNGYxYzQ4OWYyM2RkIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjg3OEVFQTI4REE5RTExRjBBRDNBOEY2ODA5NjY3RDBCIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjg3OEVFQTI3REE5RTExRjBBRDNBOEY2ODA5NjY3RDBCIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBFbGVtZW50cyAyMS4wIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOmY1M2YwYWJmLTg2MDQtNGM0Yy04ZjA0LTk0NmMwN2U4ZmY3NCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozZDUwMDBmYi1hYzE0LTQ4NDYtYmQyOC00ZjFjNDg5ZjIzZGQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7HbQfxAAADMklEQVR42uzdQWoDMQxA0XGY+1/ZWWUxoSkk9liW/f6q0EXD0IcoUaNSaz0k/dbDI5AAkgCSAJIAkgSQBJAEkASQJIAkgCSAJIAkgCQBJAEkASQBJAkgCSAJIAkgSQBJAEkASQBJAEkCSAJIAkgCSNLfndEvoJTy6Vuvw0Xljp/rLpJWnkD1w9cSQF/ggUgANeKBSAA14oFIAHWCAZEAagQBkQAKgCctB6hAJIAgEkAQSZn/BoJIAEEkgCCS0gKCSABBJIAgklIDgkgAQSSAIJIunQlfc2nAUF8I//kshlvzWQwmkEkkJQcEkQCCSABBJIAgknYGBJEAgkgAQSSAIJJ2BgSRhhS+ytN7teVtRafL2o+04wQyiQQQRAIIIgEEkV8X7Q4IIgEEkQCCSABBJIAOiCASQBAJIIgEEEQCCCKIBBBEAggiAQSRAIIIIgEEkbp0egRfIUp7FaIlFyVMIJNIAEEkgCCCCCBBJIAgEkAQCSCIBBBEEAEkiAQQRBrRcqs8UWsnrkKYQDKJBBBEAggiiAASRAAJIgEEkQCCCCKAdHifByCFITKFABJEAAkigDwCiAQQRAJIEAGkqCACSIc3WgESRAAJIgEEkQCCCCKABBFAgkgAQSSAIIIIIEEEkCACSBAJIIggAkgQASSIABJEAggiiAASRAAJooU6PYLlETWfmnw7XzmkqFOdJpBMIoAEEUCCCCBBBBFAggggQQSQIAJIEEEEkCACSBDFZZWnU1lWTy5qris6XdZ+TCCZRCYRQIIIIEEEkCACSBBBBJAgAkgQASSIABJEmyMCSBABJIgAEkQACaKdEAEkiAASRAAJIoAE0U6I/Eeq7kA07APto/8T2ASSSQSQIAJIEKVDBJAgAkgQASSI0iECSBABJIgAEkTpEAEkiBqyyrNxEWswq32gvQkkkwggbYrIBJJ+xDDFPSKAlBHRNMe8AFI2RFNdwgNImRBNd0YSIGVBNOUNVoCUAdG0B4xLxuvSkgkkASQBJAkgCSAJIAkgSQBJAEkASQBJAkgCSAJIAkgCSBJAEkASQBJAkgCSAJIAkgCSBJAEkASQBJAEkCSApBE9BRgA12G5rFnunR0AAAAASUVORK5CYII=')) {
-																											console.log(`image.target is image1`);
-																											image.target.src = img[0];
-																											counter = 1;
-																											}
-																											if (image.target.getAttribute('src').endsWith('Jggg==')) {
-																											console.log(`image.target is image2`);
-																											image.target.src = img[1];
-																											counter = 2;
-																											}
-																											if (image.target.getAttribute('src').endsWith('SuQmCC')) {
-																											console.log(`image.target is image3`);
-																											image.target.src = img[2];
-																											counter = 3;
-																											}
-
-																							}
-																							 
-}
-			if (Score.id === "s18") {
-
-			var pointDisplay = image.target.closest('td').querySelector('pre');
-																						//const pointDisplay = document.querySelectorAll('[id^="pointsP"]')[index];
-																						const pointDisplaynum = Number(pointDisplay.textContent);
-																						console.log(image.target.parentElement.parentElement);
-																						
-																							if (pointDisplaynum !==0){
-																								Score = image.target.parentElement.parentElement.querySelector('[id^="s"]');
-																								let SubNum = Score.id.slice(1);
-																								console.log(`SubNum: ${SubNum}`);			
-																								points = pointDisplaynum - SubNum;
-																								if (points < 0) {points = 0;};
-																								pointDisplay.textContent = points; // Update display
-																								console.log("Points incremented: " + points);
-																								}else {
-																										// Code to run if pointDisplaynum IS 0
-																										    console.log("No points to display.");
-
-																											if (image.target.getAttribute('src').endsWith('iVBORw0KGgoAAAANSUhEUgAAANAAAADQCAYAAAB2pO90AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA31pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDcuMS1jMDAwIDc5LjgzZmFlNjQsIDIwMjIvMDIvMTUtMDg6MDc6MzIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6M2Q1MDAwZmItYWMxNC00ODQ2LWJkMjgtNGYxYzQ4OWYyM2RkIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjlEMEY1MTdCRDc4RDExRjBBNjE5QThDQjVBNkZGNkM3IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjlEMEY1MTdBRDc4RDExRjBBNjE5QThDQjVBNkZGNkM3IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBFbGVtZW50cyAyMS4wIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjNkNTAwMGZiLWFjMTQtNDg0Ni1iZDI4LTRmMWM0ODlmMjNkZCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozZDUwMDBmYi1hYzE0LTQ4NDYtYmQyOC00ZjFjNDg5ZjIzZGQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5IaPbdAAABsklEQVR42uzTQQ0AAAjEMMC/58MDCb9WwpJ1kgJuRgIwEBgIDAQGAgwEBgIDgYEAA4GBwEBgIDAQYCAwEBgIDAQYCAwEBgIDAQYCA4GBwEBgIMBAYCAwEBgIMBAYCAwEBgIMBAYCA4GBwECAgcBAYCAwEGAgMBAYCAwEBgIMBAYCA4GBAAOBgcBAYCDAQGAgMBAYCAwEGAgMBAYCAwEGAgOBgcBAgIHAQGAgMBAYCDAQGAgMBAYCDAQGAgOBgcBAgIHAQGAgMBBgIDAQGAgMBBgIDAQGAgOBgQADgYHAQGAgwEBgIDAQGAgwEBgIDAQGAgMBBgIDgYHAQICBwEBgIDAQGAgwEBgIDAQGAgwEBgIDgYEAA4GBwEBgIDAQYCAwEBgIDAQYCAwEBgIDAQYCA4GBwEBgIMBAYCAwEBgIMBAYCAwEBgIDAQYCA4GBwECAgcBAYCAwEGAgMBAYCAwEBgIMBAYCA4GBAAOBgcBAYCDAQGAgMBAYCAwEGAgMBAYCAwEGAgOBgcBAYCDAQGAgMBAYCDAQGAgMBAYCDAQGAgOBgcBAgIHAQGAgMBBgIPixAgwAoEcEnQhQ4UsAAAAASUVORK5CYII=')) {
-																											console.log(`image.target is image0`);
-																											image.target.src = img[0];
-																											counter = 0;
-																											}
-																											if (image.target.getAttribute('src').endsWith('iVBORw0KGgoAAAANSUhEUgAAANAAAADQCAYAAAB2pO90AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA31pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDcuMS1jMDAwIDc5LjgzZmFlNjQsIDIwMjIvMDIvMTUtMDg6MDc6MzIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6M2Q1MDAwZmItYWMxNC00ODQ2LWJkMjgtNGYxYzQ4OWYyM2RkIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjg3OEVFQTI4REE5RTExRjBBRDNBOEY2ODA5NjY3RDBCIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjg3OEVFQTI3REE5RTExRjBBRDNBOEY2ODA5NjY3RDBCIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBFbGVtZW50cyAyMS4wIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOmY1M2YwYWJmLTg2MDQtNGM0Yy04ZjA0LTk0NmMwN2U4ZmY3NCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozZDUwMDBmYi1hYzE0LTQ4NDYtYmQyOC00ZjFjNDg5ZjIzZGQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7HbQfxAAADMklEQVR42uzdQWoDMQxA0XGY+1/ZWWUxoSkk9liW/f6q0EXD0IcoUaNSaz0k/dbDI5AAkgCSAJIAkgSQBJAEkASQJIAkgCSAJIAkgCQBJAEkASQBJAkgCSAJIAkgSQBJAEkASQBJAEkCSAJIAkgCSNLfndEvoJTy6Vuvw0Xljp/rLpJWnkD1w9cSQF/ggUgANeKBSAA14oFIAHWCAZEAagQBkQAKgCctB6hAJIAgEkAQSZn/BoJIAEEkgCCS0gKCSABBJIAgklIDgkgAQSSAIJIunQlfc2nAUF8I//kshlvzWQwmkEkkJQcEkQCCSABBJIAgknYGBJEAgkgAQSSAIJJ2BgSRhhS+ytN7teVtRafL2o+04wQyiQQQRAIIIgEEkV8X7Q4IIgEEkQCCSABBJIAOiCASQBAJIIgEEEQCCCKIBBBEAggiAQSRAIIIIgEEkbp0egRfIUp7FaIlFyVMIJNIAEEkgCCCCCBBJIAgEkAQCSCIBBBEEAEkiAQQRBrRcqs8UWsnrkKYQDKJBBBEAggiiAASRAAJIgEEkQCCCCKAdHifByCFITKFABJEAAkigDwCiAQQRAJIEAGkqCACSIc3WgESRAAJIgEEkQCCCCKABBFAgkgAQSSAIIIIIEEEkCACSBAJIIggAkgQASSIABJEAggiiAASRAAJooU6PYLlETWfmnw7XzmkqFOdJpBMIoAEEUCCCCBBBBFAggggQQSQIAJIEEEEkCACSBDFZZWnU1lWTy5qris6XdZ+TCCZRCYRQIIIIEEEkCACSBBBBJAgAkgQASSIABJEmyMCSBABJIgAEkQACaKdEAEkiAASRAAJIoAE0U6I/Eeq7kA07APto/8T2ASSSQSQIAJIEKVDBJAgAkgQASSI0iECSBABJIgAEkTpEAEkiBqyyrNxEWswq32gvQkkkwggbYrIBJJ+xDDFPSKAlBHRNMe8AFI2RFNdwgNImRBNd0YSIGVBNOUNVoCUAdG0B4xLxuvSkgkkASQBJAkgCSAJIAkgSQBJAEkASQBJAkgCSAJIAkgCSBJAEkASQBJAkgCSAJIAkgCSBJAEkASQBJAEkCSApBE9BRgA12G5rFnunR0AAAAASUVORK5CYII=')) {
-																											console.log(`image.target is image1`);
-																											image.target.src = img[0];
-																											counter = 1;
-																											}
-																											if (image.target.getAttribute('src').endsWith('Jggg==')) {
-																											console.log(`image.target is image2`);
-																											image.target.src = img[1];
-																											counter = 2;
-																											}
-																											if (image.target.getAttribute('src').endsWith('SuQmCC')) {
-																											console.log(`image.target is image3`);
-																											image.target.src = img[2];
-																											counter = 3;
-																											}
-
-																							}
-																							 
-}
-			if (Score.id === "s17") {
-
-			var pointDisplay = image.target.closest('td').querySelector('pre');
-																						//const pointDisplay = document.querySelectorAll('[id^="pointsP"]')[index];
-																						const pointDisplaynum = Number(pointDisplay.textContent);
-																						console.log(image.target.parentElement.parentElement);
-																						
-																							if (pointDisplaynum !==0){
-																								Score = image.target.parentElement.parentElement.querySelector('[id^="s"]');
-																								let SubNum = Score.id.slice(1);
-																								console.log(`SubNum: ${SubNum}`);			
-																								points = pointDisplaynum - SubNum;
-																								if (points < 0) {points = 0;};
-																								pointDisplay.textContent = points; // Update display
-																								console.log("Points incremented: " + points);
-																								}else {
-																										// Code to run if pointDisplaynum IS 0
-																										    console.log("No points to display.");
-
-																											if (image.target.getAttribute('src').endsWith('iVBORw0KGgoAAAANSUhEUgAAANAAAADQCAYAAAB2pO90AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA31pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDcuMS1jMDAwIDc5LjgzZmFlNjQsIDIwMjIvMDIvMTUtMDg6MDc6MzIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6M2Q1MDAwZmItYWMxNC00ODQ2LWJkMjgtNGYxYzQ4OWYyM2RkIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjlEMEY1MTdCRDc4RDExRjBBNjE5QThDQjVBNkZGNkM3IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjlEMEY1MTdBRDc4RDExRjBBNjE5QThDQjVBNkZGNkM3IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBFbGVtZW50cyAyMS4wIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjNkNTAwMGZiLWFjMTQtNDg0Ni1iZDI4LTRmMWM0ODlmMjNkZCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozZDUwMDBmYi1hYzE0LTQ4NDYtYmQyOC00ZjFjNDg5ZjIzZGQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5IaPbdAAABsklEQVR42uzTQQ0AAAjEMMC/58MDCb9WwpJ1kgJuRgIwEBgIDAQGAgwEBgIDgYEAA4GBwEBgIDAQYCAwEBgIDAQYCAwEBgIDAQYCA4GBwEBgIMBAYCAwEBgIMBAYCAwEBgIMBAYCA4GBwECAgcBAYCAwEGAgMBAYCAwEBgIMBAYCA4GBAAOBgcBAYCDAQGAgMBAYCAwEGAgMBAYCAwEGAgOBgcBAgIHAQGAgMBAYCDAQGAgMBAYCDAQGAgOBgcBAgIHAQGAgMBBgIDAQGAgMBBgIDAQGAgOBgQADgYHAQGAgwEBgIDAQGAgwEBgIDAQGAgMBBgIDgYHAQICBwEBgIDAQGAgwEBgIDAQGAgwEBgIDgYEAA4GBwEBgIDAQYCAwEBgIDAQYCAwEBgIDAQYCA4GBwEBgIMBAYCAwEBgIMBAYCAwEBgIDAQYCA4GBwECAgcBAYCAwEGAgMBAYCAwEBgIMBAYCA4GBAAOBgcBAYCDAQGAgMBAYCAwEGAgMBAYCAwEGAgOBgcBAYCDAQGAgMBAYCDAQGAgMBAYCDAQGAgOBgcBAgIHAQGAgMBBgIPixAgwAoEcEnQhQ4UsAAAAASUVORK5CYII=')) {
-																											console.log(`image.target is image0`);
-																											image.target.src = img[0];
-																											counter = 0;
-																											}
-																											if (image.target.getAttribute('src').endsWith('iVBORw0KGgoAAAANSUhEUgAAANAAAADQCAYAAAB2pO90AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA31pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDcuMS1jMDAwIDc5LjgzZmFlNjQsIDIwMjIvMDIvMTUtMDg6MDc6MzIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6M2Q1MDAwZmItYWMxNC00ODQ2LWJkMjgtNGYxYzQ4OWYyM2RkIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjg3OEVFQTI4REE5RTExRjBBRDNBOEY2ODA5NjY3RDBCIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjg3OEVFQTI3REE5RTExRjBBRDNBOEY2ODA5NjY3RDBCIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBFbGVtZW50cyAyMS4wIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOmY1M2YwYWJmLTg2MDQtNGM0Yy04ZjA0LTk0NmMwN2U4ZmY3NCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozZDUwMDBmYi1hYzE0LTQ4NDYtYmQyOC00ZjFjNDg5ZjIzZGQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7HbQfxAAADMklEQVR42uzdQWoDMQxA0XGY+1/ZWWUxoSkk9liW/f6q0EXD0IcoUaNSaz0k/dbDI5AAkgCSAJIAkgSQBJAEkASQJIAkgCSAJIAkgCQBJAEkASQBJAkgCSAJIAkgSQBJAEkASQBJAEkCSAJIAkgCSNLfndEvoJTy6Vuvw0Xljp/rLpJWnkD1w9cSQF/ggUgANeKBSAA14oFIAHWCAZEAagQBkQAKgCctB6hAJIAgEkAQSZn/BoJIAEEkgCCS0gKCSABBJIAgklIDgkgAQSSAIJIunQlfc2nAUF8I//kshlvzWQwmkEkkJQcEkQCCSABBJIAgknYGBJEAgkgAQSSAIJJ2BgSRhhS+ytN7teVtRafL2o+04wQyiQQQRAIIIgEEkV8X7Q4IIgEEkQCCSABBJIAOiCASQBAJIIgEEEQCCCKIBBBEAggiAQSRAIIIIgEEkbp0egRfIUp7FaIlFyVMIJNIAEEkgCCCCCBBJIAgEkAQCSCIBBBEEAEkiAQQRBrRcqs8UWsnrkKYQDKJBBBEAggiiAASRAAJIgEEkQCCCCKAdHifByCFITKFABJEAAkigDwCiAQQRAJIEAGkqCACSIc3WgESRAAJIgEEkQCCCCKABBFAgkgAQSSAIIIIIEEEkCACSBAJIIggAkgQASSIABJEAggiiAASRAAJooU6PYLlETWfmnw7XzmkqFOdJpBMIoAEEUCCCCBBBBFAggggQQSQIAJIEEEEkCACSBDFZZWnU1lWTy5qris6XdZ+TCCZRCYRQIIIIEEEkCACSBBBBJAgAkgQASSIABJEmyMCSBABJIgAEkQACaKdEAEkiAASRAAJIoAE0U6I/Eeq7kA07APto/8T2ASSSQSQIAJIEKVDBJAgAkgQASSI0iECSBABJIgAEkTpEAEkiBqyyrNxEWswq32gvQkkkwggbYrIBJJ+xDDFPSKAlBHRNMe8AFI2RFNdwgNImRBNd0YSIGVBNOUNVoCUAdG0B4xLxuvSkgkkASQBJAkgCSAJIAkgSQBJAEkASQBJAkgCSAJIAkgCSBJAEkASQBJAkgCSAJIAkgCSBJAEkASQBJAEkCSApBE9BRgA12G5rFnunR0AAAAASUVORK5CYII=')) {
-																											console.log(`image.target is image1`);
-																											image.target.src = img[0];
-																											counter = 1;
-																											}
-																											if (image.target.getAttribute('src').endsWith('Jggg==')) {
-																											console.log(`image.target is image2`);
-																											image.target.src = img[1];
-																											counter = 2;
-																											}
-																											if (image.target.getAttribute('src').endsWith('SuQmCC')) {
-																											console.log(`image.target is image3`);
-																											image.target.src = img[2];
-																											counter = 3;
-																											}
-
-																							}
-																							 
-}
-			if (Score.id === "s16") {
-
-			var pointDisplay = image.target.closest('td').querySelector('pre');
-																						//const pointDisplay = document.querySelectorAll('[id^="pointsP"]')[index];
-																						const pointDisplaynum = Number(pointDisplay.textContent);
-																						console.log(image.target.parentElement.parentElement);
-																						
-																							if (pointDisplaynum !==0){
-																								Score = image.target.parentElement.parentElement.querySelector('[id^="s"]');
-																								let SubNum = Score.id.slice(1);
-																								console.log(`SubNum: ${SubNum}`);			
-																								points = pointDisplaynum - SubNum;
-																								if (points < 0) {points = 0;};
-																								pointDisplay.textContent = points; // Update display
-																								console.log("Points incremented: " + points);
-																								}else {
-																										// Code to run if pointDisplaynum IS 0
-																										    console.log("No points to display.");
-
-																											if (image.target.getAttribute('src').endsWith('iVBORw0KGgoAAAANSUhEUgAAANAAAADQCAYAAAB2pO90AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA31pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDcuMS1jMDAwIDc5LjgzZmFlNjQsIDIwMjIvMDIvMTUtMDg6MDc6MzIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6M2Q1MDAwZmItYWMxNC00ODQ2LWJkMjgtNGYxYzQ4OWYyM2RkIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjlEMEY1MTdCRDc4RDExRjBBNjE5QThDQjVBNkZGNkM3IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjlEMEY1MTdBRDc4RDExRjBBNjE5QThDQjVBNkZGNkM3IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBFbGVtZW50cyAyMS4wIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjNkNTAwMGZiLWFjMTQtNDg0Ni1iZDI4LTRmMWM0ODlmMjNkZCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozZDUwMDBmYi1hYzE0LTQ4NDYtYmQyOC00ZjFjNDg5ZjIzZGQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5IaPbdAAABsklEQVR42uzTQQ0AAAjEMMC/58MDCb9WwpJ1kgJuRgIwEBgIDAQGAgwEBgIDgYEAA4GBwEBgIDAQYCAwEBgIDAQYCAwEBgIDAQYCA4GBwEBgIMBAYCAwEBgIMBAYCAwEBgIMBAYCA4GBwECAgcBAYCAwEGAgMBAYCAwEBgIMBAYCA4GBAAOBgcBAYCDAQGAgMBAYCAwEGAgMBAYCAwEGAgOBgcBAgIHAQGAgMBAYCDAQGAgMBAYCDAQGAgOBgcBAgIHAQGAgMBBgIDAQGAgMBBgIDAQGAgOBgQADgYHAQGAgwEBgIDAQGAgwEBgIDAQGAgMBBgIDgYHAQICBwEBgIDAQGAgwEBgIDAQGAgwEBgIDgYEAA4GBwEBgIDAQYCAwEBgIDAQYCAwEBgIDAQYCA4GBwEBgIMBAYCAwEBgIMBAYCAwEBgIDAQYCA4GBwECAgcBAYCAwEGAgMBAYCAwEBgIMBAYCA4GBAAOBgcBAYCDAQGAgMBAYCAwEGAgMBAYCAwEGAgOBgcBAYCDAQGAgMBAYCDAQGAgMBAYCDAQGAgOBgcBAgIHAQGAgMBBgIPixAgwAoEcEnQhQ4UsAAAAASUVORK5CYII=')) {
-																											console.log(`image.target is image0`);
-																											image.target.src = img[0];
-																											counter = 0;
-																											}
-																											if (image.target.getAttribute('src').endsWith('iVBORw0KGgoAAAANSUhEUgAAANAAAADQCAYAAAB2pO90AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA31pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDcuMS1jMDAwIDc5LjgzZmFlNjQsIDIwMjIvMDIvMTUtMDg6MDc6MzIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6M2Q1MDAwZmItYWMxNC00ODQ2LWJkMjgtNGYxYzQ4OWYyM2RkIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjg3OEVFQTI4REE5RTExRjBBRDNBOEY2ODA5NjY3RDBCIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjg3OEVFQTI3REE5RTExRjBBRDNBOEY2ODA5NjY3RDBCIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBFbGVtZW50cyAyMS4wIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOmY1M2YwYWJmLTg2MDQtNGM0Yy04ZjA0LTk0NmMwN2U4ZmY3NCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozZDUwMDBmYi1hYzE0LTQ4NDYtYmQyOC00ZjFjNDg5ZjIzZGQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7HbQfxAAADMklEQVR42uzdQWoDMQxA0XGY+1/ZWWUxoSkk9liW/f6q0EXD0IcoUaNSaz0k/dbDI5AAkgCSAJIAkgSQBJAEkASQJIAkgCSAJIAkgCQBJAEkASQBJAkgCSAJIAkgSQBJAEkASQBJAEkCSAJIAkgCSNLfndEvoJTy6Vuvw0Xljp/rLpJWnkD1w9cSQF/ggUgANeKBSAA14oFIAHWCAZEAagQBkQAKgCctB6hAJIAgEkAQSZn/BoJIAEEkgCCS0gKCSABBJIAgklIDgkgAQSSAIJIunQlfc2nAUF8I//kshlvzWQwmkEkkJQcEkQCCSABBJIAgknYGBJEAgkgAQSSAIJJ2BgSRhhS+ytN7teVtRafL2o+04wQyiQQQRAIIIgEEkV8X7Q4IIgEEkQCCSABBJIAOiCASQBAJIIgEEEQCCCKIBBBEAggiAQSRAIIIIgEEkbp0egRfIUp7FaIlFyVMIJNIAEEkgCCCCCBBJIAgEkAQCSCIBBBEEAEkiAQQRBrRcqs8UWsnrkKYQDKJBBBEAggiiAASRAAJIgEEkQCCCCKAdHifByCFITKFABJEAAkigDwCiAQQRAJIEAGkqCACSIc3WgESRAAJIgEEkQCCCCKABBFAgkgAQSSAIIIIIEEEkCACSBAJIIggAkgQASSIABJEAggiiAASRAAJooU6PYLlETWfmnw7XzmkqFOdJpBMIoAEEUCCCCBBBBFAggggQQSQIAJIEEEEkCACSBDFZZWnU1lWTy5qris6XdZ+TCCZRCYRQIIIIEEEkCACSBBBBJAgAkgQASSIABJEmyMCSBABJIgAEkQACaKdEAEkiAASRAAJIoAE0U6I/Eeq7kA07APto/8T2ASSSQSQIAJIEKVDBJAgAkgQASSI0iECSBABJIgAEkTpEAEkiBqyyrNxEWswq32gvQkkkwggbYrIBJJ+xDDFPSKAlBHRNMe8AFI2RFNdwgNImRBNd0YSIGVBNOUNVoCUAdG0B4xLxuvSkgkkASQBJAkgCSAJIAkgSQBJAEkASQBJAkgCSAJIAkgCSBJAEkASQBJAkgCSAJIAkgCSBJAEkASQBJAEkCSApBE9BRgA12G5rFnunR0AAAAASUVORK5CYII=')) {
-																											console.log(`image.target is image1`);
-																											image.target.src = img[0];
-																											counter = 1;
-																											}
-																											if (image.target.getAttribute('src').endsWith('Jggg==')) {
-																											console.log(`image.target is image2`);
-																											image.target.src = img[1];
-																											counter = 2;
-																											}
-																											if (image.target.getAttribute('src').endsWith('SuQmCC')) {
-																											console.log(`image.target is image3`);
-																											image.target.src = img[2];
-																											counter = 3;
-																											}
-
-																							}
-																							 
-}
-			if (Score.id === "s15") {
-
-			var pointDisplay = image.target.closest('td').querySelector('pre');
-																						//const pointDisplay = document.querySelectorAll('[id^="pointsP"]')[index];
-																						const pointDisplaynum = Number(pointDisplay.textContent);
-																						console.log(image.target.parentElement.parentElement);
-																						
-																							if (pointDisplaynum !==0){
-																								Score = image.target.parentElement.parentElement.querySelector('[id^="s"]');
-																								let SubNum = Score.id.slice(1);
-																								console.log(`SubNum: ${SubNum}`);			
-																								points = pointDisplaynum - SubNum;
-																								if (points < 0) {points = 0;};
-																								pointDisplay.textContent = points; // Update display
-																								console.log("Points incremented: " + points);
-																								}else {
-																										// Code to run if pointDisplaynum IS 0
-																										    console.log("No points to display.");
-
-																											if (image.target.getAttribute('src').endsWith('iVBORw0KGgoAAAANSUhEUgAAANAAAADQCAYAAAB2pO90AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA31pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDcuMS1jMDAwIDc5LjgzZmFlNjQsIDIwMjIvMDIvMTUtMDg6MDc6MzIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6M2Q1MDAwZmItYWMxNC00ODQ2LWJkMjgtNGYxYzQ4OWYyM2RkIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjlEMEY1MTdCRDc4RDExRjBBNjE5QThDQjVBNkZGNkM3IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjlEMEY1MTdBRDc4RDExRjBBNjE5QThDQjVBNkZGNkM3IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBFbGVtZW50cyAyMS4wIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjNkNTAwMGZiLWFjMTQtNDg0Ni1iZDI4LTRmMWM0ODlmMjNkZCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozZDUwMDBmYi1hYzE0LTQ4NDYtYmQyOC00ZjFjNDg5ZjIzZGQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5IaPbdAAABsklEQVR42uzTQQ0AAAjEMMC/58MDCb9WwpJ1kgJuRgIwEBgIDAQGAgwEBgIDgYEAA4GBwEBgIDAQYCAwEBgIDAQYCAwEBgIDAQYCA4GBwEBgIMBAYCAwEBgIMBAYCAwEBgIMBAYCA4GBwECAgcBAYCAwEGAgMBAYCAwEBgIMBAYCA4GBAAOBgcBAYCDAQGAgMBAYCAwEGAgMBAYCAwEGAgOBgcBAgIHAQGAgMBAYCDAQGAgMBAYCDAQGAgOBgcBAgIHAQGAgMBBgIDAQGAgMBBgIDAQGAgOBgQADgYHAQGAgwEBgIDAQGAgwEBgIDAQGAgMBBgIDgYHAQICBwEBgIDAQGAgwEBgIDAQGAgwEBgIDgYEAA4GBwEBgIDAQYCAwEBgIDAQYCAwEBgIDAQYCA4GBwEBgIMBAYCAwEBgIMBAYCAwEBgIDAQYCA4GBwECAgcBAYCAwEGAgMBAYCAwEBgIMBAYCA4GBAAOBgcBAYCDAQGAgMBAYCAwEGAgMBAYCAwEGAgOBgcBAYCDAQGAgMBAYCDAQGAgMBAYCDAQGAgOBgcBAgIHAQGAgMBBgIPixAgwAoEcEnQhQ4UsAAAAASUVORK5CYII=')) {
-																											console.log(`image.target is image0`);
-																											image.target.src = img[0];
-																											counter = 0;
-																											}
-																											if (image.target.getAttribute('src').endsWith('iVBORw0KGgoAAAANSUhEUgAAANAAAADQCAYAAAB2pO90AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA31pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDcuMS1jMDAwIDc5LjgzZmFlNjQsIDIwMjIvMDIvMTUtMDg6MDc6MzIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6M2Q1MDAwZmItYWMxNC00ODQ2LWJkMjgtNGYxYzQ4OWYyM2RkIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjg3OEVFQTI4REE5RTExRjBBRDNBOEY2ODA5NjY3RDBCIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjg3OEVFQTI3REE5RTExRjBBRDNBOEY2ODA5NjY3RDBCIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBFbGVtZW50cyAyMS4wIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOmY1M2YwYWJmLTg2MDQtNGM0Yy04ZjA0LTk0NmMwN2U4ZmY3NCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozZDUwMDBmYi1hYzE0LTQ4NDYtYmQyOC00ZjFjNDg5ZjIzZGQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7HbQfxAAADMklEQVR42uzdQWoDMQxA0XGY+1/ZWWUxoSkk9liW/f6q0EXD0IcoUaNSaz0k/dbDI5AAkgCSAJIAkgSQBJAEkASQJIAkgCSAJIAkgCQBJAEkASQBJAkgCSAJIAkgSQBJAEkASQBJAEkCSAJIAkgCSNLfndEvoJTy6Vuvw0Xljp/rLpJWnkD1w9cSQF/ggUgANeKBSAA14oFIAHWCAZEAagQBkQAKgCctB6hAJIAgEkAQSZn/BoJIAEEkgCCS0gKCSABBJIAgklIDgkgAQSSAIJIunQlfc2nAUF8I//kshlvzWQwmkEkkJQcEkQCCSABBJIAgknYGBJEAgkgAQSSAIJJ2BgSRhhS+ytN7teVtRafL2o+04wQyiQQQRAIIIgEEkV8X7Q4IIgEEkQCCSABBJIAOiCASQBAJIIgEEEQCCCKIBBBEAggiAQSRAIIIIgEEkbp0egRfIUp7FaIlFyVMIJNIAEEkgCCCCCBBJIAgEkAQCSCIBBBEEAEkiAQQRBrRcqs8UWsnrkKYQDKJBBBEAggiiAASRAAJIgEEkQCCCCKAdHifByCFITKFABJEAAkigDwCiAQQRAJIEAGkqCACSIc3WgESRAAJIgEEkQCCCCKABBFAgkgAQSSAIIIIIEEEkCACSBAJIIggAkgQASSIABJEAggiiAASRAAJooU6PYLlETWfmnw7XzmkqFOdJpBMIoAEEUCCCCBBBBFAggggQQSQIAJIEEEEkCACSBDFZZWnU1lWTy5qris6XdZ+TCCZRCYRQIIIIEEEkCACSBBBBJAgAkgQASSIABJEmyMCSBABJIgAEkQACaKdEAEkiAASRAAJIoAE0U6I/Eeq7kA07APto/8T2ASSSQSQIAJIEKVDBJAgAkgQASSI0iECSBABJIgAEkTpEAEkiBqyyrNxEWswq32gvQkkkwggbYrIBJJ+xDDFPSKAlBHRNMe8AFI2RFNdwgNImRBNd0YSIGVBNOUNVoCUAdG0B4xLxuvSkgkkASQBJAkgCSAJIAkgSQBJAEkASQBJAkgCSAJIAkgCSBJAEkASQBJAkgCSAJIAkgCSBJAEkASQBJAEkCSApBE9BRgA12G5rFnunR0AAAAASUVORK5CYII=')) {
-																											console.log(`image.target is image1`);
-																											image.target.src = img[0];
-																											counter = 1;
-																											}
-																											if (image.target.getAttribute('src').endsWith('Jggg==')) {
-																											console.log(`image.target is image2`);
-																											image.target.src = img[1];
-																											counter = 2;
-																											}
-																											if (image.target.getAttribute('src').endsWith('SuQmCC')) {
-																											console.log(`image.target is image3`);
-																											image.target.src = img[2];
-																											counter = 3;
-																											}
-
-																							}
-																							 
-}
-			if (Score.id === "s25") {
-
-			var pointDisplay = image.target.closest('td').querySelector('pre');
-																						//const pointDisplay = document.querySelectorAll('[id^="pointsP"]')[index];
-																						const pointDisplaynum = Number(pointDisplay.textContent);
-																						console.log(image.target.parentElement.parentElement);
-																						
-																							if (pointDisplaynum !==0){
-																								Score = image.target.parentElement.parentElement.querySelector('[id^="s"]');
-																								let SubNum = Score.id.slice(1);
-																								console.log(`SubNum: ${SubNum}`);			
-																								points = pointDisplaynum - SubNum;
-																								if (points < 0) {points = 0;};
-																								pointDisplay.textContent = points; // Update display
-																								console.log("Points incremented: " + points);
-																								}else {
-																										// Code to run if pointDisplaynum IS 0
-																										    console.log("No points to display.");
-
-																											if (image.target.getAttribute('src').endsWith('iVBORw0KGgoAAAANSUhEUgAAANAAAADQCAYAAAB2pO90AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA31pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDcuMS1jMDAwIDc5LjgzZmFlNjQsIDIwMjIvMDIvMTUtMDg6MDc6MzIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6M2Q1MDAwZmItYWMxNC00ODQ2LWJkMjgtNGYxYzQ4OWYyM2RkIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjlEMEY1MTdCRDc4RDExRjBBNjE5QThDQjVBNkZGNkM3IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjlEMEY1MTdBRDc4RDExRjBBNjE5QThDQjVBNkZGNkM3IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBFbGVtZW50cyAyMS4wIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjNkNTAwMGZiLWFjMTQtNDg0Ni1iZDI4LTRmMWM0ODlmMjNkZCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozZDUwMDBmYi1hYzE0LTQ4NDYtYmQyOC00ZjFjNDg5ZjIzZGQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5IaPbdAAABsklEQVR42uzTQQ0AAAjEMMC/58MDCb9WwpJ1kgJuRgIwEBgIDAQGAgwEBgIDgYEAA4GBwEBgIDAQYCAwEBgIDAQYCAwEBgIDAQYCA4GBwEBgIMBAYCAwEBgIMBAYCAwEBgIMBAYCA4GBwECAgcBAYCAwEGAgMBAYCAwEBgIMBAYCA4GBAAOBgcBAYCDAQGAgMBAYCAwEGAgMBAYCAwEGAgOBgcBAgIHAQGAgMBAYCDAQGAgMBAYCDAQGAgOBgcBAgIHAQGAgMBBgIDAQGAgMBBgIDAQGAgOBgQADgYHAQGAgwEBgIDAQGAgwEBgIDAQGAgMBBgIDgYHAQICBwEBgIDAQGAgwEBgIDAQGAgwEBgIDgYEAA4GBwEBgIDAQYCAwEBgIDAQYCAwEBgIDAQYCA4GBwEBgIMBAYCAwEBgIMBAYCAwEBgIDAQYCA4GBwECAgcBAYCAwEGAgMBAYCAwEBgIMBAYCA4GBAAOBgcBAYCDAQGAgMBAYCAwEGAgMBAYCAwEGAgOBgcBAYCDAQGAgMBAYCDAQGAgMBAYCDAQGAgOBgcBAgIHAQGAgMBBgIPixAgwAoEcEnQhQ4UsAAAAASUVORK5CYII=')) {
-																											console.log(`image.target is image0`);
-																											image.target.src = img[0];
-																											counter = 0;
-																											}
-																											if (image.target.getAttribute('src').endsWith('iVBORw0KGgoAAAANSUhEUgAAANAAAADQCAYAAAB2pO90AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA31pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDcuMS1jMDAwIDc5LjgzZmFlNjQsIDIwMjIvMDIvMTUtMDg6MDc6MzIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6M2Q1MDAwZmItYWMxNC00ODQ2LWJkMjgtNGYxYzQ4OWYyM2RkIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjg3OEVFQTI4REE5RTExRjBBRDNBOEY2ODA5NjY3RDBCIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjg3OEVFQTI3REE5RTExRjBBRDNBOEY2ODA5NjY3RDBCIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBFbGVtZW50cyAyMS4wIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOmY1M2YwYWJmLTg2MDQtNGM0Yy04ZjA0LTk0NmMwN2U4ZmY3NCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozZDUwMDBmYi1hYzE0LTQ4NDYtYmQyOC00ZjFjNDg5ZjIzZGQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7HbQfxAAADMklEQVR42uzdQWoDMQxA0XGY+1/ZWWUxoSkk9liW/f6q0EXD0IcoUaNSaz0k/dbDI5AAkgCSAJIAkgSQBJAEkASQJIAkgCSAJIAkgCQBJAEkASQBJAkgCSAJIAkgSQBJAEkASQBJAEkCSAJIAkgCSNLfndEvoJTy6Vuvw0Xljp/rLpJWnkD1w9cSQF/ggUgANeKBSAA14oFIAHWCAZEAagQBkQAKgCctB6hAJIAgEkAQSZn/BoJIAEEkgCCS0gKCSABBJIAgklIDgkgAQSSAIJIunQlfc2nAUF8I//kshlvzWQwmkEkkJQcEkQCCSABBJIAgknYGBJEAgkgAQSSAIJJ2BgSRhhS+ytN7teVtRafL2o+04wQyiQQQRAIIIgEEkV8X7Q4IIgEEkQCCSABBJIAOiCASQBAJIIgEEEQCCCKIBBBEAggiAQSRAIIIIgEEkbp0egRfIUp7FaIlFyVMIJNIAEEkgCCCCCBBJIAgEkAQCSCIBBBEEAEkiAQQRBrRcqs8UWsnrkKYQDKJBBBEAggiiAASRAAJIgEEkQCCCCKAdHifByCFITKFABJEAAkigDwCiAQQRAJIEAGkqCACSIc3WgESRAAJIgEEkQCCCCKABBFAgkgAQSSAIIIIIEEEkCACSBAJIIggAkgQASSIABJEAggiiAASRAAJooU6PYLlETWfmnw7XzmkqFOdJpBMIoAEEUCCCCBBBBFAggggQQSQIAJIEEEEkCACSBDFZZWnU1lWTy5qris6XdZ+TCCZRCYRQIIIIEEEkCACSBBBBJAgAkgQASSIABJEmyMCSBABJIgAEkQACaKdEAEkiAASRAAJIoAE0U6I/Eeq7kA07APto/8T2ASSSQSQIAJIEKVDBJAgAkgQASSI0iECSBABJIgAEkTpEAEkiBqyyrNxEWswq32gvQkkkwggbYrIBJJ+xDDFPSKAlBHRNMe8AFI2RFNdwgNImRBNd0YSIGVBNOUNVoCUAdG0B4xLxuvSkgkkASQBJAkgCSAJIAkgSQBJAEkASQBJAkgCSAJIAkgCSBJAEkASQBJAkgCSAJIAkgCSBJAEkASQBJAEkCSApBE9BRgA12G5rFnunR0AAAAASUVORK5CYII=')) {
-																											console.log(`image.target is image1`);
-																											image.target.src = img[0];
-																											counter = 1;
-																											}
-																											if (image.target.getAttribute('src').endsWith('Jggg==')) {
-																											console.log(`image.target is image2`);
-																											image.target.src = img[1];
-																											counter = 2;
-																											}
-																											if (image.target.getAttribute('src').endsWith('SuQmCC')) {
-																											console.log(`image.target is image3`);
-																											image.target.src = img[2];
-																											counter = 3;
-																											}
-
-																							}
-																							 
-}
 										} else {
 
 										console.log("User clicked No (Cancel)");
