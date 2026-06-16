@@ -1115,22 +1115,24 @@ let isHeld = false;
 let holdDuration = 1500; // Time to hold in milliseconds
 
 // Function to start the timer
-function startHold(event) {
+async function startHold(event) {
     // Prevent default behaviors like system text selection or image dragging during long-press
     event.preventDefault(); 
+    event.stopPropagation(); // Stops the event from bubbling up to parent
     
     const targetImage = event.currentTarget;
     isHeld = false;
 
     // Clear any leftover timers to prevent duplicate queues
     clearTimeout(timer);
-
+	
     timer = setTimeout(() => {
         isHeld = true;
         
-        // Use a small delay for confirm() so the browser clears the pointer thread first
-        setTimeout(() => {
-            if (confirm("Do you want to proceed with undo?")) {
+        // Zero-delay macrotask allows pointer thread clearance while maintaining safe lexical scope
+        setTimeout(async () => {
+            const userConfirmed = await confirm("Do you want to proceed with undo?");
+            if (userConfirmed) {
                 console.log("User clicked Yes (OK)");
 
                 var parent = targetImage.parentElement;
@@ -1151,8 +1153,22 @@ function startHold(event) {
                         
                         let points = pointDisplaynum - SubNum;
                         if (points < 0) { points = 0; }
+                        
+                        // Updates DOM instantly
                         pointDisplay.textContent = points; 
                         console.log("Points decremented: " + points);
+                        
+                        // Calculate total scores inline
+                        const pointsP1 = document.getElementById('pointsP1');
+                        const pointsP2 = document.getElementById('pointsP2');
+                        const pointsP3 = document.getElementById('pointsP3');
+                        const pointsP4 = document.getElementById('pointsP4');
+                        
+                        try { pointsP1.textContent = Number(y20pointsP1.textContent) + Number(y19pointsP1.textContent) + Number(y18pointsP1.textContent) + Number(y17pointsP1.textContent) + Number(y16pointsP1.textContent) + Number(y15pointsP1.textContent) + Number(yBullpointsP1.textContent); } catch (error) { console.warn("pointsP1 fields missing execution."); };
+                        if (pointsP2) { try { pointsP2.textContent = Number(y20pointsP2.textContent) + Number(y19pointsP2.textContent) + Number(y18pointsP2.textContent) + Number(y17pointsP2.textContent) + Number(y16pointsP2.textContent) + Number(y15pointsP2.textContent) + Number(yBullpointsP2.textContent); } catch (error) { console.warn("pointsP2 fields missing execution."); }};
+                        if (pointsP3) { try { pointsP3.textContent = Number(y20pointsP3.textContent) + Number(y19pointsP3.textContent) + Number(y18pointsP3.textContent) + Number(y17pointsP3.textContent) + Number(y16pointsP3.textContent) + Number(y15pointsP3.textContent) + Number(yBullpointsP3.textContent); } catch (error) { console.warn("pointsP3 fields missing execution."); }};
+                        if (pointsP4) { try { pointsP4.textContent = Number(y20pointsP4.textContent) + Number(y19pointsP4.textContent) + Number(y18pointsP4.textContent) + Number(y17pointsP4.textContent) + Number(y16pointsP4.textContent) + Number(y15pointsP4.textContent) + Number(yBullpointsP4.textContent); } catch (error) { console.warn("pointsP4 fields missing execution."); }};
+                    
                     } else {
                         console.log("No points to display.");
                         const imgSrc = targetImage.getAttribute('src') || '';
@@ -1180,14 +1196,11 @@ function startHold(event) {
                     }
                 }
             }
+			
         }, 50);
     }, holdDuration);
 }
 
-function stopHold() {
-    // Stops the timer if the user lifts or moves away before 1.5s
-    clearTimeout(timer); 
-}
 
 // For each image, cleanly bind point tracking events
 for (var i = 0; i < images.length; i++) {
@@ -1208,17 +1221,6 @@ isHeld = false;
 								  // Function to stop the timer
 								  function stopHold() {
 									clearTimeout(timer);
-									//console.log(stopholdend);
-									//this.style.setProperty("background-color", "transparent", "important");
-									const pointsP1 = document.getElementById('pointsP1');
-									const pointsP2 = document.getElementById('pointsP2');
-									const pointsP3 = document.getElementById('pointsP3');
-									const pointsP4 = document.getElementById('pointsP4');
-									try {pointsP1.textContent = Number(y20pointsP1.textContent) + Number(y19pointsP1.textContent) + Number(y18pointsP1.textContent) + Number(y17pointsP1.textContent) + Number(y16pointsP1.textContent) + Number(y15pointsP1.textContent) + Number(yBullpointsP1.textContent);} catch (error) {console.warn("pointsP1 is not defined yet, skipping execution.");};
-									if (pointsP2) {try {pointsP2.textContent = Number(y20pointsP2.textContent) + Number(y19pointsP2.textContent) + Number(y18pointsP2.textContent) + Number(y17pointsP2.textContent) + Number(y16pointsP2.textContent) + Number(y15pointsP2.textContent) + Number(yBullpointsP2.textContent);} catch (error) {console.warn("pointsP2 is not defined yet, skipping execution.");}};
-									if (pointsP3) {try {pointsP3.textContent = Number(y20pointsP3.textContent) + Number(y19pointsP3.textContent) + Number(y18pointsP3.textContent) + Number(y17pointsP3.textContent) + Number(y16pointsP3.textContent) + Number(y15pointsP3.textContent) + Number(yBullpointsP3.textContent);} catch (error) {console.warn("pointsP3 is not defined yet, skipping execution.");}};
-									if (pointsP4) {try {pointsP4.textContent = Number(y20pointsP4.textContent) + Number(y19pointsP4.textContent) + Number(y18pointsP4.textContent) + Number(y17pointsP4.textContent) + Number(y16pointsP4.textContent) + Number(y15pointsP4.textContent) + Number(yBullpointsP4.textContent);} catch (error) {console.warn("pointsP4 is not defined yet, skipping execution.");}};
-									//console.log(stopholdend);
 									}
 function WinnerP1() {								
 		// Select all elements where the ID starts with "y" and ends with "P1"
@@ -1403,7 +1405,7 @@ function WinnerP4() {
     }
 
     function imageClicked(){
-console.log(`isHeld image clicked: ${isHeld}`);
+//console.log(`isHeld image clicked: ${isHeld}`);
       //Use a closure to wrap the counter variable
       //so each image element has their own unique counter
       //var counter = 0;
@@ -2039,7 +2041,7 @@ window.alert = function(message) {
 
 </script>
 
-<!--
+
 <script>
 window.confirm = function(message) {
     return new Promise((resolve) => {
@@ -2112,7 +2114,7 @@ window.confirm = function(message) {
 };
 
 </script>
--->
+
 <script>
 window.addEventListener("resize", () => {
     //console.log("Real dimensions:", window.innerWidth, window.innerHeight);
