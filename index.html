@@ -37,8 +37,10 @@ html{
   user-select: none;
 }
 
-body{
+html, body {
     margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevents scrollbars from breaking viewport math */
 }
 
 
@@ -118,14 +120,31 @@ td pre {
 }
 
 #dynamicTable {
- table-layout: fixed;
-  border-collapse: collapse;
-  overflow-y: hidden;
-  border-spacing: 0px;
-  margin-left: auto;
-  margin-right: auto;
-
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+    width: auto !important;
+    height: auto !important;
 }
+
+#dynamicTable tr {
+    /* Prevents the browser from inflating row sizes */
+    line-height: 0 !important; 
+}
+
+#dynamicTable td {
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    /* This overrides the browser's rule that forces cells to match text height */
+    overflow: hidden !important; 
+    line-height: normal !important;
+}
+
+#dynamicTable thead th {
+    box-sizing: border-box !important;
+    vertical-align: middle;
+}
+
 
 img { 
     max-width: 100%;
@@ -134,44 +153,14 @@ img {
 	aspect-ratio: 1 / 1;
 }
 
-#editor1 {
-	margin: 0; 
-	display: inline-block;
-	max-width: 100%; /* Ensures it doesn't exceed container */
-	padding: 0; 
-	text-align: center; /* Optional: also centers horizontally */
-	word-wrap: normal; /* Prevents unwanted word breaking if not pre-wrap */
-	    line-height: 1; /* or a specific value like 1.2em */
-}
-
-#editor2 {
-	margin: 0;
-	display: inline-block;
-	max-width: 100%; /* Ensures it doesn't exceed container */
-	padding: 0; 
-	text-align: center; /* Optional: also centers horizontally */
-	word-wrap: normal; /* Prevents unwanted word breaking if not pre-wrap */
-		    line-height: 1; /* or a specific value like 1.2em */
-}
-
-#editor3 {
-	margin: 0; 
-	display: inline-block;
-	max-width: 100%; /* Ensures it doesn't exceed container */
-	padding: 0; 
-	text-align: center; /* Optional: also centers horizontally */
-	word-wrap: normal; /* Prevents unwanted word breaking if not pre-wrap */
-		    line-height: 1; /* or a specific value like 1.2em */
-}
-
-#editor4 {
-	margin: 0; 
-	display: inline-block;
-	max-width: 100%; /* Ensures it doesn't exceed container */
-	padding: 0; 
-	text-align: center; /* Optional: also centers horizontally */
-	word-wrap: normal; /* Prevents unwanted word breaking if not pre-wrap */
-		    line-height: 1; /* or a specific value like 1.2em */
+/* Ensure the textareas don't spill out and push the boundaries */
+/* Stops internal inputs from expanding parent width/height boundaries */
+[id^="editor"] {
+    box-sizing: border-box !important;
+    display: inline-block;
+    max-width: 90% !important;
+    max-height: 90% !important;
+    resize: none !important; /* Disables dragging to expand squares */
 }
 
 .no-outline:focus {
@@ -801,8 +790,7 @@ let AdTimer = setTimeout(loop, 10000);
 <div id="myTableContainer">
 <table id="dynamicTable" align="center">
 
-<tbody id="tableBody">
-
+  <thead>
 <tr>
 
 	<td class="top-align"><table class="subtable"><tr><td><label draggable="false" for="color-choice1" class="color-choice-class"><img class="PickAColorimage" draggable="false" src="" alt="Pick Color" style="cursor: pointer;"></label><input id="color-choice1" type="color" autocomplete="off" value="#ffffff" /><pre draggable="false" class="no-outline" id="editor1" contenteditable="plaintext-only">P1</pre></td></tr><tr><td><pre id="pointsP1"></pre></td></tr></table></td>
@@ -830,7 +818,9 @@ let AdTimer = setTimeout(loop, 10000);
 	<!--<a href="https://dartguys.com/" target="resource window"><img id="pointsPDummy" name="pointsPDummy" src="https://dartguys.com/wp-content/uploads/2016/05/tdg1.jpg"></img>-->
 
 </tr>
+  </thead>
 
+<tbody id="tableBody">
 <!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6773237836015898" crossorigin="anonymous"></script>-->
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
@@ -1790,7 +1780,134 @@ let players = urlParams.get('numberofplayers');
 <center><a href="./AboutUs.html" target="_blank">About Us</a> &nbsp; <a href="./PrivacyPolicy.html" target="_blank">Privacy Policy</a> &nbsp; <a href="./Contact.html" target="_blank">Contact Us</a> &nbsp; <a href="./Readme.html" target="_blank">Read Me</a></center>
 
 </body></html>
+<!--
+<script>
+function adjustCellSize() {
+    console.log('adjustCellSize');
 
+    const table = document.getElementById('dynamicTable');
+    if (!table) return;
+
+    // 1. Batch READ measurements before making any changes
+    const winWidth = window.innerWidth;
+    const winHeight = window.innerHeight;
+    const tableWidth = table.offsetWidth;
+    const tableHeight = table.offsetHeight;
+
+    // Exit early if the table already fits perfectly
+    if (tableWidth <= winWidth && tableHeight <= (winHeight - 20)) return;
+
+    // 2. Calculate the exact mathematical scaling ratio
+    const widthRatio = winWidth / tableWidth;
+    const heightRatio = (winHeight - 20) / tableHeight;
+    const scaleRatio = Math.min(widthRatio, heightRatio);
+
+    // Use a safety minimum to prevent collapsing the layout entirely
+    const safeRatio = Math.max(0.1, scaleRatio);
+    const newCellSize = Math.floor(600 * safeRatio);
+
+    // 3. Batch WRITE operations in a single iteration
+    const allTds = document.querySelectorAll('td');
+    allTds.forEach(cell => {
+        cell.style.setProperty("width", `${newCellSize}px`, "important");
+        cell.style.setProperty("height", `${newCellSize}px`, "important");
+        cell.style.setProperty("max-width", `${newCellSize}px`, "important");
+        cell.style.setProperty("max-height", `${newCellSize}px`, "important");
+    });
+
+    const editors = document.querySelectorAll('[id^="editor"]');
+    editors.forEach(textarea => {
+        textarea.style.setProperty("width", "90%", "important");
+        textarea.style.setProperty("height", "90%", "important");
+    });
+}
+
+
+</script>
+-->
+<script>
+function adjustCellSize() {
+    console.log('adjustCellSize');
+
+    const table = document.getElementById('dynamicTable');
+    if (!table) return;
+
+    // 1. Core boundary constraints
+    const maxAvailableWidth = window.innerWidth;
+    let maxAvailableHeight = window.innerHeight - 20;
+
+    // 2. Measure the exact height of the header row if it exists
+    const thead = table.querySelector(':scope > thead');
+    let theadHeight = 0;
+    if (thead) {
+        // Measure real layout footprint including borders/padding
+        theadHeight = thead.getBoundingClientRect().height;
+        // Subtract header height from available vertical workspace
+        maxAvailableHeight -= theadHeight;
+    }
+
+    // 3. Clear old inline sizes to read the raw grid structure cleanly
+    table.style.removeProperty("width");
+    table.style.removeProperty("height");
+    
+    // 4. Count data rows only (inside tbody or direct body rows)
+    let rows = table.querySelectorAll(':scope > tbody > tr');
+    if (rows.length === 0) {
+        // If no explicit tbody, target rows but exclude the header row
+        rows = Array.from(table.querySelectorAll(':scope > tr')).filter(row => row.parentNode.tagName !== 'THEAD');
+    }
+    const rowCount = rows.length;
+    
+    let colCount = 0;
+    rows.forEach(row => {
+        row.style.removeProperty("height");
+        colCount = Math.max(colCount, row.cells.length);
+    });
+
+    if (rowCount === 0 || colCount === 0) return;
+
+    // 5. Compute strict maximum dimensions per axis
+    const maxCellWidth = maxAvailableWidth / colCount;
+    const maxCellHeight = maxAvailableHeight / rowCount;
+
+    // 6. Lock both dimensions to a strict 1:1 aspect ratio square
+    const perfectSquareSize = Math.floor(Math.min(maxCellWidth, maxCellHeight));
+
+    // 7. Force parent layout properties to lock grid boundaries
+    const totalDataHeight = perfectSquareSize * rowCount;
+    const totalTableWidth = perfectSquareSize * colCount;
+
+    table.style.setProperty("table-layout", "fixed", "important");
+    table.style.setProperty("width", `${totalTableWidth}px`, "important");
+    table.style.setProperty("height", `${totalDataHeight + theadHeight}px`, "important");
+
+    // 8. Enforce the calculated square size onto data rows and cells
+    rows.forEach(row => {
+        row.style.setProperty("height", `${perfectSquareSize}px`, "important");
+    });
+
+    const allTds = table.querySelectorAll('td');
+    allTds.forEach(cell => {
+        cell.style.setProperty("width", `${perfectSquareSize}px`, "important");
+        cell.style.setProperty("height", `${perfectSquareSize}px`, "important");
+        cell.style.setProperty("min-width", `${perfectSquareSize}px`, "important");
+        cell.style.setProperty("min-height", `${perfectSquareSize}px`, "important");
+        cell.style.setProperty("max-width", `${perfectSquareSize}px`, "important");
+        cell.style.setProperty("max-height", `${perfectSquareSize}px`, "important");
+    });
+
+    // 9. Keep editors inside boundaries safely
+    const editors = document.querySelectorAll('[id^="editor"]');
+    editors.forEach(textarea => {
+        textarea.style.setProperty("width", "90%", "important");
+        textarea.style.setProperty("height", "90%", "important");
+        textarea.style.setProperty("box-sizing", "border-box", "important");
+        textarea.style.setProperty("margin", "0", "important");
+    });
+}
+
+</script>
+<!--
 <script>
 function adjustCellSize() {
 console.log('adjustCellSize');
@@ -1853,7 +1970,7 @@ editors.forEach(textarea => {
 
 	}
 </script>
-
+-->
 <script>
 
 function adjustCenterFontSize() {
