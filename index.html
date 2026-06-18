@@ -833,8 +833,7 @@ let AdTimer = setTimeout(loop, 10000);
 
 	<td class="top-align"><table class="subtable"><tr><td><label draggable="false" for="color-choice1" class="color-choice-class"><img class="PickAColorimage" draggable="false" src="" alt="Pick Color" style="cursor: pointer;"></label><input id="color-choice1" type="color" autocomplete="off" value="#ffffff" /><pre draggable="false" class="no-outline" id="editor1" contenteditable="plaintext-only">P1</pre></td></tr><tr><td><pre id="pointsP1"></pre></td></tr></table></td>
 	<td class="top-align"><table class="subtable"><tr><td><label draggable="false" for="color-choice2" class="color-choice-class"><img class="PickAColorimage" draggable="false" src="" alt="Pick Color" style="cursor: pointer;"></label><input id="color-choice2" type="color" autocomplete="off" value="#ffffff" /><pre draggable="false" class="no-outline" id="editor2" contenteditable="plaintext-only">P2</pre></td></tr><tr><td><pre id="pointsP2"></pre></td></tr></table></td>
-	<!-- 1. Make the parent cell relative -->
-	<td class="top-align" id="Crickettd" style="position: relative;">
+	<td class="top-align" id="Crickettd" style="position: relative;"><!-- 1. Make the parent cell relative. Establishes a boundary box for absolute coordinates. Without this, your child <div> would float to the bottom of the entire web page -->
 				<pre id="Cricket" name="Cricket">Cricket</pre>
 <span style="line-height: 0.00rem;"><br></span> <!-- <br>'s spacing is determined by the line-height -->
 				<pre id="ReadMe">Read Me</pre>
@@ -842,8 +841,7 @@ let AdTimer = setTimeout(loop, 10000);
 <span style="line-height: 0.00rem;"><br></span> <!-- <br>'s spacing is determined by the line-height -->
 				<div class="google-container"><ins class="adsbygoogle" data-ad-client="ca-pub-6773237836015898" data-ad-slot="8571825431" data-ad-format="auto" data-full-width-responsive="true" draggable="false"></ins></div>
 <span style="line-height: 0.00rem;"><br style="line-height: 0.00rem;"></span> <!-- <br>'s spacing is determined by the line-height -->
-<!-- 2. Pin this specific div to the bottom -->
-				<div class="custom-select-wrapper" style="position: absolute; bottom: 0; left: 0; right: 0;">
+				<div class="custom-select-wrapper" style="position: absolute; bottom: 0; left: 0; right: 0;"><!-- Pin this specific div to the bottom. Targets only this specific element and forces it to look for its closest relative ancestor (the table cell) and lock itself to the bottom edge. -->
 				<label id="for-player-count" for="player-count"># of players:</label>
 					<select autocomplete="off" id="player-count" onchange="alertPlayerCount()">
 						<option value="" disabled selected>Choose...</option>
