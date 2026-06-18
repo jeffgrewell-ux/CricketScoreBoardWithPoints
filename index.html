@@ -566,7 +566,19 @@ iframe#aswift_0:empty {
     display: none;
 }
 
-
+br {
+    line-height: 0;
+    height: 0;
+    /*display: block;*/
+    content: "";
+	display: none;  /* Safely hide the line break altogether */
+}
+/* Bring br back ONLY for Firefox */
+@-moz-document url-prefix() {
+  br {
+    display: block;
+  }
+}
 </style></head>
 
 <script>
