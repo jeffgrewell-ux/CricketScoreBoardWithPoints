@@ -1464,7 +1464,7 @@ newlength = (allCells.length - 1);
 //console.log(newlength);
 // 4. Compare lengths
 		  let NumOfPlayers = urlParams.get('numberofplayers');
-if (filledCells.length === newlength && NumOfPlayers !== 1) {
+if (filledCells.length === newlength && NumOfPlayers.value !== 1) {
     console.log("All cells in this row contain the image!");
 	//https://cricketdarts.net/index.html?numberofplayers=1
     return; // To Stop Current Function Execution
