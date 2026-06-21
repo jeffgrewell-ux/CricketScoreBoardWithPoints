@@ -1463,15 +1463,12 @@ const allCells = row.querySelectorAll('td');
 newlength = (allCells.length - 1);
 //console.log(newlength);
 // 4. Compare lengths
-if (filledCells.length === newlength) {
+		  let NumOfPlayers = urlParams.get('numberofplayers');
+if (filledCells.length === newlength && NumOfPlayers !== 1) {
     console.log("All cells in this row contain the image!");
 	//https://cricketdarts.net/index.html?numberofplayers=1
-	let NumOfPlayers = urlParams.get('numberofplayers');
-	if (NumOfPlayers !== 1) {
     return; // To Stop Current Function Execution
 		console.log("Function prevented!");
-}
-	
 }
 			  
  
