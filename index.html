@@ -1465,7 +1465,9 @@ newlength = (allCells.length - 1);
 // 4. Compare lengths
 if (filledCells.length === newlength) {
     console.log("All cells in this row contain the image!");
-	return; // To Stop Current Function Execution
+	if (numberOfPlayers !== 1) {
+    return; // To Stop Current Function Execution
+}
 	console.log("Function prevented!");
 }
 			  
