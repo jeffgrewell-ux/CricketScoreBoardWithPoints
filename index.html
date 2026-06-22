@@ -2059,10 +2059,10 @@ choiceElements.forEach(choiceElement => {
 });
 
 
-document.getElementById("ReadMe").style.fontSize = parseFloat(ReadMe.parentElement.style.width) / 7 + 'px';
-document.getElementById("for-player-count").style.fontSize = parseFloat(Cricket.parentElement.style.width) / 7 + 'px';
-document.getElementById("player-count").style.fontSize = parseFloat(Cricket.parentElement.style.width) / 8 + 'px';
-document.getElementById("Cricket").style.fontSize = parseFloat(Cricket.parentElement.style.width) / 5 + 'px';
+document.getElementById("ReadMe").style.fontSize = parseFloat(ReadMe.closest("td").style.width) / 7 + 'px';
+document.getElementById("for-player-count").style.fontSize = parseFloat(Cricket.closest("td").style.width) / 7 + 'px';
+document.getElementById("player-count").style.fontSize = parseFloat(Cricket.closest("td").style.width) / 8 + 'px';
+document.getElementById("Cricket").style.fontSize = parseFloat(Cricket.closest("td").style.width) / 5 + 'px';
 document.getElementById("s25").style.fontSize = parseFloat(s25.parentElement.style.width) / 1.5 + 'px';
 document.getElementById("s20").style.fontSize = parseFloat(s20.parentElement.style.width) / 1.5 + 'px';
 document.getElementById("s19").style.fontSize = parseFloat(s19.parentElement.style.width) / 1.5 + 'px';
