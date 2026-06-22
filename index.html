@@ -226,12 +226,8 @@ vertical-align: top;
  }
  
  #Crickettd {
-     vertical-align: top;
-box-sizing: border-box;
  background-color: black !important;
- 		max-height: 100%; /* Ensures it doesn't exceed container */
-		  width: 1%;
-    height: 1%;
+
  }
  
 ins {
@@ -610,6 +606,23 @@ br {
     font-family: monospace;
     margin: 0; /* Ensures absolute zero extra spacing */
 }
+
+@media (max-width: 768px) {
+    br {
+        display: none;
+    }
+    
+    /* Add a space so the text doesn't mash together */
+    br::after {
+        content: " "; 
+    }
+}
+
+span {
+    display: block;
+}
+
+
 </style></head>
 
 <script>
@@ -840,23 +853,25 @@ let AdTimer = setTimeout(loop, 10000);
 	<td class="top-align"><table class="subtable"><tr><td><label draggable="false" for="color-choice2" class="color-choice-class"><img class="PickAColorimage" draggable="false" src="" alt="Pick Color" style="cursor: pointer;"></label><input id="color-choice2" type="color" autocomplete="off" value="#ffffff" /><pre draggable="false" class="no-outline" id="editor2" contenteditable="plaintext-only">P2</pre></td></tr><tr><td><pre id="pointsP2"></pre></td></tr></table></td>
       <!-- Center Game Info -->
 <td class="top-align" id="Crickettd">
-    <div id="Cricket" name="Cricket">Cricket</div>
-    <div id="ReadMe">Read Me</div>
-    
-    <div class="google-container">
-        <ins class="adsbygoogle" data-ad-client="ca-pub-6773237836015898" data-ad-slot="8571825431" data-ad-format="auto" data-full-width-responsive="true" draggable="false"></ins>
-    </div>
-    
-    <div class="custom-select-wrapper" style="width: 100%; margin-top: auto;">
-        <label id="for-player-count" for="player-count"># of players:</label>
-        <select autocomplete="off" id="player-count" onchange="alertPlayerCount()">
-            <option value="" disabled selected>Choose...</option>
-            <option value="1">1 Player</option>
-            <option value="2">2 Players</option>
-            <option value="3">3 Players</option>
-            <option value="4">4 Players</option>
-        </select>
-    </div>
+    <span>
+		<span><div id="Cricket" name="Cricket">Cricket</div></span>
+		<span><div id="ReadMe">Read Me</div></span>
+		
+		<div class="google-container">
+			<ins class="adsbygoogle" data-ad-client="ca-pub-6773237836015898" data-ad-slot="8571825431" data-ad-format="auto" data-full-width-responsive="true" draggable="false"></ins>
+		</div>
+		
+		<span><div class="custom-select-wrapper" style="width: 100%; margin-top: auto;">
+			<label id="for-player-count" for="player-count"># of players:</label>
+			<select autocomplete="off" id="player-count" onchange="alertPlayerCount()">
+				<option value="" disabled selected>Choose...</option>
+				<option value="1">1 Player</option>
+				<option value="2">2 Players</option>
+				<option value="3">3 Players</option>
+				<option value="4">4 Players</option>
+			</select>
+		</div>
+	</span>
 </td>
 	<td class="top-align"><table class="subtable"><tr><td><label draggable="false" for="color-choice3" class="color-choice-class"><img class="PickAColorimage" draggable="false" src="" alt="Pick Color" style="cursor: pointer;"></label><input id="color-choice3" type="color" autocomplete="off" value="#ffffff" /><pre draggable="false" class="no-outline" id="editor3" contenteditable="plaintext-only">P3</pre></td></tr><tr><td><pre id="pointsP3"></pre></td></tr></table></td>
 	<td class="top-align"><table class="subtable"><tr><td><label draggable="false" for="color-choice4" class="color-choice-class"><img class="PickAColorimage" draggable="false" src="" alt="Pick Color" style="cursor: pointer;"></label><input id="color-choice4" type="color" autocomplete="off" value="#ffffff" /><pre draggable="false" class="no-outline" id="editor4" contenteditable="plaintext-only">P4</pre></td></tr><tr><td><pre id="pointsP4"></pre></td></tr></table></td>
