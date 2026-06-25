@@ -1917,7 +1917,18 @@ function adjustCellSize() {
 
     // 1. Core boundary constraints
     const maxAvailableWidth = window.innerWidth;
-    let maxAvailableHeight = window.innerHeight - 20;
+    let maxAvailableHeight; //Declare the variable globally
+	
+	// Check if FBAN or FBAV is in the user agent string
+if (navigator.userAgent.match(/FBAN|FBAV/i)) {
+    // Code to run if the user is in the Facebook browser
+    console.log("You are using the Facebook in-app browser.");
+	    maxAvailableHeight = window.innerHeight - 30;
+} else {
+    // Code to run for all other browsers
+    console.log("You are not using the Facebook in-app browser.");
+	    maxAvailableHeight = window.innerHeight - 20;
+}
 	
 
     // 2. Measure the exact height of the header row if it exists
