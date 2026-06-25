@@ -2017,9 +2017,81 @@ If you have any questions or suggestions about our Privacy Policy, do not hesita
 
 Thank you for visiting <a href="https://CricketDarts.net">CricketDarts.net</a>.
 
+</pre>
+<!-- Hero Section -->
+    <section id="home" class="max-w-5xl mx-auto px-4 py-16 text-center">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
+            Thoughts on Code & Design
+        </h1>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            A minimalist single-page blog featuring tutorials, updates, and tech deep-dives. Updated weekly.
+        </p>
+    </section>
 
-</pre></span>
+    <!-- Articles Feed Section -->
+    <main id="articles" class="max-w-3xl mx-auto px-4 pb-24 space-y-16">
+        
+        <!-- Article 1 -->
+        <article class="group">
+            <div class="flex items-center space-x-3 text-sm text-gray-500 mb-3">
+                <time datetime="2026-06-25">June 25, 2026</time>
+                <span>&bull;</span>
+                <span class="bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full text-xs font-semibold">WebDev</span>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition duration-200 mb-3">
+                <a href="#article-1">Building a High-Performance Blog in 2026</a>
+            </h2>
+            <p class="text-gray-600 leading-relaxed mb-4">
+                Static generation and minimal frameworks are dominating modern web architecture. In this piece, we explore why raw HTML and modern utility utilities like Tailwind make single-page architectures lightning fast, scalable, and completely immune to server-side crashes.
+            </p>
+            <div class="prose max-w-none text-gray-700 hidden" id="article-1-body">
+                <p class="mb-4 font-semibold">The full deep dive:</p>
+                <p class="mb-4">By stripping out complex database layers and using client-side hydration only where necessary, your site loads instantly. For single-page blogs, you can embed your data directly in JSON scripts or call a lightweight API to fetch posts dynamically.</p>
+            </div>
+            <button onclick="toggleArticle('article-1-body')" class="text-sm font-semibold text-blue-600 hover:text-blue-800 transition">
+                Read full article &rarr;
+            </button>
+        </article>
 
+        <!-- Article 2 -->
+        <article class="group">
+            <div class="flex items-center space-x-3 text-sm text-gray-500 mb-3">
+                <time datetime="2026-06-18">June 18, 2026</time>
+                <span>&bull;</span>
+                <span class="bg-purple-50 text-purple-700 px-2 py-0.5 rounded-full text-xs font-semibold">Design</span>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition duration-200 mb-3">
+                <a href="#article-2">The Shift Towards Brutalist Minimalism</a>
+            </h2>
+            <p class="text-gray-600 leading-relaxed mb-4">
+                Web design is shedding heavy animations and endless scroll components in favor of high-contrast typography and absolute layouts. Let's analyze why readability is winning over complex interactions in the latest UI/UX trends.
+            </p>
+            <div class="prose max-w-none text-gray-700 hidden" id="article-2-body">
+                <p class="mb-4 font-semibold">The full deep dive:</p>
+                <p class="mb-4">Users want information quickly. Large typography combined with massive white spaces ensures that the reader's eye focus rests exactly on the content. Less layout overhead also means better accessibility scoring out of the box.</p>
+            </div>
+            <button onclick="toggleArticle('article-2-body')" class="text-sm font-semibold text-blue-600 hover:text-blue-800 transition">
+                Read full article &rarr;
+            </button>
+        </article>
+
+    </main>
+
+</span>
+    <script>
+        function toggleArticle(id) {
+            const el = document.getElementById(id);
+            const button = el.nextElementSibling;
+            
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                button.innerHTML = 'Show less &larr;';
+            } else {
+                el.classList.add('hidden');
+                button.innerHTML = 'Read full article &rarr;';
+            }
+        }
+    </script>
 </body></html>
 <!--
 <script>
