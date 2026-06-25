@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="google-adsense-account" content="ca-pub-6773237836015898">
     <title>CricketDarts.net</title>
-	<meta name="description" content="Free Cricket Score Board for Darts.">
+	<meta name="description" content="A super sleek and intuitive online scoreboard that makes it easy for up to 4 players to track their cricket darts matches in real-time. It’s a great way for players to focus on the game rather than the math!">
 
 <script>
   window.googletag = window.googletag || { cmd: [] };
@@ -1903,19 +1903,8 @@ function adjustCellSize() {
 
     // 1. Core boundary constraints
     const maxAvailableWidth = window.innerWidth;
-    let maxAvailableHeight; //Declare the variable globally
+    let maxAvailableHeight = window.innerHeight - 20;
 	
-	// Check if FBAN or FBAV is in the user agent string
-if (navigator.userAgent.match(/FBAN|FBAV/i)) {
-    // Code to run if the user is in the Facebook browser
-    console.log("You are using the Facebook in-app browser.");
-	    maxAvailableHeight = window.innerHeight - 30;
-} else {
-    // Code to run for all other browsers
-    console.log("You are not using the Facebook in-app browser.");
-	    maxAvailableHeight = window.innerHeight - 20;
-}
-
 
     // 2. Measure the exact height of the header row if it exists
     const thead = table.querySelector(':scope > thead');
