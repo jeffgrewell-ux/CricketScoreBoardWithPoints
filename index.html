@@ -2576,3 +2576,18 @@ window.addEventListener('load', (event) => {
 });
 </script>
 
+<script>
+// Detect when the visibility of the page changes (e.g., Reader View closing)
+document.addEventListener("visibilitychange", function() {
+    // If the document is active again (Reader mode just hid)
+    if (document.visibilityState === 'visible') {
+        window.scrollTo(0, 0);
+    }
+});
+
+// Alternative for older iOS Safari versions: Page Hide event
+window.addEventListener("pagehide", function() {
+    window.scrollTo({ top: 0, behavior: 'auto' });
+});
+
+</script>
