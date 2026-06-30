@@ -1880,10 +1880,17 @@ Adding Space
 This text will not appear in iOS Safari Reader Mode.
 </aside><!-- Applies a 500px gap without breaking the DOM tree -->
 
+<!-- This will be completely hidden in Reader Mode -->
+<div class="instapaper_ignore" style="margin-top: 500px;margin-bottom: 500px;color: white;font-size: 500px;">
+    <p>This intro banner is invisible to Reader Mode.</p>
+</div>
+
 <!--<script>
 //document.getElementById("AdsenseText").style.color = "white !important";
 //document.getElementById("AdsenseText").style.fontSize = "1px !important";
 </script>-->
+
+<!-- This is the main content Safari will display -->
 <main>
   <article>
     <!-- Use a standard div for centering or margin management instead of center tags -->
