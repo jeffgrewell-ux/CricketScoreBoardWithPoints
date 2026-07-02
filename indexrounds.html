@@ -2801,7 +2801,7 @@ function adjustTextToFit(parentButton) {
     const style = window.getComputedStyle(parentButton);
     const paddingX = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
     const paddingY = parseFloat(style.paddingTop) + parseFloat(style.paddingBottom);
-
+    
     const availableWidth = parentButton.clientWidth - paddingX;
     const availableHeight = parentButton.clientHeight - paddingY;
 
@@ -2810,26 +2810,33 @@ function adjustTextToFit(parentButton) {
 
     // 3. Binary search to find the single perfect font size for all text
     let minSize = 8;
-    let maxSize = 150; 
+    let maxSize = 150;
     let perfectSize = minSize;
 
     while (minSize <= maxSize) {
         let midSize = Math.floor((minSize + maxSize) / 2);
-        
+
         // Temporarily apply test size to all targeted text wrappers
         elementsToScale.forEach(el => {
             el.style.fontSize = midSize + 'px';
-            // Scale deeply nested spans as well
             el.querySelectorAll('span').forEach(child => child.style.fontSize = midSize + 'px');
         });
 
-        // Check if the total overflowing layout box fits the button bounds
-        // scrollWidth/scrollHeight on the button checks the combined size of all children
-        if (parentButton.scrollWidth <= parentButton.clientWidth && parentButton.scrollHeight <= parentButton.clientHeight) {
-            perfectSize = midSize;  // Fits perfectly, try to go bigger
+        // iOS-Safe Workaround: Check actual bounds via getBoundingClientRect instead of scrollWidth/scrollHeight
+        let textFits = true;
+        elementsToScale.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            // If the element's rendered width or height exceeds the button's interior, it overflows
+            if (rect.width > availableWidth || rect.height > availableHeight) {
+                textFits = false;
+            }
+        });
+
+        if (textFits) {
+            perfectSize = midSize; // Fits perfectly, try to go bigger
             minSize = midSize + 1;
         } else {
-            maxSize = midSize - 1;  // Content overflowed, must go smaller
+            maxSize = midSize - 1; // Content overflowed, must go smaller
         }
     }
 
@@ -2840,6 +2847,7 @@ function adjustTextToFit(parentButton) {
     });
 }
 
+// document.getElementById("ReadMe").style.fontSize = parseFloat(ReadMe.closest("td").style.width) / 7 + 'px';
 //window.addEventListener('load', ResizeSubRoundSpan);
 //window.addEventListener('resize', ResizeSubRoundSpan);
 
