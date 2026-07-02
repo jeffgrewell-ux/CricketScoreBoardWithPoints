@@ -1224,63 +1224,7 @@ const colorInput4 = document.getElementById('color-choice4');
 
 </td>
 </tr>
-<script>
-function ResizeSubRoundSpan() {
-    // Targets the button directly to scale all text elements inside it together
-    const button = document.getElementById('end-turn-btn');
-    if (button) {
-        adjustTextToFit(button);
-    }
-}
 
-function adjustTextToFit(parentButton) {
-    // 1. Get total available dimensions inside the button minus padding
-    const style = window.getComputedStyle(parentButton);
-    const paddingX = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
-    const paddingY = parseFloat(style.paddingTop) + parseFloat(style.paddingBottom);
-
-    const availableWidth = parentButton.clientWidth - paddingX;
-    const availableHeight = parentButton.clientHeight - paddingY;
-
-    // 2. Select all target inner elements that contain text
-    const elementsToScale = parentButton.querySelectorAll('.SubRoundSpan, #round-display, #player-display');
-
-    // 3. Binary search to find the single perfect font size for all text
-    let minSize = 8;
-    let maxSize = 150; 
-    let perfectSize = minSize;
-
-    while (minSize <= maxSize) {
-        let midSize = Math.floor((minSize + maxSize) / 2);
-        
-        // Temporarily apply test size to all targeted text wrappers
-        elementsToScale.forEach(el => {
-            el.style.fontSize = midSize + 'px';
-            // Scale deeply nested spans as well
-            el.querySelectorAll('span').forEach(child => child.style.fontSize = midSize + 'px');
-        });
-
-        // Check if the total overflowing layout box fits the button bounds
-        // scrollWidth/scrollHeight on the button checks the combined size of all children
-        if (parentButton.scrollWidth <= parentButton.clientWidth && parentButton.scrollHeight <= parentButton.clientHeight) {
-            perfectSize = midSize;  // Fits perfectly, try to go bigger
-            minSize = midSize + 1;
-        } else {
-            maxSize = midSize - 1;  // Content overflowed, must go smaller
-        }
-    }
-
-    // 4. Apply the final calculated optimal size to everything
-    elementsToScale.forEach(el => {
-        el.style.fontSize = perfectSize + 'px';
-        el.querySelectorAll('span').forEach(child => child.style.fontSize = perfectSize + 'px');
-    });
-}
-
-//window.addEventListener('load', ResizeSubRoundSpan);
-//window.addEventListener('resize', ResizeSubRoundSpan);
-
- </script>
 <script>
 // 1. Get the current URL parameters
 roundqueryString = window.location.search;
@@ -2843,3 +2787,60 @@ window.addEventListener("pagehide", function() {
 });
 
 </script>
+<script>
+function ResizeSubRoundSpan() {
+    // Targets the button directly to scale all text elements inside it together
+    const button = document.getElementById('end-turn-btn');
+    if (button) {
+        adjustTextToFit(button);
+    }
+}
+
+function adjustTextToFit(parentButton) {
+    // 1. Get total available dimensions inside the button minus padding
+    const style = window.getComputedStyle(parentButton);
+    const paddingX = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
+    const paddingY = parseFloat(style.paddingTop) + parseFloat(style.paddingBottom);
+
+    const availableWidth = parentButton.clientWidth - paddingX;
+    const availableHeight = parentButton.clientHeight - paddingY;
+
+    // 2. Select all target inner elements that contain text
+    const elementsToScale = parentButton.querySelectorAll('.SubRoundSpan, #round-display, #player-display');
+
+    // 3. Binary search to find the single perfect font size for all text
+    let minSize = 8;
+    let maxSize = 150; 
+    let perfectSize = minSize;
+
+    while (minSize <= maxSize) {
+        let midSize = Math.floor((minSize + maxSize) / 2);
+        
+        // Temporarily apply test size to all targeted text wrappers
+        elementsToScale.forEach(el => {
+            el.style.fontSize = midSize + 'px';
+            // Scale deeply nested spans as well
+            el.querySelectorAll('span').forEach(child => child.style.fontSize = midSize + 'px');
+        });
+
+        // Check if the total overflowing layout box fits the button bounds
+        // scrollWidth/scrollHeight on the button checks the combined size of all children
+        if (parentButton.scrollWidth <= parentButton.clientWidth && parentButton.scrollHeight <= parentButton.clientHeight) {
+            perfectSize = midSize;  // Fits perfectly, try to go bigger
+            minSize = midSize + 1;
+        } else {
+            maxSize = midSize - 1;  // Content overflowed, must go smaller
+        }
+    }
+
+    // 4. Apply the final calculated optimal size to everything
+    elementsToScale.forEach(el => {
+        el.style.fontSize = perfectSize + 'px';
+        el.querySelectorAll('span').forEach(child => child.style.fontSize = perfectSize + 'px');
+    });
+}
+
+//window.addEventListener('load', ResizeSubRoundSpan);
+//window.addEventListener('resize', ResizeSubRoundSpan);
+
+ </script>
