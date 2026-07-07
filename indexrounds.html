@@ -1185,14 +1185,14 @@ const colorInput4 = document.getElementById('color-choice4');
 	</td>
 
 </tr>
-<tr style="width: 100%;padding: 0;">
-<td id="RoundTD" colspan="5" style="width: 100%;padding: 0;">
+<tr style="width: 100%;padding: 0;border: 2px solid;">
+<td id="RoundTD" colspan="5" style="width: 100%;padding: 0;border: 0px solid;">
 <!--<div class="round-container" style="display: inline;">-->
 	<table style="width: 100%;table-layout: fixed;padding: 0;">
 	<tr style="width: 100%;padding: 0;">
 	<!--<td class="SubRoundTD" style="width: 33%;padding: 0;border: 0;"><span style="display: block-inline; text-align: center;">Round: <span  style="display: inline;" id="round-display">1</span></span></td>-->
 	<!-- Remove padding and set display to flex -->
-	<td class="SubRoundTD" style="padding: 0; width: 100%; text-align: center; border: 1px solid;">
+	<td class="SubRoundTD" style="padding: 0; width: 100%; text-align: center; border: 0px solid;">
 <button id="end-turn-btn" style="width: 100%; height: 100%; border: none; padding: 0; display: grid; grid-template-rows: 1fr 1fr; align-items: center; cursor: pointer;">
     <!-- Top Row -->
     <div style="grid-column: span 2; text-align: center;">
@@ -1234,6 +1234,24 @@ const colorInput4 = document.getElementById('color-choice4');
 </tr>
 <script>
 function ResizeSubRoundSpan() {
+    // 1. Get the current URL parameters
+    const roundqueryString = window.location.search; 
+    const urlParams = new URLSearchParams(roundqueryString); 
+    
+    // Define your Players variable, parsing it to an integer
+    const roundplayers = parseInt(urlParams.get('numberofplayers'), 10) || 4;
+
+    
+    // Get the element by its ID and set the colSpan
+    const roundTd = document.getElementById("RoundTD");
+    if (roundTd) {
+        if (!isNaN(roundplayers)) {
+            roundTd.colSpan = roundplayers + 1; 
+        } else {
+            roundTd.colSpan = 5; 
+        }
+    }
+
     // Targets the button directly to scale all text elements inside it together
     const button = document.getElementById('end-turn-btn');
     if (button) {
@@ -1241,11 +1259,12 @@ function ResizeSubRoundSpan() {
     }
 }
 
+
 function adjustTextToFit(parentButton) {
-    // 1. Get total available dimensions inside the button minus padding
+    // 1. Get padding securely, defaulting to 0 if empty
     const style = window.getComputedStyle(parentButton);
-    const paddingX = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
-    const paddingY = parseFloat(style.paddingTop) + parseFloat(style.paddingBottom);
+    const paddingX = (parseFloat(style.paddingLeft) || 0) + (parseFloat(style.paddingRight) || 0);
+    const paddingY = (parseFloat(style.paddingTop) || 0) + (parseFloat(style.paddingBottom) || 0);
 
     const availableWidth = parentButton.clientWidth - paddingX;
     const availableHeight = parentButton.clientHeight - paddingY;
@@ -1253,24 +1272,23 @@ function adjustTextToFit(parentButton) {
     // 2. Select all target inner elements that contain text
     const elementsToScale = parentButton.querySelectorAll('.SubRoundSpan, #round-display, #player-display');
 
-    // 3. Binary search to find the single perfect font size for all text
+    // 3. Binary search to find the perfect font size for all text
     let minSize = 8;
-    let maxSize = 150; 
+    let maxSize = 150;
     let perfectSize = minSize;
 
     while (minSize <= maxSize) {
         let midSize = Math.floor((minSize + maxSize) / 2);
-        
+
         // Temporarily apply test size to all targeted text wrappers
         elementsToScale.forEach(el => {
             el.style.fontSize = midSize + 'px';
-            // Scale deeply nested spans as well
             el.querySelectorAll('span').forEach(child => child.style.fontSize = midSize + 'px');
         });
 
-        // Check if the total overflowing layout box fits the button bounds
-        // scrollWidth/scrollHeight on the button checks the combined size of all children
-        if (parentButton.scrollWidth <= parentButton.clientWidth && parentButton.scrollHeight <= parentButton.clientHeight) {
+        // Check if content fits the available dimensions (Corrected logic)
+        // If the combined scroll width/height is larger than our available button size, it overflows
+        if (parentButton.scrollWidth <= availableWidth && parentButton.scrollHeight <= availableHeight) {
             perfectSize = midSize;  // Fits perfectly, try to go bigger
             minSize = midSize + 1;
         } else {
@@ -1285,11 +1303,13 @@ function adjustTextToFit(parentButton) {
     });
 }
 
+
 //window.addEventListener('load', ResizeSubRoundSpan);
 //window.addEventListener('resize', ResizeSubRoundSpan);
 
  </script>
 <script>
+
 // 1. Get the current URL parameters
 roundqueryString = window.location.search;
 roundurlParams = new URLSearchParams(roundqueryString);
@@ -1301,8 +1321,8 @@ roundplayers = roundurlParams.get('numberofplayers');
 document.getElementById("RoundTD").colSpan = roundplayers + 1;
 
 // Game state variables
-let currentRound = 1;
-let currentPlayer = 1;
+//let currentRound = 1;
+//let currentPlayer = 1;
 
 // 4. Cache DOM Elements
 const roundDisplay = document.getElementById('round-display');
@@ -1363,7 +1383,29 @@ button.addEventListener('pointercancel', onPressCancel); // System interruptions
 /**
  * Advances the player turn and increments the round if all players have gone.
  */
+// 1. Initialize your global game state variables
+let currentRound = 1;
+let currentPlayer = 1;
+
+// Define your DOM elements once
+//const roundDisplay = document.getElementById("round-display");
+//const playerDisplay = document.getElementById("player-display");
+const endTurnButton = document.getElementById("end-turn-button");
+
 function nextTurn() {
+    // 2. Get the current URL parameters
+    const roundqueryString = window.location.search;
+    const roundurlParams = new URLSearchParams(roundqueryString);
+
+    // 3. Define your Players variable
+    // parseInt base should be 10 for standard numbers
+    const roundplayers = parseInt(roundurlParams.get('numberofplayers'), 10) || 4; 
+
+    // Check if the DOM display has a valid number, fallback to 1
+    if (!currentPlayer || isNaN(currentPlayer)) {
+        currentPlayer = parseInt(playerDisplay.textContent.trim(), 10) || 4;
+    }
+
     if (currentPlayer < roundplayers) {
         // Move to the next player
         currentPlayer++;
@@ -1373,20 +1415,26 @@ function nextTurn() {
         currentRound++;
     }
 
-    // Update the UI text
+    // 4. Update the UI text
     if (roundDisplay) roundDisplay.textContent = currentRound;
     if (playerDisplay) playerDisplay.textContent = currentPlayer;
 }
 
 // 5. Event Listener for the End Turn button
-//if (endTurnButton) {
-//    endTurnButton.addEventListener('click', nextTurn);
-//}
+if (endTurnButton) {
+    endTurnButton.addEventListener('click', nextTurn);
+}
 
 /**
  * Resets the game state when player count changes.
  */
- 
+function resetGame() {
+    currentPlayer = 1;
+    currentRound = 1;
+    if (roundDisplay) roundDisplay.textContent = currentRound;
+    if (playerDisplay) playerDisplay.textContent = currentPlayer;
+}
+
 function undoTurn() {
   if (currentPlayer > 1) {
     // Move to the previous player in the current round
