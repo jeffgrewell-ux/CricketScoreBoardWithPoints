@@ -1261,48 +1261,72 @@ function ResizeSubRoundSpan() {
 
 
 function adjustTextToFit(parentButton) {
-    // 1. Get padding securely, defaulting to 0 if empty
     const style = window.getComputedStyle(parentButton);
     const paddingX = (parseFloat(style.paddingLeft) || 0) + (parseFloat(style.paddingRight) || 0);
     const paddingY = (parseFloat(style.paddingTop) || 0) + (parseFloat(style.paddingBottom) || 0);
 
-    const availableWidth = parentButton.clientWidth - paddingX;
-    const availableHeight = parentButton.clientHeight - paddingY;
+    const rect = parentButton.getBoundingClientRect();
+    // Use Math.floor to be safe against sub-pixel fractional rounding errors
+    const availableWidth = Math.floor(rect.width - paddingX) - 1;
+    const availableHeight = Math.floor(rect.height - paddingY) - 1;
 
-    // 2. Select all target inner elements that contain text
     const elementsToScale = parentButton.querySelectorAll('.SubRoundSpan, #round-display, #player-display');
 
-    // 3. Binary search to find the perfect font size for all text
     let minSize = 8;
     let maxSize = 150;
     let perfectSize = minSize;
 
     while (minSize <= maxSize) {
         let midSize = Math.floor((minSize + maxSize) / 2);
+        let isFitting = true;
 
-        // Temporarily apply test size to all targeted text wrappers
+        // Apply sizes and force block properties for proper measurement
         elementsToScale.forEach(el => {
             el.style.fontSize = midSize + 'px';
-            el.querySelectorAll('span').forEach(child => child.style.fontSize = midSize + 'px');
+            el.style.display = 'inline-block'; // Forces Chrome to calculate true width
+            el.style.whiteSpace = 'nowrap';    // Prevents accidental wrapping during check
+            el.querySelectorAll('span').forEach(child => {
+                child.style.fontSize = midSize + 'px';
+            });
         });
 
-        // Check if content fits the available dimensions (Corrected logic)
-        // If the combined scroll width/height is larger than our available button size, it overflows
-        if (parentButton.scrollWidth <= availableWidth && parentButton.scrollHeight <= availableHeight) {
-            perfectSize = midSize;  // Fits perfectly, try to go bigger
+        // 1. Precise width calculation
+        elementsToScale.forEach(el => {
+            const elRect = el.getBoundingClientRect();
+            // Check bounding box OR layout width to catch Chrome quirks
+            if (elRect.width > availableWidth || el.scrollWidth > availableWidth) {
+                isFitting = false;
+            }
+        });
+
+        // 2. Precise vertical check using actual rendered layout bounds
+        let totalHeight = 0;
+        elementsToScale.forEach(el => {
+            totalHeight += el.getBoundingClientRect().height;
+        });
+
+        if (totalHeight > availableHeight) {
+            isFitting = false;
+        }
+
+        if (isFitting) {
+            perfectSize = midSize; 
             minSize = midSize + 1;
         } else {
-            maxSize = midSize - 1;  // Content overflowed, must go smaller
+            maxSize = midSize - 1; 
         }
     }
 
-    // 4. Apply the final calculated optimal size to everything
+    // Final application (Cleans up temporary measurement styles)
     elementsToScale.forEach(el => {
         el.style.fontSize = perfectSize + 'px';
-        el.querySelectorAll('span').forEach(child => child.style.fontSize = perfectSize + 'px');
+        el.style.display = '';    // Reverts to your original CSS styling
+        el.style.whiteSpace = ''; // Reverts to your original CSS styling
+        el.querySelectorAll('span').forEach(child => {
+            child.style.fontSize = perfectSize + 'px';
+        });
     });
 }
-
 
 //window.addEventListener('load', ResizeSubRoundSpan);
 //window.addEventListener('resize', ResizeSubRoundSpan);
@@ -2070,7 +2094,9 @@ const yBullpointsP4 = document.getElementById('yBullpointsP4');
 </script>
 
 
-</tbody></table></div>
+</tbody>
+</table>
+</div>
 <script>
     
 
@@ -2832,17 +2858,33 @@ window.confirm = function(message) {
 </script>
 
 <script>
-window.addEventListener("resize", () => {
-    //console.log("Real dimensions:", window.innerWidth, window.innerHeight);
+window.addEventListener('resize', () => {
+    console.log("Real dimensions:", window.innerWidth, window.innerHeight);
 	adjustCellSize();
-	//console.log(`New size: ${window.innerWidth}x${window.innerHeight}`);
+	console.log(`New size: ${window.innerWidth}x${window.innerHeight}`);
 	adjustFontSize(editor1);
 	adjustFontSize(editor2);
 	adjustFontSize(editor3);
 	adjustFontSize(editor4);
 	adjustCenterFontSize();
 	adjustpointsPFontSize();
+	ResizeSubRoundSpan();
 });
+
+</script>
+
+<!-- because Edge doesn't work with listener -->
+<script>
+window.onresize = (event) => {
+	adjustCellSize();
+	adjustFontSize(editor1);
+	adjustFontSize(editor2);
+	adjustFontSize(editor3);
+	adjustFontSize(editor4);
+	adjustCenterFontSize();
+	adjustpointsPFontSize();
+	ResizeSubRoundSpan();
+};
 
 </script>
 
