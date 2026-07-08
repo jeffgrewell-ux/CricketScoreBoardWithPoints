@@ -641,7 +641,31 @@ font-size: 50%;
 .my-paragraph {
   margin-bottom: 500px; /* Applies a 500px gap without breaking the DOM tree */
 }
+
+#end-turn-btn {
+      margin: 0;
+    padding: 0;
+}
+#end-turn-btn > div {
+      margin: 0;
+    padding: 0;
+}
+
+#end-turn-btn > div > span {
+      margin: 0;
+    padding: 0;
+}
+
+
+
 </style></head>
+<!--
+<script>
+let roundqueryString = window.location.search;
+let roundurlParams = new URLSearchParams(roundqueryString);
+let roundplayers = roundurlParams.get('numberofplayers') || '4';
+</script>
+-->
 
 <script>
 let lastTouchTime = 0;
@@ -859,7 +883,7 @@ let AdTimer = setTimeout(loop, 10000);
 
 
 
-<body onload="adjustCellSize();adjustFontSize(editor1);adjustFontSize(editor2);adjustFontSize(editor3);adjustFontSize(editor4);adjustCenterFontSize();adjustpointsPFontSize();PointsZero();">
+<body onload="adjustCellSize();adjustFontSize(editor1);adjustFontSize(editor2);adjustFontSize(editor3);adjustFontSize(editor4);adjustCenterFontSize();adjustpointsPFontSize();PointsZero();ResizeSubRoundSpan();">
 
 <div id="myTableContainer" class="instapaper_ignore">
 <table id="dynamicTable" align="center">
@@ -881,7 +905,7 @@ let AdTimer = setTimeout(loop, 10000);
 		
 		<span><div class="custom-select-wrapper" style="width: 100%; margin-top: auto;">
 			<label id="for-player-count" for="player-count"># of players:</label>
-			<select autocomplete="off" id="player-count" onchange="alertPlayerCount()">
+			<select autocomplete="off" id="player-count" onchange="alertPlayerCount(), ResizeSubRoundSpan(), resetGame()">
 				<option value="" disabled selected>Choose...</option>
 				<option value="1">1 Player</option>
 				<option value="2">2 Players</option>
@@ -1174,6 +1198,360 @@ const colorInput4 = document.getElementById('color-choice4');
 	</td>
 
 </tr>
+<tr style="width: 100%;padding: 0;border: 2px solid;">
+<td id="RoundTD" colspan="5" style="width: 100%;padding: 0;border: 0px solid;">
+<!--<div class="round-container" style="display: inline;">-->
+	<table style="width: 100%;table-layout: fixed;padding: 0;">
+	<tr style="width: 100%;padding: 0;">
+	<!--<td class="SubRoundTD" style="width: 33%;padding: 0;border: 0;"><span style="display: block-inline; text-align: center;">Round: <span  style="display: inline;" id="round-display">1</span></span></td>-->
+	<!-- Remove padding and set display to flex -->
+	<td class="SubRoundTD" style="padding: 0; width: 100%; text-align: center; border: 0px solid;">
+<button id="end-turn-btn" style="width: 100%; height: 100%; border: none; padding: 0; margin: 0; display: grid; grid-template-rows: 30% 70%; grid-template-columns: 1fr 1fr; cursor: pointer; box-sizing: border-box; gap: 0;">
+    
+    <!-- Top Row -->
+    <div style="grid-column: span 2; display: flex; justify-content: center; align-items: center; border: 0px solid darkgrey; margin: 0; padding: 0;">
+        <span class="SubRoundSpanTop" style="display: inline-block; margin: 0;">Press to End Turn</span>
+    </div> 
+    
+    <!-- Bottom Row: Left Column -->
+    <div style="display: flex; justify-content: center; align-items: center; border: 0px solid darkgrey; margin: 0; padding: 0;">
+        <span class="SubRoundSpan" style="display: inline-block; margin: 0;">
+            <u style="text-decoration: underline; margin: 0;">Round:</u> <span id="round-display" style="margin: 0;"><strong>1</strong></span>
+        </span> 
+    </div> 
+    
+    <!-- Bottom Row: Right Column -->
+    <div style="display: flex; justify-content: center; align-items: center; border: 0px solid darkgrey; margin: 0; padding: 0;">
+        <span class="SubRoundSpan" style="display: inline-block; margin: 0;">
+            <u style="text-decoration: underline; margin: 0;">Player:</u> <span id="player-display" style="margin: 0;"><strong>1</strong></span>
+        </span> 
+    </div>
+</button>
+
+
+
+</td>
+
+	<!--<td class="SubRoundTD" style="width: 33%;padding: 0;border: 0;"><span style="display: block-inline; text-align: center;">Player: <span  style="display: inline;" id="player-display">1</span></span></td>-->
+	</tr>
+	</table>
+    
+ <!--   <label for="player-count">Number of Players:</label>
+    <select id="player-count" onchange="resetGame()">
+        <option value="2">2 Players</option>
+        <option value="3">3 Players</option>
+        <option value="4">4 Players</option>
+    </select>
+-->
+ 
+<!--</div>-->
+
+</td>
+</tr>
+<script>
+function ResizeSubRoundSpan() {
+    // 1. Get the current URL parameters
+    const roundqueryString = window.location.search; 
+    const urlParams = new URLSearchParams(roundqueryString); 
+    
+    // Define your Players variable, parsing it to an integer
+    const roundplayers = parseInt(urlParams.get('numberofplayers'), 10) || 4;
+
+    
+    // Get the element by its ID and set the colSpan
+    const roundTd = document.getElementById("RoundTD");
+    if (roundTd) {
+        if (!isNaN(roundplayers)) {
+            roundTd.colSpan = roundplayers + 1; 
+        } else {
+            roundTd.colSpan = 5; 
+        }
+    }
+
+    // Targets the button directly to scale all text elements inside it together
+    const button = document.getElementById('end-turn-btn');
+    if (button) {
+        adjustTextToFit(button);
+    }
+}
+
+function adjustTextToFit(parentButton) {
+  // 1. Get the current URL parameters
+  const roundqueryString = window.location.search;
+  const urlParams = new URLSearchParams(roundqueryString);
+
+  // Define your Players variable, parsing it to an integer
+  const roundplayers = parseInt(urlParams.get('numberofplayers'), 10) || 4;
+  const style = window.getComputedStyle(parentButton);
+
+  // Calculate available inner width/height exactly
+  const paddingX = (parseFloat(style.paddingLeft) || 0) + (parseFloat(style.paddingRight) || 0);
+  const paddingY = (parseFloat(style.paddingTop) || 0) + (parseFloat(style.paddingBottom) || 0);
+  const rect = parentButton.getBoundingClientRect();
+  const availableWidth = Math.floor(rect.width - paddingX) - 1;
+  const availableHeight = Math.floor(rect.height - paddingY) - 1;
+
+  // Retrieve the CSS Grid row templates
+  const gridTemplateRows = style.getPropertyValue('grid-template-rows');
+  const rowHeights = gridTemplateRows ? gridTemplateRows.split(' ').map(h => parseFloat(h) || 0) : [];
+
+  const mainElements = parentButton.querySelectorAll('#round-display, #player-display');
+  const labelElement = parentButton.querySelectorAll('.SubRoundSpan');
+  const topElement = parentButton.querySelectorAll('.SubRoundSpanTop');
+
+  // Combine all elements for the height validation loop
+  const allElements = parentButton.querySelectorAll('.SubRoundSpanTop, .SubRoundSpan, #round-display, #player-display');
+
+  let minSize = 8;
+  let maxSize = 200;
+  let perfectSize = minSize;
+
+  while (minSize <= maxSize) {
+    let midSize = Math.floor((minSize + maxSize) / 2);
+    let isFitting = true;
+
+    // Width check helper
+    const isTooWide = (el, size) => {
+      el.style.fontSize = size + 'px';
+      el.style.display = 'inline-block';
+      el.style.whiteSpace = 'nowrap';
+      // Use scrollWidth to detect invisible text overflow
+      return el.getBoundingClientRect().width > availableWidth || el.scrollWidth > availableWidth;
+    };
+
+    // Validate width for all elements
+    for (let i = 0; i < mainElements.length; i++) {
+      if (isTooWide(mainElements[i], midSize)) { isFitting = false; break; }
+    }
+    if (isFitting) {
+      for (let i = 0; i < labelElement.length; i++) {
+        if (isTooWide(labelElement[i], midSize)) { isFitting = false; break; }
+      }
+    }
+    if (isFitting) {
+      for (let i = 0; i < topElement.length; i++) {
+        if (isTooWide(topElement[i], midSize)) { isFitting = false; break; }
+      }
+    }
+
+    // 2. Vertical height check
+    if (isFitting) {
+      let totalHeight = 0;
+
+      for (let i = 0; i < allElements.length; i++) {
+        const el = allElements[i];
+        // Use a temporary absolute position to measure naturally without disrupting layout
+        const originalPosition = el.style.position;
+        const originalDisplay = el.style.display;
+        el.style.position = 'absolute';
+        el.style.display = 'block';
+
+        const elHeight = el.getBoundingClientRect().height;
+        totalHeight += elHeight;
+
+        el.style.position = originalPosition;
+        el.style.display = originalDisplay;
+
+        if (rowHeights[i] && elHeight > rowHeights[i]) {
+          isFitting = false;
+          break;
+        }
+      }
+      if (totalHeight > availableHeight) { isFitting = false; }
+    }
+
+    // Adjust binary search bounds
+    if (isFitting) {
+      perfectSize = midSize;
+      minSize = midSize + 1; // Try to find a larger fit
+    } else {
+      maxSize = midSize - 1; // Text is too big, shrink bounds
+    }
+  }
+
+  // Apply the sizes based on player count scaling rules
+  // (Using a multiplier array is cleaner than multiple if statements)
+  const multipliers = [
+    { players: 1, main: 1, label: 1, top: 1 },
+    { players: 2, main: 2, label: 1.5, top: 1.5 },
+    { players: 3, main: 3, label: 2, top: 2 },
+    { players: 4, main: 3.2, label: 2.2, top: 2.1 }
+  ];
+
+  const scale = multipliers.find(m => m.players === roundplayers) || multipliers[3];
+
+  mainElements.forEach(el => el.style.fontSize = (perfectSize * scale.main) + 'px');
+  labelElement.forEach(el => el.style.fontSize = (perfectSize * scale.label) + 'px');
+  topElement.forEach(el => el.style.fontSize = (perfectSize * scale.top) + 'px');
+}
+
+
+//window.addEventListener('load', ResizeSubRoundSpan);
+//window.addEventListener('resize', ResizeSubRoundSpan);
+
+ </script>
+<script>
+
+// 1. Get the current URL parameters
+roundqueryString = window.location.search;
+roundurlParams = new URLSearchParams(roundqueryString);
+
+// Define your Players variable
+roundplayers = parseInt(roundurlParams.get('numberofplayers'), 10) || 4;
+
+// Get the element by its ID and set the colSpan
+document.getElementById("RoundTD").colSpan = roundplayers + 1;
+
+// Game state variables
+//let currentRound = 1;
+//let currentPlayer = 1;
+
+// 4. Cache DOM Elements
+const roundDisplay = document.getElementById('round-display');
+const playerDisplay = document.getElementById('player-display');
+const button = document.querySelector('#end-turn-btn');
+
+let pressTimer = null;
+let isLongPress = false; 
+const LONG_PRESS_DURATION = 1500; 
+
+// Start timer on press
+function onPressStart(e) {
+  if (e.pointerType === 'touch') button.releasePointerCapture(e.pointerId);
+  
+  isLongPress = false; 
+  
+  pressTimer = setTimeout(async () => {
+    isLongPress = true; 
+    const userConfirmed = await confirm("Do you want to proceed with undo?");
+    if (userConfirmed) {
+      undoTurn();
+    }
+    pressTimer = null;
+  }, LONG_PRESS_DURATION);
+}
+
+// Triggered ONLY on successful click release
+function onPressEnd() {
+  if (pressTimer) {
+    clearTimeout(pressTimer);
+    pressTimer = null;
+  }
+  
+  // Run nextTurn ONLY if the user released inside the button AND it wasn't a long press
+  if (!isLongPress) {
+    nextTurn();
+  }
+  
+  isLongPress = false; 
+}
+
+// Triggered when leaving the button or when the gesture is interrupted
+function onPressCancel() {
+  if (pressTimer) {
+    clearTimeout(pressTimer);
+    pressTimer = null;
+  }
+  // We explicitly do NOT run nextTurn() here
+}
+
+// Attach Pointer Events
+button.addEventListener('pointerdown', onPressStart);
+button.addEventListener('pointerup', onPressEnd); // Normal release triggers click action
+button.addEventListener('pointerleave', onPressCancel); // Drifting away safely cancels the action
+button.addEventListener('pointercancel', onPressCancel); // System interruptions safely cancel the action
+
+
+/**
+ * Advances the player turn and increments the round if all players have gone.
+ */
+// 1. Initialize your global game state variables
+let currentRound = 1;
+let currentPlayer = 1;
+
+// Define your DOM elements once
+//const roundDisplay = document.getElementById("round-display");
+//const playerDisplay = document.getElementById("player-display");
+const endTurnButton = document.getElementById("end-turn-button");
+
+function nextTurn() {
+    // 2. Get the current URL parameters
+    const roundqueryString = window.location.search;
+    const roundurlParams = new URLSearchParams(roundqueryString);
+
+    // 3. Define your Players variable
+    // parseInt base should be 10 for standard numbers
+    const roundplayers = parseInt(roundurlParams.get('numberofplayers'), 10) || 4; 
+
+    // Check if the DOM display has a valid number, fallback to 1
+    if (!currentPlayer || isNaN(currentPlayer)) {
+        currentPlayer = parseInt(playerDisplay.textContent.trim(), 10) || 4;
+    }
+
+    if (currentPlayer < roundplayers) {
+        // Move to the next player
+        currentPlayer++;
+    } else {
+        // All players finished their turn: reset to player 1 and advance round
+        currentPlayer = 1;
+        currentRound++;
+    }
+
+    // 4. Update the UI text
+    if (roundDisplay) roundDisplay.textContent = currentRound;
+    if (playerDisplay) playerDisplay.textContent = currentPlayer;
+}
+
+// 5. Event Listener for the End Turn button
+if (endTurnButton) {
+    endTurnButton.addEventListener('click', nextTurn);
+}
+
+/**
+ * Resets the game state when player count changes.
+ */
+function resetGame() {
+    currentPlayer = 1;
+    currentRound = 1;
+    if (roundDisplay) roundDisplay.textContent = currentRound;
+    if (playerDisplay) playerDisplay.textContent = currentPlayer;
+}
+
+function undoTurn() {
+  if (currentPlayer > 1) {
+    // Move to the previous player in the current round
+    currentPlayer--;
+  } else {
+    // If we are at player 1, go back a round and set to the last player
+			if (currentRound > 1) {
+			currentRound--;
+			currentPlayer = roundplayers; 
+				// Put your existing undo game-state logic here
+			// e.g., reverting active player, restoring scores, etc.
+		  } else {
+			// Optional: Provide feedback that they cannot undo further
+			alert("Cannot undo! You are already on Round 1.");
+		  }
+  }
+
+  // Update the UI text
+  if (roundDisplay) {
+    roundDisplay.textContent = currentRound;
+  }
+  
+  // Make sure this targets the player display element
+  if (playerDisplay) {
+    playerDisplay.textContent = currentPlayer;
+  }
+}
+
+function resetGame() {
+    currentRound = 1;
+    currentPlayer = 1;
+    roundDisplay.textContent = currentRound;
+    playerDisplay.textContent = currentPlayer;
+}
+</script>
 
 <script>
 // Select all elements on the page with the class attribute equal to x
@@ -1532,7 +1910,7 @@ const allCells = row.querySelectorAll('td');
 newlength = (allCells.length - 1);
 //console.log(newlength);
 // 4. Compare lengths
-let NumOfPlayers = urlParams.get('numberofplayers');
+let NumOfPlayers = parseInt(urlParams.get('numberofplayers'), 10) || 4;
 console.log(`NumOfPlayers: ${NumOfPlayers}`);
         // SAFE MULTIPLAYER CHECK: Converts string input cleanly to numerical data
         var playerCount = Number(NumOfPlayers);
@@ -1774,7 +2152,9 @@ const yBullpointsP4 = document.getElementById('yBullpointsP4');
 </script>
 
 
-</tbody></table></div>
+</tbody>
+</table>
+</div>
 <script>
     
 
@@ -1797,7 +2177,7 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
 // 2. Get the specific value of 'numberofplayers'
-let players = urlParams.get('numberofplayers');
+let players = parseInt(urlParams.get('numberofplayers'), 10) || 4;
 
             // Trigger the browser's JavaScript alert
             //alert("You selected " + players + " Players");
@@ -1891,7 +2271,7 @@ This text will not appear in iOS Safari Reader Mode.
 </script>-->
 
 <!-- This is the main content Safari will display -->
-<main>
+<!--<main>-->
   <article>
     <!-- Use a standard div for centering or margin management instead of center tags -->
 
@@ -1904,62 +2284,68 @@ This text will not appear in iOS Safari Reader Mode.
 
   <h3>The In-Play Numbers</h3>
   <p>In standard Cricket, only a subset of the dartboard is used. Targets hit outside of these numbers do not count toward your score or your status. The valid target zones are:</p>
-  <ul>
-    <li><strong>20, 19, 18, 17, 16, 15</strong></li>
-    <li><strong>The Bullseye</strong> (Outer and Inner Bull)</li>
+  <ul role="list">
+    <li role="listitem"><p><strong>20, 19, 18, 17, 16, 15</strong></p></li>
+    <li role="listitem"><p><strong>The Bullseye</strong> (Outer and Inner Bull)</p></li>
   </ul>
 
   <h3>How to "Close" a Number</h3>
   <p>To close a number, a player must hit that specific target a total of <strong>three times</strong>. Hits are cumulative across turns. The segments on the dartboard alter the count as follows:</p>
-  <ul>
-    <li><strong>Single Segment:</strong> Counts as 1 hit.</li>
-    <li><strong>Double Ring (Outer Ring):</strong> Counts as 2 hits.</li>
-    <li><strong>Triple Ring (Inner Ring):</strong> Counts as 3 hits (instantly closes a single number).</li>
-    <li><strong>Outer Bullseye:</strong> Counts as 1 hit toward the bullseye.</li>
-    <li><strong>Inner Bullseye (Double Bull):</strong> Counts as 2 hits toward the bullseye.</li>
+  <ul role="list">
+    <li role="listitem"><p><strong>Single Segment:</strong> Counts as 1 hit.</p></li>
+    <li role="listitem"><p><strong>Double Ring (Outer Ring):</strong> Counts as 2 hits.</p></li>
+    <li role="listitem"><p><strong>Triple Ring (Inner Ring):</strong> Counts as 3 hits (instantly closes a single number).</p></li>
+    <li role="listitem"><p><strong>Outer Bullseye:</strong> Counts as 1 hit toward the bullseye.</p></li>
+    <li role="listitem"><p><strong>Inner Bullseye (Double Bull):</strong> Counts as 2 hits toward the bullseye.</p></li>
   </ul>
 
   <h3>Scoring Points in Cricket Darts</h3>
   <p>Once you have hit a number three times, that number is considered <strong>open</strong> for you to score points on, provided your opponent has not closed it yet.</p>
-  <ul>
-    <li>If you hit an open number, you gain points equal to the value of that segment (e.g., hitting a single 20 awards 20 points; hitting a triple 20 awards 60 points).</li>
-    <li>Once <strong>both</strong> players have hit a specific number three times, that number becomes <strong>closed</strong>. No further points can be scored on it by either player for the rest of the game.</li>
+  <ul role="list">
+    <li role="listitem"><p>If you hit an open number, you gain points equal to the value of that segment (e.g., hitting a single 20 awards 20 points; hitting a triple 20 awards 60 points).</p></li>
+    <li role="listitem"><p>Once <strong>both</strong> players have hit a specific number three times, that number becomes <strong>closed</strong>. No further points can be scored on it by either player for the rest of the game.</p></li>
   </ul>
 
   <h3>Winning the Game</h3>
   <p>A game of Cricket darts ends immediately when a player satisfies two conditions simultaneously:</p>
-  <ol>
-    <li>They have closed all numbers from 15 through 20, plus the Bullseye.</li>
-    <li>Their total score is <strong>equal to or higher</strong> than the opponent's score.</li>
-  </ol>
+  <ul role="list">
+    <li role="listitem"><p>They have closed all numbers from 15 through 20, plus the Bullseye.</p></li>
+    <li role="listitem"><p>Their total score is <strong>equal to or higher</strong> than the opponent's score.</p></li>
+  </ul>
   <p>If you close all your numbers but are behind on points, you must continue throwing at your open numbers to catch up or surpass your opponent's score before they finish closing their targets.</p>
 
   <h3>Top Cricket Darts Strategies</h3>
   <p>To move from a beginner to an advanced player, keep these tactical tips in mind while playing:</p>
-  <ul>
-    <li><strong>Always Chase Points First:</strong> If your opponent is ahead on points, do not keep trying to close new numbers. Focus on your open numbers to erase their point lead.</li>
-    <li><strong>Secure the 20s:</strong> The 20 segment offers the highest scoring potential. Closing and protecting the 20s early gives you a major point engine.</li>
-    <li><strong>Do Not Ignore the Bullseye:</strong> The bullseye requires three total marks (with double bulls counting as two). It is often the hardest target to close at the end of the game, so chip away at it if your scoring numbers are safe.</li>
+  <ul role="list">
+    <li role="listitem"><p><strong>Always Chase Points First:</strong> If your opponent is ahead on points, do not keep trying to close new numbers. Focus on your open numbers to erase their point lead.</p></li>
+    <li role="listitem"><p><strong>Secure the 20s:</strong> The 20 segment offers the highest scoring potential. Closing and protecting the 20s early gives you a major point engine.</p></li>
+    <li role="listitem"><p><strong>Do Not Ignore the Bullseye:</strong> The bullseye requires three total marks (with double bulls counting as two). It is often the hardest target to close at the end of the game, so chip away at it if your scoring numbers are safe.</p></li>
   </ul>
-<h1>Welcome to CricketDarts.net</a></h1>
-        <p>This is a super sleek and intuitive online scoreboard that makes it easy for up to 4 players to track their cricket darts matches in real-time. It’s a great way for players to focus on the game rather than the math!</p>
-    <h3>How to Use the Site</h3>
-    <ul>
-        <li><strong>Large iPads work best.</strong> Remember to set your screen not to sleep.</li>
-        <li><strong>Select number of Players.</strong></li>
-        <li><strong>Pick a Color</strong> for each column.</li>
-        <li><strong>Enter Name</strong> for each column. For Teams, enter two names per column.</li>
-        <li><strong>Helpful note:</strong> Tap to the right of existing text, so backspace can be used to erase existing text. Then type name or names you desire. Use Enter/Return to enter second name.</li>
-        <li><strong>Tap cell</strong> to add one mark at a time.</li>
-        <li><strong>3 marks opens</strong> a target for a player. Once open, a player can score until the opponent closes the target with 3 marks.</li>
-        <li><strong>Hold cell</strong> to undo a mark. Remain still while holding.</li>
-        <li><strong>First Player/Team</strong> to 3-mark each number and have a high score wins.</li>
-        <li><strong>Refresh Page</strong> to Start Over.</li>
-    </ul>
-<p>Thank you for visiting <a href="https://CricketDarts.net">CricketDarts.net</a>.</p>
 
-  </article>
-</main>
+  <h1>Welcome to CricketDarts.net</h1>
+  <p>This is a super sleek and intuitive online scoreboard that makes it easy for up to 4 players to track their cricket darts matches in real-time. It’s a great way for players to focus on the game rather than the math!</p>
+  
+  <h3>How to Use the Site</h3>
+  <p>Large iPads work best.</p>
+  <p>Remember to set your screen not to sleep.</p>
+  <ul role="list">
+    <li role="listitem"><p><strong>Select number of Players.</strong></p></li>
+    <li role="listitem"><p><strong>Pick a Color</strong> for each column.</p></li>
+    <li role="listitem"><p><strong>Enter Name</strong> for each column. For Teams, enter two names per column.</p></li>
+    <li role="listitem"><p><strong>Helpful note:</strong> Tap to the right of existing text, so backspace can be used to erase existing text. Then type name or names you desire. Use Enter/Return to enter second name.</p></li>
+    <li role="listitem"><p><strong>Tap cell</strong> to add one mark at a time.</p></li>
+    <li role="listitem"><p><strong>3 marks opens</strong> a target for a player. Once open, a player can score until the opponent closes the target with 3 marks.</p></li>
+    <li role="listitem"><p><strong>Hold cell</strong> to undo a mark. Remain still while holding.</p></li>
+	<li role="listitem"><p><strong>Tap button labeled "Press to End Turn"</strong> at the end of each turn to increment player/round</p></li>
+	<li role="listitem"><p><strong>Hold the "Press to End Turn" button</strong> to undo incremented player/round. Remain still while holding.</p></li>
+    <li role="listitem"><p><strong>First Player/Team</strong> to 3-mark each number and have a high score wins.</p></li>
+    <li role="listitem"><p><strong>Refresh Page</strong> to Start Over.</p></li>
+  </ul>
+
+  <p>Thank you for visiting CricketDarts.net</p>
+</article>
+
+<!--</main>-->
 
 <script>
 // Target the element
@@ -2530,17 +2916,33 @@ window.confirm = function(message) {
 </script>
 
 <script>
-window.addEventListener("resize", () => {
-    //console.log("Real dimensions:", window.innerWidth, window.innerHeight);
+window.addEventListener('resize', () => {
+    console.log("Real dimensions:", window.innerWidth, window.innerHeight);
 	adjustCellSize();
-	//console.log(`New size: ${window.innerWidth}x${window.innerHeight}`);
+	console.log(`New size: ${window.innerWidth}x${window.innerHeight}`);
 	adjustFontSize(editor1);
 	adjustFontSize(editor2);
 	adjustFontSize(editor3);
 	adjustFontSize(editor4);
 	adjustCenterFontSize();
 	adjustpointsPFontSize();
+	ResizeSubRoundSpan();
 });
+
+</script>
+
+<!-- because Edge doesn't work with listener -->
+<script>
+window.onresize = (event) => {
+	adjustCellSize();
+	adjustFontSize(editor1);
+	adjustFontSize(editor2);
+	adjustFontSize(editor3);
+	adjustFontSize(editor4);
+	adjustCenterFontSize();
+	adjustpointsPFontSize();
+	ResizeSubRoundSpan();
+};
 
 </script>
 
@@ -2563,6 +2965,7 @@ setTimeout(() => {
 		adjustFontSize(editor4);
 		adjustCenterFontSize();
 		adjustpointsPFontSize();
+		ResizeSubRoundSpan();
     } else {
         console.log("Window is maximized.");
     }
@@ -2583,6 +2986,7 @@ window.addEventListener('load', (event) => {
 		adjustCenterFontSize();
 		adjustpointsPFontSize();
 		PointsZero();
+		ResizeSubRoundSpan();
 });
 </script>
 
