@@ -642,6 +642,19 @@ font-size: 50%;
   margin-bottom: 500px; /* Applies a 500px gap without breaking the DOM tree */
 }
 
+#end-turn-btn {
+      margin: 0;
+    padding: 0;
+}
+#end-turn-btn > div {
+      margin: 0;
+    padding: 0;
+}
+
+#end-turn-btn > div > span {
+      margin: 0;
+    padding: 0;
+}
 
 
 
@@ -870,7 +883,7 @@ let AdTimer = setTimeout(loop, 10000);
 
 
 
-<body onload="adjustCellSize();adjustFontSize(editor1);adjustFontSize(editor2);adjustFontSize(editor3);adjustFontSize(editor4);adjustCenterFontSize();adjustpointsPFontSize();PointsZero();ResizeSubRoundSpan()">
+<body onload="adjustCellSize();adjustFontSize(editor1);adjustFontSize(editor2);adjustFontSize(editor3);adjustFontSize(editor4);adjustCenterFontSize();adjustpointsPFontSize();PointsZero();ResizeSubRoundSpan();">
 
 <div id="myTableContainer" class="instapaper_ignore">
 <table id="dynamicTable" align="center">
@@ -1193,26 +1206,29 @@ const colorInput4 = document.getElementById('color-choice4');
 	<!--<td class="SubRoundTD" style="width: 33%;padding: 0;border: 0;"><span style="display: block-inline; text-align: center;">Round: <span  style="display: inline;" id="round-display">1</span></span></td>-->
 	<!-- Remove padding and set display to flex -->
 	<td class="SubRoundTD" style="padding: 0; width: 100%; text-align: center; border: 0px solid;">
-<button id="end-turn-btn" style="width: 100%; height: 100%; border: none; padding: 0; display: grid; grid-template-rows: 1fr 1fr; align-items: center; cursor: pointer;">
+<button id="end-turn-btn" style="width: 100%; height: 100%; border: none; padding: 0; margin: 0; display: grid; grid-template-rows: 30% 70%; grid-template-columns: 1fr 1fr; cursor: pointer; box-sizing: border-box; gap: 0;">
+    
     <!-- Top Row -->
-    <div style="grid-column: span 2; text-align: center;">
-        <span class="SubRoundSpan" style="display: inline-block;">Press to End Turn</span>
-    </div>
+    <div style="grid-column: span 2; display: flex; justify-content: center; align-items: center; border: 0px solid darkgrey; margin: 0; padding: 0;">
+        <span class="SubRoundSpanTop" style="display: inline-block; margin: 0;">Press to End Turn</span>
+    </div> 
     
     <!-- Bottom Row: Left Column -->
-    <div style="text-align: center; border: 1px solid darkgrey;">
-        <span class="SubRoundSpan" style="display: inline-block;">
-            Round: <span id="round-display">1</span>
-        </span>
-    </div>
+    <div style="display: flex; justify-content: center; align-items: center; border: 0px solid darkgrey; margin: 0; padding: 0;">
+        <span class="SubRoundSpan" style="display: inline-block; margin: 0;">
+            <u style="text-decoration: underline; margin: 0;">Round:</u> <span id="round-display" style="margin: 0;"><strong>1</strong></span>
+        </span> 
+    </div> 
     
     <!-- Bottom Row: Right Column -->
-    <div style="text-align: center; border: 1px solid darkgrey;">
-        <span class="SubRoundSpan" style="display: inline-block;">
-            Player: <span id="player-display">1</span>
-        </span>
+    <div style="display: flex; justify-content: center; align-items: center; border: 0px solid darkgrey; margin: 0; padding: 0;">
+        <span class="SubRoundSpan" style="display: inline-block; margin: 0;">
+            <u style="text-decoration: underline; margin: 0;">Player:</u> <span id="player-display" style="margin: 0;"><strong>1</strong></span>
+        </span> 
     </div>
 </button>
+
+
 
 </td>
 
@@ -1259,73 +1275,84 @@ function ResizeSubRoundSpan() {
     }
 }
 
-
 function adjustTextToFit(parentButton) {
-    const style = window.getComputedStyle(parentButton);
-    const paddingX = (parseFloat(style.paddingLeft) || 0) + (parseFloat(style.paddingRight) || 0);
-    const paddingY = (parseFloat(style.paddingTop) || 0) + (parseFloat(style.paddingBottom) || 0);
-
-    const rect = parentButton.getBoundingClientRect();
-    // Use Math.floor to be safe against sub-pixel fractional rounding errors
-    const availableWidth = Math.floor(rect.width - paddingX) - 1;
-    const availableHeight = Math.floor(rect.height - paddingY) - 1;
-
-    const elementsToScale = parentButton.querySelectorAll('.SubRoundSpan, #round-display, #player-display');
-
-    let minSize = 8;
-    let maxSize = 150;
-    let perfectSize = minSize;
-
-    while (minSize <= maxSize) {
-        let midSize = Math.floor((minSize + maxSize) / 2);
-        let isFitting = true;
-
-        // Apply sizes and force block properties for proper measurement
-        elementsToScale.forEach(el => {
-            el.style.fontSize = midSize + 'px';
-            el.style.display = 'inline-block'; // Forces Chrome to calculate true width
-            el.style.whiteSpace = 'nowrap';    // Prevents accidental wrapping during check
-            el.querySelectorAll('span').forEach(child => {
-                child.style.fontSize = midSize + 'px';
-            });
-        });
-
-        // 1. Precise width calculation
-        elementsToScale.forEach(el => {
-            const elRect = el.getBoundingClientRect();
-            // Check bounding box OR layout width to catch Chrome quirks
-            if (elRect.width > availableWidth || el.scrollWidth > availableWidth) {
-                isFitting = false;
-            }
-        });
-
-        // 2. Precise vertical check using actual rendered layout bounds
-        let totalHeight = 0;
-        elementsToScale.forEach(el => {
-            totalHeight += el.getBoundingClientRect().height;
-        });
-
-        if (totalHeight > availableHeight) {
-            isFitting = false;
-        }
-
-        if (isFitting) {
-            perfectSize = midSize; 
-            minSize = midSize + 1;
-        } else {
-            maxSize = midSize - 1; 
-        }
+  const style = window.getComputedStyle(parentButton);
+  
+  // Calculate available inner width/height
+  const paddingX = (parseFloat(style.paddingLeft) || 0) + (parseFloat(style.paddingRight) || 0);
+  const paddingY = (parseFloat(style.paddingTop) || 0) + (parseFloat(style.paddingBottom) || 0);
+  
+  const rect = parentButton.getBoundingClientRect();
+  const availableWidth = Math.floor(rect.width - paddingX) - 1;
+  const availableHeight = Math.floor(rect.height - paddingY) - 1;
+  
+  // Retrieve the CSS Grid row templates
+  const gridTemplateRows = style.getPropertyValue('grid-template-rows');
+  const rowHeights = gridTemplateRows ? gridTemplateRows.split(' ').map(h => parseFloat(h) || 0) : [];
+  
+  const mainElements = parentButton.querySelectorAll('#round-display, #player-display');
+  const labelElement = parentButton.querySelectorAll('.SubRoundSpan');
+  const topElement = parentButton.querySelectorAll('.SubRoundSpanTop');
+  
+  let minSize = 8;
+  let maxSize = 200;
+  let perfectSize = minSize;
+  
+  while (minSize <= maxSize) {
+    let midSize = Math.floor((minSize + maxSize) / 2);
+    let isFitting = true;
+    
+    // Measurement check
+    const testSizes = {
+      main: midSize * 1.2,
+      label: midSize,
+      top: midSize
+    };
+    
+    // 1. Width check
+    const checkWidth = (el, size) => {
+      el.style.fontSize = size + 'px';
+      el.style.display = 'inline-block';
+      el.style.whiteSpace = 'nowrap';
+      // Use scrollWidth for accurate rendering detection
+      return el.getBoundingClientRect().width > availableWidth || el.scrollWidth > availableWidth;
+    };
+    
+    for (const el of mainElements) { if (checkWidth(el, testSizes.main)) isFitting = false; }
+    for (const el of labelElement) { if (checkWidth(el, testSizes.label)) isFitting = false; }
+    for (const el of topElement) { if (checkWidth(el, testSizes.top)) isFitting = false; }
+    
+    // 2. Vertical height check
+    let totalHeight = 0;
+    const allElements = parentButton.querySelectorAll('.SubRoundSpanTop, .SubRoundSpan, #round-display, #player-display');
+    
+    // To properly measure the element heights, we read them dynamically and reset their state
+    for (let index = 0; index < allElements.length; index++) {
+      const el = allElements[index];
+      const elHeight = el.getBoundingClientRect().height;
+      totalHeight += elHeight;
+      
+      if (rowHeights[index] && elHeight > rowHeights[index]) {
+        isFitting = false;
+      }
     }
-
-    // Final application (Cleans up temporary measurement styles)
-    elementsToScale.forEach(el => {
-        el.style.fontSize = perfectSize + 'px';
-        el.style.display = '';    // Reverts to your original CSS styling
-        el.style.whiteSpace = ''; // Reverts to your original CSS styling
-        el.querySelectorAll('span').forEach(child => {
-            child.style.fontSize = perfectSize + 'px';
-        });
-    });
+    
+    if (totalHeight > availableHeight) {
+      isFitting = false;
+    }
+    
+    if (isFitting) {
+      perfectSize = midSize;
+      minSize = midSize + 1; // Try to find a larger fit
+    } else {
+      maxSize = midSize - 1; // Text is too big, try smaller
+    }
+  }
+  
+  // Apply the final calculated sizes
+  mainElements.forEach(el => { el.style.fontSize = (perfectSize * 2.5) + 'px'; });
+  labelElement.forEach(el => { el.style.fontSize = (perfectSize * 1) + 'px'; });
+  topElement.forEach(el => { el.style.fontSize = (perfectSize * 1) + 'px'; });
 }
 
 //window.addEventListener('load', ResizeSubRoundSpan);
@@ -2156,26 +2183,26 @@ let players = urlParams.get('numberofplayers');
             //alert("You selected: " + selectedText);
 			
 						if (selectedText == "4 Players") {
-						window.open("./indexrounds.html?numberofplayers=4", "_self");
+						window.open("./index.html?numberofplayers=4", "_self");
 				
 			};
 			
 			if (selectedText == "3 Players") {
 			//removeColumn('dynamicTable', 4);
-			window.open("./indexrounds.html?numberofplayers=3", "_self");
+			window.open("./index.html?numberofplayers=3", "_self");
 			};
 			
 			if (selectedText == "2 Players") {
 			//removeColumn('dynamicTable', 4);
 			//removeColumn('dynamicTable', 3);
-			window.open("./indexrounds.html?numberofplayers=2", "_self");
+			window.open("./index.html?numberofplayers=2", "_self");
 			};
 			
 			if (selectedText == "1 Player") {
 			//removeColumn('dynamicTable', 4);
 			//removeColumn('dynamicTable', 3);
 			//removeColumn('dynamicTable', 1);
-			window.open("./indexrounds.html?numberofplayers=1", "_self");
+			window.open("./index.html?numberofplayers=1", "_self");
 			};
         };
   
