@@ -47,12 +47,14 @@ html{
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+
 }
 
 html, body {
     margin: 0;
     padding: 0;
     overflow: hidden; /* Prevents scrollbars from breaking viewport math */
+	  height: 100%; /* Allows natural system layout growth */
 }
 
 
@@ -135,7 +137,9 @@ td pre {
     table-layout: fixed !important;
     border-collapse: collapse !important;
     width: auto !important;
-    height: auto !important;
+    /*height: auto !important;*/
+	  height: 100vh;           /* Fallback for older browsers */
+  height: 100svh;          /* Prevents overflow from mobile browser bars */
 }
 
 #dynamicTable tr {
@@ -1275,6 +1279,7 @@ function ResizeSubRoundSpan() {
     }
 }
 
+// Adjust text just for round/player counter.
 function adjustTextToFit(parentButton) {
   // 1. Get the current URL parameters
   const roundqueryString = window.location.search;
