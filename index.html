@@ -667,6 +667,7 @@ font-size: 50%;
 #end-turn-btn {
       margin: 0;
     padding: 0;
+	container-type: inline-size; /* Establish the button as a container for its children. Needed to have child's font size scale.*/
 }
 #end-turn-btn > div {
       margin: 0;
@@ -676,6 +677,7 @@ font-size: 50%;
 #end-turn-btn > div > span {
       margin: 0;
     padding: 0;
+	  font-size: 5cqw; /* Scales relative to the button's width */
 }
 
 
@@ -1197,7 +1199,7 @@ const colorInput4 = document.getElementById('color-choice4');
 
 </tr>
 
-<tr>
+<tr id="source-row">
 
 	<td>
 	<pre id="yBullpointsP1"></pre><img draggable="false" class="x" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANAAAADQCAYAAAB2pO90AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA31pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDcuMS1jMDAwIDc5LjgzZmFlNjQsIDIwMjIvMDIvMTUtMDg6MDc6MzIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6M2Q1MDAwZmItYWMxNC00ODQ2LWJkMjgtNGYxYzQ4OWYyM2RkIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjlEMEY1MTdCRDc4RDExRjBBNjE5QThDQjVBNkZGNkM3IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjlEMEY1MTdBRDc4RDExRjBBNjE5QThDQjVBNkZGNkM3IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBFbGVtZW50cyAyMS4wIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjNkNTAwMGZiLWFjMTQtNDg0Ni1iZDI4LTRmMWM0ODlmMjNkZCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozZDUwMDBmYi1hYzE0LTQ4NDYtYmQyOC00ZjFjNDg5ZjIzZGQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5IaPbdAAABsklEQVR42uzTQQ0AAAjEMMC/58MDCb9WwpJ1kgJuRgIwEBgIDAQGAgwEBgIDgYEAA4GBwEBgIDAQYCAwEBgIDAQYCAwEBgIDAQYCA4GBwEBgIMBAYCAwEBgIMBAYCAwEBgIMBAYCA4GBwECAgcBAYCAwEGAgMBAYCAwEBgIMBAYCA4GBAAOBgcBAYCDAQGAgMBAYCAwEGAgMBAYCAwEGAgOBgcBAgIHAQGAgMBAYCDAQGAgMBAYCDAQGAgOBgcBAgIHAQGAgMBBgIDAQGAgMBBgIDAQGAgOBgQADgYHAQGAgwEBgIDAQGAgwEBgIDAQGAgMBBgIDgYHAQICBwEBgIDAQGAgwEBgIDAQGAgwEBgIDgYEAA4GBwEBgIDAQYCAwEBgIDAQYCAwEBgIDAQYCA4GBwEBgIMBAYCAwEBgIMBAYCAwEBgIDAQYCA4GBwECAgcBAYCAwEGAgMBAYCAwEBgIMBAYCA4GBAAOBgcBAYCDAQGAgMBAYCAwEGAgMBAYCAwEGAgOBgcBAYCDAQGAgMBAYCDAQGAgMBAYCDAQGAgOBgcBAgIHAQGAgMBBgIPixAgwAoEcEnQhQ4UsAAAAASUVORK5CYII=" border="0">
@@ -1220,7 +1222,7 @@ const colorInput4 = document.getElementById('color-choice4');
 	</td>
 
 </tr>
-<tr style="width: 100%;padding: 0;border: 2px solid;">
+<tr id="target-row" style="width: 100%;padding: 0;border: 2px solid;">
 <td id="RoundTD" colspan="5" style="width: 100%;padding: 0;border: 0px solid;">
 <!--<div class="round-container" style="display: inline;">-->
 	<table style="width: 100%;table-layout: fixed;padding: 0;">
@@ -1279,7 +1281,6 @@ function ResizeSubRoundSpan() {
     // Define your Players variable, parsing it to an integer
     const roundplayers = parseInt(urlParams.get('numberofplayers'), 10) || 4;
 
-    
     // Get the element by its ID and set the colSpan
     const roundTd = document.getElementById("RoundTD");
     if (roundTd) {
@@ -1289,128 +1290,18 @@ function ResizeSubRoundSpan() {
             roundTd.colSpan = 5; 
         }
     }
+	
+    // 2. Sync target row height to source row height using jQuery
+    $('#source-row').each(function(i, el) {
+        var sourceHeight = $(this).height();
+        // Overrides any existing height styles by forcing !important
+        $('#target-row').css('cssText', 'height: ' + sourceHeight + 'px !important;');
+    });
 
-    // Targets the button directly to scale all text elements inside it together
-    const button = document.getElementById('end-turn-btn');
-    if (button) {
-        adjustTextToFit(button);
-    }
-}
 
-// Adjust text just for round/player counter.
-function adjustTextToFit(parentButton) {
-  // 1. Get the current URL parameters
-  const roundqueryString = window.location.search;
-  const urlParams = new URLSearchParams(roundqueryString);
-
-  // Define your Players variable, parsing it to an integer
-  const roundplayers = parseInt(urlParams.get('numberofplayers'), 10) || 4;
-  const style = window.getComputedStyle(parentButton);
-
-  // Calculate available inner width/height exactly
-  const paddingX = (parseFloat(style.paddingLeft) || 0) + (parseFloat(style.paddingRight) || 0);
-  const paddingY = (parseFloat(style.paddingTop) || 0) + (parseFloat(style.paddingBottom) || 0);
-  const rect = parentButton.getBoundingClientRect();
-  const availableWidth = Math.floor(rect.width - paddingX) - 1;
-  const availableHeight = Math.floor(rect.height - paddingY) - 1;
-
-  // Retrieve the CSS Grid row templates
-  const gridTemplateRows = style.getPropertyValue('grid-template-rows');
-  const rowHeights = gridTemplateRows ? gridTemplateRows.split(' ').map(h => parseFloat(h) || 0) : [];
-
-  const mainElements = parentButton.querySelectorAll('#round-display, #player-display');
-  const labelElement = parentButton.querySelectorAll('.SubRoundSpan');
-  const topElement = parentButton.querySelectorAll('.SubRoundSpanTop');
-
-  // Combine all elements for the height validation loop
-  const allElements = parentButton.querySelectorAll('.SubRoundSpanTop, .SubRoundSpan, #round-display, #player-display');
-
-  let minSize = 8;
-  let maxSize = 200;
-  let perfectSize = minSize;
-
-  while (minSize <= maxSize) {
-    let midSize = Math.floor((minSize + maxSize) / 2);
-    let isFitting = true;
-
-    // Width check helper
-    const isTooWide = (el, size) => {
-      el.style.fontSize = size + 'px';
-      el.style.display = 'inline-block';
-      el.style.whiteSpace = 'nowrap';
-      // Use scrollWidth to detect invisible text overflow
-      return el.getBoundingClientRect().width > availableWidth || el.scrollWidth > availableWidth;
-    };
-
-    // Validate width for all elements
-    for (let i = 0; i < mainElements.length; i++) {
-      if (isTooWide(mainElements[i], midSize)) { isFitting = false; break; }
-    }
-    if (isFitting) {
-      for (let i = 0; i < labelElement.length; i++) {
-        if (isTooWide(labelElement[i], midSize)) { isFitting = false; break; }
-      }
-    }
-    if (isFitting) {
-      for (let i = 0; i < topElement.length; i++) {
-        if (isTooWide(topElement[i], midSize)) { isFitting = false; break; }
-      }
-    }
-
-    // 2. Vertical height check
-    if (isFitting) {
-      let totalHeight = 0;
-
-      for (let i = 0; i < allElements.length; i++) {
-        const el = allElements[i];
-        // Use a temporary absolute position to measure naturally without disrupting layout
-        const originalPosition = el.style.position;
-        const originalDisplay = el.style.display;
-        el.style.position = 'absolute';
-        el.style.display = 'block';
-
-        const elHeight = el.getBoundingClientRect().height;
-        totalHeight += elHeight;
-
-        el.style.position = originalPosition;
-        el.style.display = originalDisplay;
-
-        if (rowHeights[i] && elHeight > rowHeights[i]) {
-          isFitting = false;
-          break;
-        }
-      }
-      if (totalHeight > availableHeight) { isFitting = false; }
-    }
-
-    // Adjust binary search bounds
-    if (isFitting) {
-      perfectSize = midSize;
-      minSize = midSize + 1; // Try to find a larger fit
-    } else {
-      maxSize = midSize - 1; // Text is too big, shrink bounds
-    }
-  }
-
-  // Apply the sizes based on player count scaling rules
-  // (Using a multiplier array is cleaner than multiple if statements)
-  const multipliers = [
-    { players: 1, main: 1, label: 1, top: 1 },
-    { players: 2, main: 2, label: 1.5, top: 1.5 },
-    { players: 3, main: 3, label: 2, top: 2 },
-    { players: 4, main: 3.2, label: 2.2, top: 2.1 }
-  ];
-
-  const scale = multipliers.find(m => m.players === roundplayers) || multipliers[3];
-
-  mainElements.forEach(el => el.style.fontSize = (perfectSize * scale.main) + 'px');
-  labelElement.forEach(el => el.style.fontSize = (perfectSize * scale.label) + 'px');
-  topElement.forEach(el => el.style.fontSize = (perfectSize * scale.top) + 'px');
 }
 
 
-//window.addEventListener('load', ResizeSubRoundSpan);
-//window.addEventListener('resize', ResizeSubRoundSpan);
 
  </script>
 <script>
@@ -2942,6 +2833,7 @@ window.confirm = function(message) {
 
 <script>
 window.addEventListener('resize', () => {
+setTimeout(() => {
     console.log("Real dimensions:", window.innerWidth, window.innerHeight);
 	adjustCellSize();
 	console.log(`New size: ${window.innerWidth}x${window.innerHeight}`);
@@ -2952,6 +2844,7 @@ window.addEventListener('resize', () => {
 	adjustCenterFontSize();
 	adjustpointsPFontSize();
 	ResizeSubRoundSpan();
+		 }, 100);
 });
 
 </script>
@@ -2959,6 +2852,7 @@ window.addEventListener('resize', () => {
 <!-- because Edge doesn't work with listener -->
 <script>
 window.onresize = (event) => {
+setTimeout(() => {
 	adjustCellSize();
 	adjustFontSize(editor1);
 	adjustFontSize(editor2);
@@ -2967,6 +2861,7 @@ window.onresize = (event) => {
 	adjustCenterFontSize();
 	adjustpointsPFontSize();
 	ResizeSubRoundSpan();
+			 }, 100);
 };
 
 </script>
