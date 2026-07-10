@@ -1320,12 +1320,21 @@ function ResizeSubRoundSpan() {
         }
     }
 	
-    // 2. Sync target row height to source row height using jQuery
-    $('#source-row').each(function(i, el) {
-        var sourceHeight = $(this).height();
-        // Overrides any existing height styles by forcing !important
-        $('#target-row').css('cssText', 'height: ' + sourceHeight + 'px !important;');
-    });
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. Select the source element
+    var sourceRow = document.getElementById('source-row');
+    
+    // 2. If it exists, get its height and apply it to the target
+    if (sourceRow) {
+        var sourceHeight = sourceRow.offsetHeight;
+        var targetRow = document.getElementById('target-row');
+        
+        if (targetRow) {
+            targetRow.style.setProperty('height', sourceHeight + 'px', 'important');
+        }
+    }
+});
+
 
 
 }
