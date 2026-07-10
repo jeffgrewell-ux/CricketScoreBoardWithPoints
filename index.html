@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <script>
   window.addEventListener('load', function() {
+  
+  const urlParams = new URLSearchParams(window.location.search);
+
+if (!urlParams.has('numberofplayers')) {
+    // Append the default player parameter and reload
+    urlParams.set('numberofplayers', '4');
+    window.location.search = urlParams.toString();
+}
+  
     setTimeout(function() {
       window.dispatchEvent(new Event('resize'));
     }, 100);
