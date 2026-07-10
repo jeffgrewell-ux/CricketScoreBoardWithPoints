@@ -702,14 +702,14 @@ font-size: 50%;
 	  color: black;
 }
 
-#end-turn-btn > div > .SubRoundSpan > #round-display {
+#end-turn-btn > div > #round-display {
       margin: 0;
     padding: 0;
 	  font-size: 8cqw; /* Scales relative to the button's width */
 	  color: black;
 }
 
-#end-turn-btn > div > .SubRoundSpan > #player-display {
+#end-turn-btn > div > #player-display {
       margin: 0;
     padding: 0;
 	  font-size: 8cqw; /* Scales relative to the button's width */
@@ -721,13 +721,8 @@ font-size: 50%;
 
 
 </style></head>
-<!--
-<script>
-let roundqueryString = window.location.search;
-let roundurlParams = new URLSearchParams(roundqueryString);
-let roundplayers = roundurlParams.get('numberofplayers') || '4';
-</script>
--->
+
+
 
 <script>
 let lastTouchTime = 0;
@@ -1268,28 +1263,23 @@ const colorInput4 = document.getElementById('color-choice4');
 	<!--<td class="SubRoundTD" style="width: 33%;padding: 0;border: 0;"><span style="display: block-inline; text-align: center;">Round: <span  style="display: inline;" id="round-display">1</span></span></td>-->
 	<!-- Remove padding and set display to flex -->
 	<td class="SubRoundTD" style="padding: 0; width: 100%; text-align: center; border: 0px solid;">
-<button id="end-turn-btn" style="width: 100%; height: 100%; border: none; padding: 0; margin: 0; display: grid; grid-template-rows: 30% 70%; grid-template-columns: 1fr 1fr; cursor: pointer; box-sizing: border-box; gap: 0;">
-    
-    <!-- Top Row -->
-    <div class="instapaper_ignore" style="grid-column: span 2; display: flex; justify-content: center; align-items: center; border: 0px solid darkgrey; margin: 0; padding: 0;">
-        <span class="SubRoundSpanTop" style="display: inline-block; margin: 0;">Press to End Turn</span>
-    </div> 
-    
-    <!-- Bottom Row: Left Column -->
-    <div class="instapaper_ignore" style="display: flex; justify-content: center; align-items: center; border: 0px solid darkgrey; margin: 0; padding: 0;">
-        <span class="SubRoundSpan" style="display: inline-block; margin: 0;">
-            <u style="text-decoration: underline; margin: 0;">Round:</u> <span id="round-display" style="margin: 0;"><strong>1</strong></span>
-        </span> 
-    </div> 
-    
-    <!-- Bottom Row: Right Column -->
-    <div class="instapaper_ignore" style="display: flex; justify-content: center; align-items: center; border: 0px solid darkgrey; margin: 0; padding: 0;">
-        <span class="SubRoundSpan" style="display: inline-block; margin: 0;">
-            <u style="text-decoration: underline; margin: 0;">Player:</u> <span id="player-display" style="margin: 0;"><strong>1</strong></span>
-        </span> 
-    </div>
-</button>
+<button id="end-turn-btn" style="width: 100%; height: 100%; border: none; padding: 0; margin: 0; display: grid; grid-template-rows: 30% 70%; grid-template-columns: 1fr 1fr; cursor: pointer; box-sizing: border-box; gap: 0;"> 
+  <!-- Top Row --> 
+  <div class="instapaper_ignore" style="grid-column: span 2; display: flex; justify-content: center; align-items: center; border: 0px solid darkgrey; margin: 0; padding: 0;"> 
+    <span class="SubRoundSpanTop" style="display: inline-block; margin: 0;">Press to End Turn</span> </div> 
+  
+  <!-- Bottom Row: Left Column --> 
+  <div class="instapaper_ignore" style="display: flex; flex-direction: column; justify-content: center; align-items: center; border: 0px solid darkgrey; margin: 0; padding: 0;"> 
+    <span class="SubRoundSpan" style="display: inline-block; margin: 0;"><u style="text-decoration: underline; margin: 0;">Round:</u></span> 
+    <span id="round-display" style="margin: 5px 0 0 0;"><strong>1</strong></span> 
+  </div> 
 
+  <!-- Bottom Row: Right Column --> 
+  <div class="instapaper_ignore" style="display: flex; flex-direction: column; justify-content: center; align-items: center; border: 0px solid darkgrey; margin: 0; padding: 0;"> 
+    <span class="SubRoundSpan" style="display: inline-block; margin: 0;"><u style="text-decoration: underline; margin: 0;">Player:</u></span> 
+    <span id="player-display" style="margin: 5px 0 0 0;"><strong>1</strong></span> 
+  </div> 
+</button>
 
 
 </td>
@@ -1297,6 +1287,8 @@ const colorInput4 = document.getElementById('color-choice4');
 	<!--<td class="SubRoundTD" style="width: 33%;padding: 0;border: 0;"><span style="display: block-inline; text-align: center;">Player: <span  style="display: inline;" id="player-display">1</span></span></td>-->
 	</tr>
 	</table>
+	
+
     
  <!--   <label for="player-count">Number of Players:</label>
     <select id="player-count" onchange="resetGame()">
@@ -2971,5 +2963,102 @@ document.addEventListener("visibilitychange", function() {
 window.addEventListener("pagehide", function() {
     window.scrollTo({ top: 0, behavior: 'auto' });
 });
+
+</script>
+
+	<script>
+document.addEventListener('DOMContentLoaded', () => {
+    let fontqueryString = window.location.search;
+    let fonturlParams = new URLSearchParams(fontqueryString);
+    let fontplayers = parseInt(fonturlParams.get('numberofplayers'), 10) || 4;
+
+    console.log(`fontplayers: ${fontplayers}`);
+
+    if (fontplayers === 1) {
+        // Use querySelectorAll to fetch ALL matching elements on the page
+        const topSpans = document.querySelectorAll('#end-turn-btn > div > .SubRoundSpanTop');
+        const mainSpans = document.querySelectorAll('#end-turn-btn > div > .SubRoundSpan');
+        const roundDisps = document.querySelectorAll('#end-turn-btn > div > #round-display');
+        const playerDisps = document.querySelectorAll('#end-turn-btn > div > #player-display');
+
+        // Check if we actually found any elements
+        if (topSpans.length > 0 && mainSpans.length > 0 && roundDisps.length > 0 && playerDisps.length > 0) {
+            
+            // Loop through each NodeList to apply styles to every matching element
+            topSpans.forEach(el => el.style.fontSize = '8cqw');
+            mainSpans.forEach(el => el.style.fontSize = '10cqw');
+            roundDisps.forEach(el => el.style.fontSize = '15cqw');
+            playerDisps.forEach(el => el.style.fontSize = '15cqw');
+            
+        } else {
+            console.error("One or more font elements could not be found in the DOM.");
+        }
+    }
+	
+	    if (fontplayers === 2) {
+        // Use querySelectorAll to fetch ALL matching elements on the page
+        const topSpans = document.querySelectorAll('#end-turn-btn > div > .SubRoundSpanTop');
+        const mainSpans = document.querySelectorAll('#end-turn-btn > div > .SubRoundSpan');
+        const roundDisps = document.querySelectorAll('#end-turn-btn > div > #round-display');
+        const playerDisps = document.querySelectorAll('#end-turn-btn > div > #player-display');
+
+        // Check if we actually found any elements
+        if (topSpans.length > 0 && mainSpans.length > 0 && roundDisps.length > 0 && playerDisps.length > 0) {
+            
+            // Loop through each NodeList to apply styles to every matching element
+            topSpans.forEach(el => el.style.fontSize = '6cqw');
+            mainSpans.forEach(el => el.style.fontSize = '9cqw');
+            roundDisps.forEach(el => el.style.fontSize = '10cqw');
+            playerDisps.forEach(el => el.style.fontSize = '10cqw');
+            
+        } else {
+            console.error("One or more font elements could not be found in the DOM.");
+        }
+    }
+	
+		    if (fontplayers === 3) {
+        // Use querySelectorAll to fetch ALL matching elements on the page
+        const topSpans = document.querySelectorAll('#end-turn-btn > div > .SubRoundSpanTop');
+        const mainSpans = document.querySelectorAll('#end-turn-btn > div > .SubRoundSpan');
+        const roundDisps = document.querySelectorAll('#end-turn-btn > div > #round-display');
+        const playerDisps = document.querySelectorAll('#end-turn-btn > div > #player-display');
+
+        // Check if we actually found any elements
+        if (topSpans.length > 0 && mainSpans.length > 0 && roundDisps.length > 0 && playerDisps.length > 0) {
+            
+            // Loop through each NodeList to apply styles to every matching element
+            topSpans.forEach(el => el.style.fontSize = '4cqw');
+            mainSpans.forEach(el => el.style.fontSize = '6cqw');
+            roundDisps.forEach(el => el.style.fontSize = '10cqw');
+            playerDisps.forEach(el => el.style.fontSize = '10cqw');
+            
+        } else {
+            console.error("One or more font elements could not be found in the DOM.");
+        }
+    }
+	
+			    if (fontplayers === 4) {
+        // Use querySelectorAll to fetch ALL matching elements on the page
+        const topSpans = document.querySelectorAll('#end-turn-btn > div > .SubRoundSpanTop');
+        const mainSpans = document.querySelectorAll('#end-turn-btn > div > .SubRoundSpan');
+        const roundDisps = document.querySelectorAll('#end-turn-btn > div > #round-display');
+        const playerDisps = document.querySelectorAll('#end-turn-btn > div > #player-display');
+
+        // Check if we actually found any elements
+        if (topSpans.length > 0 && mainSpans.length > 0 && roundDisps.length > 0 && playerDisps.length > 0) {
+            
+            // Loop through each NodeList to apply styles to every matching element
+            topSpans.forEach(el => el.style.fontSize = '3cqw');
+            mainSpans.forEach(el => el.style.fontSize = '5cqw');
+            roundDisps.forEach(el => el.style.fontSize = '9cqw');
+            playerDisps.forEach(el => el.style.fontSize = '9cqw');
+            
+        } else {
+            console.error("One or more font elements could not be found in the DOM.");
+        }
+    }
+	
+});
+
 
 </script>
