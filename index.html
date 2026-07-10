@@ -141,7 +141,7 @@ td pre {
     padding: 0;
 }
 
-/* Container clamps to the safe viewport area */
+/* Container clamps to the safe viewport area *//* Keep your scoring app tightly fitted to the screen */
 #myTableContainer {
   display: flex;
   flex-direction: column;
@@ -150,6 +150,12 @@ td pre {
   box-sizing: border-box;
 }
 
+/* Allow your text and rules section to roll naturally down the page */
+article {
+  height: auto;
+  min-height: 100%;
+  padding: 20px;
+}
 
 #dynamicTable {
     table-layout: fixed !important;
