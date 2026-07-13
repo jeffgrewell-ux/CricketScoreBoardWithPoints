@@ -8,11 +8,26 @@
   
   const urlParams = new URLSearchParams(window.location.search);
 
+// 1. Get the current pathname
+let currentPath = window.location.pathname;
+
+// 2. Check if "index.html" is missing from the URL
+if (!currentPath.endsWith('index.html')) {
+    // 3. Append index.html and rebuild the URL
+    let newUrl = window.location.protocol + "//" + window.location.host + currentPath + 'index.html' + window.location.search;
+    window.location.replace(newUrl); // Navigates to index.html immediately
+}
+
+// 4. Parse the query parameters
+//const urlParams = new URLSearchParams(window.location.search);
+
+// 5. Check for the player parameter
 if (!urlParams.has('numberofplayers')) {
-    // Append the default player parameter and reload
+    // 6. Append the default player parameter and reload
     urlParams.set('numberofplayers', '4');
     window.location.search = urlParams.toString();
 }
+
   
     setTimeout(function() {
       window.dispatchEvent(new Event('resize'));
