@@ -956,8 +956,10 @@ let AdTimer = setTimeout(loop, 10000);
 		<span><div class="instapaper_ignore" id="Cricket" name="Cricket">Cricket</div></span>
 		<span><div class="instapaper_ignore" id="ReadMe">How To Use</div></span>
 		
-		<div class="google-container instapaper_ignore article-sidebar-notes">
-			<ins class="adsbygoogle" data-ad-client="ca-pub-6773237836015898" data-ad-slot="8571825431" data-ad-format="auto" data-full-width-responsive="true" draggable="false"></ins>
+		<!--  data-readable="false" aria-hidden="true" Explicitly tell the reader engine to ignore the entire container and its iframe -->
+		<div class="google-container instapaper_ignore article-sidebar-notes" data-readable="false" aria-hidden="true">
+		<!-- added aria-hidden="true" in attempt to hide iframe from reader -->
+			<ins class="adsbygoogle" data-ad-client="ca-pub-6773237836015898" data-ad-slot="8571825431" data-ad-format="auto" data-full-width-responsive="true" draggable="false" aria-hidden="true"></ins>
 		</div>
 		
 		<span><div class="custom-select-wrapper instapaper_ignore article-sidebar-notes" style="width: 100%; margin-top: auto;">
