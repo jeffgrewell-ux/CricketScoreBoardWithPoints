@@ -2219,7 +2219,7 @@ This text will not appear in iOS Safari Reader Mode.
 
 <!-- This will be completely hidden in Reader Mode -->
 <!-- Firefox Reader View will automatically ignore "article-sidebar-notes" block -->
-<!-- "instapaper_ignore" text will not appear in iOS Safari Reader Mode.
+<!-- "instapaper_ignore" text will not appear in iOS Safari Reader Mode.-->
 <div id="instapaper_ignore" class="instapaper_ignore article-sidebar-notes" style="color: transparent;background-color: transparent;"><!-- style="margin-top: 500px;margin-bottom: 500px;color: white;font-size: 500px;" -->
     <p>&nbsp;</p>
 </div>
@@ -3065,4 +3065,18 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const adElement = document.getElementById('aswift_0');
+    if (adElement) {
+        adElement.title = "Intentionally blank";
+		adElement.tabIndex = -1;
+    }
+});
+
+
+//document.getElementById('aswift_0').title = "Intentionally blank";
+// Target the element and remove it from the keyboard tab sequence
+//document.getElementById('aswift_0').tabIndex = -1;
 </script>
