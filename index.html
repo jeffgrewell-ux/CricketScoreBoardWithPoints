@@ -956,11 +956,11 @@ let AdTimer = setTimeout(loop, 10000);
 		<span><div class="instapaper_ignore" id="Cricket" name="Cricket">Cricket</div></span>
 		<span><div class="instapaper_ignore" id="ReadMe">How To Use</div></span>
 		
-		<div class="google-container instapaper_ignore">
+		<div class="google-container instapaper_ignore article-sidebar-notes">
 			<ins class="adsbygoogle" data-ad-client="ca-pub-6773237836015898" data-ad-slot="8571825431" data-ad-format="auto" data-full-width-responsive="true" draggable="false"></ins>
 		</div>
 		
-		<span><div class="custom-select-wrapper instapaper_ignore" style="width: 100%; margin-top: auto;">
+		<span><div class="custom-select-wrapper instapaper_ignore article-sidebar-notes" style="width: 100%; margin-top: auto;">
 			<label id="for-player-count" for="player-count"># of players:</label>
 			<select autocomplete="off" id="player-count" onchange="alertPlayerCount(), ResizeSubRoundSpan(), resetGame()">
 				<option value="" disabled selected>Choose...</option>
@@ -2216,6 +2216,8 @@ This text will not appear in iOS Safari Reader Mode.
 </aside>--><!-- Applies a 500px gap without breaking the DOM tree -->
 
 <!-- This will be completely hidden in Reader Mode -->
+<!-- Firefox Reader View will automatically ignore "article-sidebar-notes" block -->
+<!-- "instapaper_ignore" text will not appear in iOS Safari Reader Mode.
 <div id="instapaper_ignore" class="instapaper_ignore article-sidebar-notes" style="color: transparent;background-color: transparent;"><!-- style="margin-top: 500px;margin-bottom: 500px;color: white;font-size: 500px;" -->
     <p>&nbsp;</p>
 </div>
