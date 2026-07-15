@@ -1072,16 +1072,38 @@ const colorInput1 = document.getElementById('color-choice1');
   });
 });
 
-const colorInput2 = document.getElementById('color-choice2');
 
+
+const colorInput2 = document.getElementById('color-choice2');
+    let tdIndexqueryString = window.location.search;
+    let tdIndexurlParams = new URLSearchParams(tdIndexqueryString);
+    let tdIndexplayers = parseInt(tdIndexurlParams.get('numberofplayers'), 10) || 4;
+    
+    
+    if (tdIndexplayers === 2) {
+        // 'input' fires while selecting, 'change' fires when finished
+['input', 'change'].forEach(evt => {
+  colorInput2.addEventListener(evt, function(e) {
+    changeColumnColor(e.target.value, 2);
+  });
+});
+    }else {
 // 'input' fires while selecting, 'change' fires when finished
 ['input', 'change'].forEach(evt => {
   colorInput2.addEventListener(evt, function(e) {
     changeColumnColor(e.target.value, 1);
   });
 });
+	}
+
+
+
+
+
+
 
 const colorInput3 = document.getElementById('color-choice3');
+
 
 // 'input' fires while selecting, 'change' fires when finished
 ['input', 'change'].forEach(evt => {
@@ -3095,4 +3117,46 @@ document.addEventListener("DOMContentLoaded", function() {
 //document.getElementById('aswift_0').title = "Intentionally blank";
 // Target the element and remove it from the keyboard tab sequence
 //document.getElementById('aswift_0').tabIndex = -1;
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    let colswapqueryString = window.location.search;
+    let colswapurlParams = new URLSearchParams(colswapqueryString);
+    let colswapplayers = parseInt(colswapurlParams.get('numberofplayers'), 10) || 4;
+    
+    // Define the table ID (ensure this matches your HTML)
+    const TABLE_ID = 'dynamicTable'; 
+    
+    if (colswapplayers === 2) {
+        swapTableColumns(TABLE_ID, 1, 2);
+    }
+    
+    function swapTableColumns(tableId, index1, index2) {
+        const table = document.getElementById(tableId);
+        if (!table) return;
+
+        const rows = table.rows;
+
+        for (let i = 0; i < rows.length; i++) {
+            const row = rows[i];
+            
+            // Ensure both target cells exist and are different
+            if (index1 !== index2 && row.cells[index1] && row.cells[index2]) {
+                const cell1 = row.cells[index1];
+                const cell2 = row.cells[index2];
+
+                // Safely swap the elements in the DOM
+                if (index1 < index2) {
+                    row.insertBefore(cell2, cell1);
+                    row.insertBefore(cell1, cell2.nextSibling);
+                } else {
+                    row.insertBefore(cell1, cell2);
+                    row.insertBefore(cell2, cell1.nextSibling);
+                }
+            }
+        }
+    }
+});
+
+
 </script>
