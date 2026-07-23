@@ -694,19 +694,31 @@ font-size: 50%;
 #instapaper_ignore {
   margin-bottom: 200px; /* Applies a 500px gap without breaking the DOM tree */
 }
+
 /* 1. Define the flashing colors */
 @keyframes smooth-flash {
-  0%, 50%, 100% {
-    background: radial-gradient(circle, white, lightgrey);
-  }
+    0%, 50%, 100% { 
+        background: radial-gradient(circle, white, rgb(211, 211, 211)); 
+    }
+    49%, 99% { 
+        background: radial-gradient(circle, rgb(211, 211, 211), white); 
+    }
+}
 
-    49%, 99% {
-    background:  radial-gradient(circle, lightgrey, white);
-  }
+@-webkit-keyframes smooth-flash {
+    0%, 50%, 100% { 
+        background: -webkit-radial-gradient(circle, white, rgb(211, 211, 211)); 
+    }
+    49%, 99% { 
+        background: -webkit-radial-gradient(circle, rgb(211, 211, 211), white); 
+    }
 }
 
 
 #end-turn-btn {
+    /* Force GPU acceleration to stop Safari flickering */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
       margin: 0;
     padding: 0;
 	container-type: inline-size; /* Establish the button as a container for its children. Needed to have child's font size scale.*/
@@ -718,7 +730,9 @@ font-size: 50%;
 }
 
 #end-turn-btn.is-flashing {
-  animation: smooth-flash 1s linear 20;
+    /* Apply animation with vendor prefix for older iOS Safari versions */
+    animation: smooth-flash 1s linear 20;
+    -webkit-animation: smooth-flash 1s linear 20;
 }
 
 #end-turn-btn > div {
