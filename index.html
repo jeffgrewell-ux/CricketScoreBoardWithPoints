@@ -716,25 +716,45 @@ font-size: 50%;
 
 
 #end-turn-btn {
-
-      margin: 0;
-    padding: 0;
-	container-type: inline-size; /* Establish the button as a container for its children. Needed to have child's font size scale.*/
-	 /* The gradient logic */
-  /*background: linear-gradient(135deg, #ff7e5f, #feb47b); */
-   /* The gradient logic */
-  background: radial-gradient(circle, white, lightgrey); 
-  /*animation: smooth-flash 1s linear 20;*/
+  position: relative;
+  overflow: hidden;
+  	container-type: inline-size; /* Establish the button as a container for its children. Needed to have child's font size scale.*/
+  /* Base state: State A gradient */
+  background: radial-gradient(circle, white, rgb(211, 211, 211));
+  z-index: 1;
 }
 
-#end-turn-btn.is-flashing {
-    /* Force GPU acceleration to stop Safari flickering */
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
-    /* Apply animation with vendor prefix for older iOS Safari versions */
-    animation: smooth-flash 1s linear 20;
-    -webkit-animation: smooth-flash 1s linear 20;
+/* Create a layer for State B gradient directly on top */
+#end-turn-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle, rgb(211, 211, 211), white);
+  z-index: -1;
+  
+  /* Start invisible, prepare the browser for changes */
+  opacity: 0;
+  will-change: transform, opacity; 
 }
+
+/* Optimized keyframes using only opacity */
+@keyframes flashOpacity {
+  0%, 50%, 100% {
+    opacity: 0; /* Shows State A underneath */
+  }
+  45%, 95% {
+    opacity: 1; /* Reveals State B on top */
+  }
+}
+
+/* Trigger the animation using hardware-accelerated steps */
+#end-turn-btn.is-flashing::before {
+  animation: flashOpacity 2s step-end infinite;
+}
+
 
 #end-turn-btn > div {
       margin: 0;
