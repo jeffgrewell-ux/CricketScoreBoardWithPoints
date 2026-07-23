@@ -79,6 +79,7 @@ html{
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  background-color: white;
 
 }
 
@@ -693,22 +694,56 @@ font-size: 50%;
 #instapaper_ignore {
   margin-bottom: 200px; /* Applies a 500px gap without breaking the DOM tree */
 }
+/* 1. Define the flashing colors */
+@keyframes smooth-flash {
+  0%, 50%, 100% {
+    background: radial-gradient(circle, white, lightgrey);
+  }
+
+    49%, 99% {
+    background:  radial-gradient(circle, lightgrey, white);
+  }
+}
+
 
 #end-turn-btn {
       margin: 0;
     padding: 0;
 	container-type: inline-size; /* Establish the button as a container for its children. Needed to have child's font size scale.*/
+	 /* The gradient logic */
+  /*background: linear-gradient(135deg, #ff7e5f, #feb47b); */
+   /* The gradient logic */
+  background: radial-gradient(circle, white, lightgrey); 
+  /*animation: smooth-flash 1s linear 20;*/
 }
+
+#end-turn-btn.is-flashing {
+  animation: smooth-flash 1s linear 20;
+}
+
 #end-turn-btn > div {
       margin: 0;
     padding: 0;
+}
+
+@keyframes myAnimation {
+  0%   {color:pink; left:0px; top:0px;text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Crisp black border around the font itself */}
+  25%  {color:yellow; left:200px; top:0px; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Crisp black border around the font itself */}
+  50%  {color:lightblue; left:200px; top:200px;text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Crisp black border around the font itself */}
+  75%  {color:lightgreen; left:0px; top:200px;text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Crisp black border around the font itself */}
+  100% {color:pink; left:0px; top:0px;text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Crisp black border around the font itself */}
 }
 
 #end-turn-btn > div > .SubRoundSpanTop {
       margin: 0;
     padding: 0;
 	  font-size: 3cqw; /* Scales relative to the button's width */
-	  color: black;
+	  color: yellow;
+	  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Crisp black border around the font itself */
+	    /*animation-name: myAnimation;*/
+  /*animation-duration: 4s;*/
+    /* Syntax: name | duration | timing-function | iteration-count */
+  animation: myAnimation 3s linear infinite;
 }
 #end-turn-btn > div > .SubRoundSpan {
       margin: 0;
@@ -869,6 +904,19 @@ document.addEventListener("click", (event) => {
 									WinnerP2();
 									WinnerP3();
 									WinnerP4();
+									
+									const endTurnBtn = document.getElementById('end-turn-btn');
+									endTurnBtn.classList.add('is-flashing');
+									
+									  // Listen for the animation completion to remove the class
+									  endTurnBtn.addEventListener('animationend', () => {
+										endTurnBtn.classList.remove('is-flashing');
+									  }, { once: true });
+									  
+									  // Listen for the Click to remove the class
+									  endTurnBtn.addEventListener('click', () => {
+										endTurnBtn.classList.remove('is-flashing');
+									  }, { once: true });
 
 	}
 
