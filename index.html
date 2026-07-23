@@ -716,9 +716,7 @@ font-size: 50%;
 
 
 #end-turn-btn {
-    /* Force GPU acceleration to stop Safari flickering */
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
+
       margin: 0;
     padding: 0;
 	container-type: inline-size; /* Establish the button as a container for its children. Needed to have child's font size scale.*/
@@ -730,6 +728,9 @@ font-size: 50%;
 }
 
 #end-turn-btn.is-flashing {
+    /* Force GPU acceleration to stop Safari flickering */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
     /* Apply animation with vendor prefix for older iOS Safari versions */
     animation: smooth-flash 1s linear 20;
     -webkit-animation: smooth-flash 1s linear 20;
