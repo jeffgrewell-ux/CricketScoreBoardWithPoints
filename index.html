@@ -1400,7 +1400,7 @@ const colorInput4 = document.getElementById('color-choice4');
   <!-- Bottom Row: Right Column --> 
   <div class="instapaper_ignore article-sidebar-notes" style="display: flex; flex-direction: column; justify-content: center; align-items: center; border: 0px solid darkgrey; margin: 0; padding: 0;" data-nosnippet> 
     <span class="SubRoundSpan" style="display: inline-block; margin: 0;"><u style="text-decoration: underline; margin: 0;">Player:</u></span> 
-    <span id="player-display" style="margin: 5px 0 0 0;"><strong>1</strong></span> 
+    <span id="player-display" style="margin: 5px 0 0 0;"><strong>P1</strong></span> 
   </div> 
 </button>
 
@@ -1543,7 +1543,9 @@ button.addEventListener('pointercancel', onPressCancel); // System interruptions
  */
 // 1. Initialize your global game state variables
 let currentRound = 1;
-let currentPlayer = 1;
+let editor = editor1
+let currentPlayer = 1
+//document.getElementById('editor1')?.textContent || "P1";
 
 // Define your DOM elements once
 //const roundDisplay = document.getElementById("round-display");
@@ -1575,7 +1577,7 @@ function nextTurn() {
 
     // 4. Update the UI text
     if (roundDisplay) roundDisplay.textContent = currentRound;
-    if (playerDisplay) playerDisplay.textContent = currentPlayer;
+    if (playerDisplay) playerDisplay.textContent = document.getElementById('editor'+currentPlayer)?.textContent || "P + currentPlayer";
 }
 
 // 5. Event Listener for the End Turn button
@@ -2830,6 +2832,10 @@ const editor1 = document.getElementById('editor1');
 // Add event listener for input changes
 editor1.addEventListener('input', function() {
     adjustFontSize(this);
+	//to change intial name in counter
+	const inputElement = document.getElementById('editor1');
+	const spanElement = document.getElementById('player-display');
+	spanElement.textContent = this.innerText; // Use innerText for editable divs
 });
 
 // Get the editable element
