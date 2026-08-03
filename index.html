@@ -1618,17 +1618,10 @@ function undoTurn() {
   }
   
   // Make sure this targets the player display element
-  if (playerDisplay) {
-    playerDisplay.textContent = currentPlayer;
-  }
+if (playerDisplay) playerDisplay.textContent = document.getElementById('editor'+currentPlayer)?.textContent || "P + currentPlayer";
 }
 
-function resetGame() {
-    currentRound = 1;
-    currentPlayer = 1;
-    roundDisplay.textContent = currentRound;
-    playerDisplay.textContent = currentPlayer;
-}
+
 </script>
 
 <script>
@@ -2835,7 +2828,8 @@ editor1.addEventListener('input', function() {
 	//to change intial name in counter
 	const inputElement = document.getElementById('editor1');
 	const spanElement = document.getElementById('player-display');
-	spanElement.textContent = this.innerText; // Use innerText for editable divs
+	if (currentPlayer == "1"){spanElement.textContent = this.innerText;}// Use innerText for editable divs
+	    //if (spanElement) spanElement.textContent = document.getElementById('editor'+currentPlayer)?.textContent || "P + currentPlayer";
 });
 
 // Get the editable element
@@ -2844,6 +2838,10 @@ if (editor2) {
 // Add event listener for input changes
 editor2.addEventListener('input', function() {
     adjustFontSize(this);
+		//to change intial name in counter
+	const inputElement = document.getElementById('editor2');
+	const spanElement = document.getElementById('player-display');
+	if (currentPlayer == "2"){spanElement.textContent = this.innerText;}// Use innerText for editable divs
 });
 }
 
@@ -2853,6 +2851,10 @@ if (editor3) {
 // Add event listener for input changes
 editor3.addEventListener('input', function() {
     adjustFontSize(this);
+		//to change intial name in counter
+	const inputElement = document.getElementById('editor3');
+	const spanElement = document.getElementById('player-display');
+	if (currentPlayer == "3"){spanElement.textContent = this.innerText;}// Use innerText for editable divs
 });
 }
 
@@ -2862,6 +2864,10 @@ if (editor4) {
 // Add event listener for input changes
 editor4.addEventListener('input', function() {
     adjustFontSize(this);
+		//to change intial name in counter
+	const inputElement = document.getElementById('editor4');
+	const spanElement = document.getElementById('player-display');
+	if (currentPlayer == "4"){spanElement.textContent = this.innerText;}// Use innerText for editable divs
 });
 }
 
