@@ -825,6 +825,7 @@ font-size: 50%;
     align-items: start; /* Prevents table from stretching vertically */
     gap: 0px; /* Space between side panels and the table */
     width: 100%;
+	min-height: 100vh; /* Gives Chrome a height reference */
   }
 
   .side-filler {
@@ -833,13 +834,13 @@ font-size: 50%;
 	/* background-image: url("./tile.jpg");*/
     padding: 0px;
     min-height: 100%;
-  box-sizing: border-box
+  box-sizing: border-box;
   overflow: hidden;
   }
 
   .left-side {
 text-align: right;      /* Centers inline/inline-block text and images horizontally */
- */ align-content: center; */  /* Centers block-level child elements vertically */
+ /* align-content: center; */  /* Centers block-level child elements vertically */
   }
 
   .right-side {
