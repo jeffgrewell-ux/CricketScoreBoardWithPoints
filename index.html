@@ -817,7 +817,7 @@ font-size: 50%;
 }
 
 /* Desktop View: Trigger centered 3-column layout  992 */
-@media (min-width: 1100px) {
+@media (min-width: 1040px) {
   .page-wrapper {
     display: grid;
     /* '1fr' columns stretch equally, 'auto' keeps table exactly its natural size */
@@ -830,7 +830,7 @@ font-size: 50%;
 
   .side-filler {
     display: block; /* Reveals the side columns on desktop */
-    background-color: #f5f5f5; /* Example styling to visualize the filled space */
+    background-color: #f5f5f5; /* Example styling to visualize the filled space  #f5f5f5*/
 	/* background-image: url("./tile.jpg");*/
     padding: 0px;
     min-height: 100%;
@@ -849,19 +849,27 @@ text-align: left;      /* Centers inline/inline-block text and images horizontal
   }
 
 
-  .left-side > * {
+  .left-side > div > * {
   text-align: right;      /* Centers inline/inline-block text and images horizontally */
     max-width: 100% !important; /* Added !important to override Google inline widths */
   margin: 0px 0px 0px 0px;     /*  Clockwise order: Top, Right, Bottom, Left. */
   box-sizing: border-box;
 }
 
-  .right-side > * {
+  .right-side > div > * {
     max-width: 100% !important; /* Added !important to override Google inline widths */
   margin: 0px 0px 0px 0px;     /* Clockwise order: Top, Right, Bottom, Left. */
   box-sizing: border-box;
 }
 
+  .left-side > div {
+    margin: 0px 20px 0px 0px;     /* Clockwise order: Top, Right, Bottom, Left. */
+	    background-color: #f5f5f5; /* Example styling to visualize the filled space  #f5f5f5*/
+  }
+  .right-side > div {
+    margin: 0px 0px 0px 20px;     /* Clockwise order: Top, Right, Bottom, Left. */
+	    background-color: #f5f5f5; /* Example styling to visualize the filled space  #f5f5f5*/
+  }
 
 </style></head>
 
@@ -1103,7 +1111,7 @@ let AdTimer = setTimeout(loop, 10000);
 	  <div class="side-filler left-side">
 		<!-- Insert left sidebar content, navigation, or leave empty for background colors -->
 		
-		
+					<div>
 					<amp-ad width="auto" height="320"
 						 type="adsense"
 						 data-ad-client="ca-pub-6773237836015898"
@@ -1125,7 +1133,7 @@ let AdTimer = setTimeout(loop, 10000);
 					<script>
 						 (adsbygoogle = window.adsbygoogle || []).push({});
 					</script>
-				
+					</div>
 	  </div>
 
 	 <!-- Main Centered Table (Untouched) -->
@@ -2410,29 +2418,30 @@ let AdTimer = setTimeout(loop, 10000);
 
 	  <!-- Right Filler Column -->
 	  <div class="side-filler right-side">
-		<!-- Insert right sidebar content, ads, tips, or leave empty -->
-		
-				<amp-ad width="auto" height="320"
-			 type="adsense"
-			 data-ad-client="ca-pub-6773237836015898"
-			 data-ad-slot="5952625242"
-			 data-auto-format="rspv"
-			 data-full-width="">
-		  <div overflow=""></div>
-		</amp-ad>
-		
-				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6773237836015898"
-			 crossorigin="anonymous"></script>
-		<!-- CricketDartsRightSide -->
-		<ins class="adsbygoogle"
-			 style="display:block"
-			 data-ad-client="ca-pub-6773237836015898"
-			 data-ad-slot="5952625242"
-			 data-ad-format="auto"
-			 data-full-width-responsive="true"></ins>
-		<script>
-			 (adsbygoogle = window.adsbygoogle || []).push({});
-		</script>
+				<!-- Insert right sidebar content, ads, tips, or leave empty -->
+						<div>
+						<amp-ad width="auto" height="320"
+					 type="adsense"
+					 data-ad-client="ca-pub-6773237836015898"
+					 data-ad-slot="5952625242"
+					 data-auto-format="rspv"
+					 data-full-width="">
+				  <div overflow=""></div>
+				</amp-ad>
+				
+						<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6773237836015898"
+					 crossorigin="anonymous"></script>
+				<!-- CricketDartsRightSide -->
+				<ins class="adsbygoogle"
+					 style="display:block"
+					 data-ad-client="ca-pub-6773237836015898"
+					 data-ad-slot="5952625242"
+					 data-ad-format="auto"
+					 data-full-width-responsive="true"></ins>
+				<script>
+					 (adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+				</div>
 		
 	  </div>
 </div>
