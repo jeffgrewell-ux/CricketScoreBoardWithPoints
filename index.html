@@ -830,7 +830,7 @@ font-size: 50%;
 
   .side-filler {
     display: block; /* Reveals the side columns on desktop */
-    background-color: #f5f5f5; /* Example styling to visualize the filled space  #f5f5f5*/
+    background-color: blue; /* Example styling to visualize the filled space  #f5f5f5*/
 	/* background-image: url("./tile.jpg");*/
     padding: 0px;
     min-height: 100%;
@@ -870,10 +870,33 @@ text-align: left;      /* Centers inline/inline-block text and images horizontal
     margin: 0px 0px 0px 20px;     /* Clockwise order: Top, Right, Bottom, Left. */
 	    background-color: #f5f5f5; /* Example styling to visualize the filled space  #f5f5f5*/
   }
+  
+
 
 </style></head>
 
+<!--
+  .my-responsive-ad { 
+    display: inline-block;
+    width: 300px; 
+    height: 250px; 
+}
 
+/* Hide or change size at a specific breakpoint (e.g., mobile under 500px) */
+@media(max-width: 500px) { 
+    .my-responsive-ad { 
+        display: none !important; /* AdSense allows this IF you do not push to it */
+    } 
+}
+
+/* Upscale for larger desktop monitors */
+@media(min-width: 800px) { 
+    .my-responsive-ad { 
+        width: 728px; 
+        height: 90px; 
+    } 
+}
+-->
 
 <script>
 let lastTouchTime = 0;
@@ -1124,15 +1147,23 @@ let AdTimer = setTimeout(loop, 10000);
 					<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6773237836015898"
 						 crossorigin="anonymous"></script>
 					<!-- CricketDartsLeftSide -->
-					<ins class="adsbygoogle"
+					<ins class="adsbygoogle my-responsive-ad"
 						 style="display:block"
 						 data-ad-client="ca-pub-6773237836015898"
 						 data-ad-slot="9965243638"
 						 data-ad-format="auto"
 						 data-full-width-responsive="true"></ins>
-					<script>
-						 (adsbygoogle = window.adsbygoogle || []).push({});
-					</script>
+	<script>
+
+window.addEventListener('DOMContentLoaded', function() {
+
+	// Only trigger the push if the browser actually displays the element
+	if (document.querySelector('.my-responsive-ad').getBoundingClientRect().width > 0) {
+		(adsbygoogle = window.adsbygoogle || []).push({});
+	}
+
+});
+</script>
 					</div>
 	  </div>
 
@@ -1180,7 +1211,7 @@ let AdTimer = setTimeout(loop, 10000);
 
 	<tbody id="tableBody">
 	<!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6773237836015898" crossorigin="anonymous"></script>-->
-	<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
 
 
 	<!--Full code all together
@@ -2432,15 +2463,23 @@ let AdTimer = setTimeout(loop, 10000);
 						<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6773237836015898"
 					 crossorigin="anonymous"></script>
 				<!-- CricketDartsRightSide -->
-				<ins class="adsbygoogle"
+				<ins class="adsbygoogle my-responsive-ad"
 					 style="display:block"
 					 data-ad-client="ca-pub-6773237836015898"
 					 data-ad-slot="5952625242"
 					 data-ad-format="auto"
 					 data-full-width-responsive="true"></ins>
-				<script>
-					 (adsbygoogle = window.adsbygoogle || []).push({});
-				</script>
+	<script>
+
+window.addEventListener('DOMContentLoaded', function() {
+
+	// Only trigger the push if the browser actually displays the element
+	if (document.querySelector('.my-responsive-ad').getBoundingClientRect().width > 0) {
+		(adsbygoogle = window.adsbygoogle || []).push({});
+	}
+
+});
+</script>
 				</div>
 		
 	  </div>
