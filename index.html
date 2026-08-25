@@ -625,20 +625,19 @@ overflow: hidden;
 	text-decoration: none;
 }
 
-iframe#aswift_0 {
-	aspect-ratio: 1 / 1 !important;
-    max-height: 140px !important;
-    height: auto !important;
-    width: 100% !important; /* Adjust width as needed */
-    display: block !important;
-    overflow: hidden !important;
-	border: 0px;
-	
-}
+/*iframe#aswift_0 {*/
+/*	aspect-ratio: 1 / 1 !important;*/
+/*    max-height: 140px !important;*/
+/*    height: auto !important;*/
+/*    width: 100% !important;*/ /* Adjust width as needed */
+/*    display: block !important;*/
+/*    overflow: hidden !important;*/
+/*	border: 0px;	*/
+/*}*/
 
-iframe#aswift_0:empty {
-    display: none;
-}
+/*iframe#aswift_0:empty {*/
+/*    display: none;*/
+/*}*/
 
 
 br {
@@ -842,11 +841,17 @@ font-size: 50%;
   .left-side {
 text-align: right;      /* Centers inline/inline-block text and images horizontally */
  /* align-content: center; */  /* Centers block-level child elements vertically */
+ width: 100%;
+ height: 100%;
+ 	    background-color: #f5f5f5; /* Example styling to visualize the filled space  #f5f5f5*/
   }
 
   .right-side {
 text-align: left;      /* Centers inline/inline-block text and images horizontally */
  /* align-content: center; */  /* Centers block-level child elements vertically */
+width: 100%;
+ height: 100%;
+ 	    background-color: #f5f5f5; /* Example styling to visualize the filled space  #f5f5f5*/
   }
 
 
@@ -864,15 +869,27 @@ text-align: left;      /* Centers inline/inline-block text and images horizontal
 }
 
   .left-side > div {
-    margin: 0px 20px 0px 0px;     /* Clockwise order: Top, Right, Bottom, Left. */
+  display: inline-block;
+    margin: 0px 20px 0px 0px  !important;     /* Clockwise order: Top, Right, Bottom, Left. */
 	    background-color: #f5f5f5; /* Example styling to visualize the filled space  #f5f5f5*/
+		width: 385px !important;
+		height: 385px !important;
   }
   .right-side > div {
-    margin: 0px 0px 0px 20px;     /* Clockwise order: Top, Right, Bottom, Left. */
+  display: inline-block;
+    margin: 0px 0px 0px 20px  !important;     /* Clockwise order: Top, Right, Bottom, Left. */
 	    background-color: #f5f5f5; /* Example styling to visualize the filled space  #f5f5f5*/
+		width: 385px !important;
+		height: 385px !important;
   }
   
-
+  .my-responsive-ad { 
+  border: 0px solid #ff0000;
+  		width: 385px !important;
+		height: 385px !important;
+  		max-width: 385px !important;
+		max-height: 385px !important;
+  }
 
 </style></head>
 
@@ -1135,7 +1152,7 @@ let AdTimer = setTimeout(loop, 10000);
 	  <div class="side-filler left-side">
 		<!-- Insert left sidebar content, navigation, or leave empty for background colors -->
 		
-					<div>
+					<div><!--
 					<amp-ad width="auto" height="320"
 						 type="adsense"
 						 data-ad-client="ca-pub-6773237836015898"
@@ -1143,7 +1160,7 @@ let AdTimer = setTimeout(loop, 10000);
 						 data-auto-format="rspv"
 						 data-full-width="">
 					  <div overflow=""></div>
-					</amp-ad>
+					</amp-ad>-->
 					
 					<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6773237836015898"
 						 crossorigin="anonymous"></script>
@@ -1154,6 +1171,8 @@ let AdTimer = setTimeout(loop, 10000);
 						 data-ad-slot="9965243638"
 						 data-ad-format="auto"
 						 data-full-width-responsive="true"></ins>
+						 
+						 
 	<script>
 
 window.addEventListener('DOMContentLoaded', function() {
@@ -1196,6 +1215,19 @@ window.addEventListener('DOMContentLoaded', function() {
 			<div class="google-container instapaper_ignore article-sidebar-notes centerAd" data-readable="false" aria-hidden="true">
 			<!-- added aria-hidden="true" in attempt to hide iframe from reader -->
 				<ins class="adsbygoogle" data-ad-client="ca-pub-6773237836015898" data-ad-slot="8571825431" data-ad-format="auto" data-full-width-responsive="true" draggable="false" aria-hidden="true"></ins>
+				
+					<script>
+
+window.addEventListener('DOMContentLoaded', function() {
+
+	// Only trigger the push if the browser actually displays the element
+	if (document.querySelector('.my-responsive-ad').getBoundingClientRect().width > 0) {
+		(adsbygoogle = window.adsbygoogle || []).push({});
+	}
+
+});
+</script>
+
 			</div>
 			
 			<span><div class="custom-select-wrapper instapaper_ignore article-sidebar-notes" style="width: 100%; margin-top: auto;" data-nosnippet>
@@ -2459,7 +2491,7 @@ window.addEventListener('DOMContentLoaded', function() {
 	  <!-- Right Filler Column -->
 	  <div class="side-filler right-side">
 				<!-- Insert right sidebar content, ads, tips, or leave empty -->
-						<div>
+						<div><!--
 						<amp-ad width="auto" height="320"
 					 type="adsense"
 					 data-ad-client="ca-pub-6773237836015898"
@@ -2467,7 +2499,7 @@ window.addEventListener('DOMContentLoaded', function() {
 					 data-auto-format="rspv"
 					 data-full-width="">
 				  <div overflow=""></div>
-				</amp-ad>
+				</amp-ad>-->
 				
 						<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6773237836015898"
 					 crossorigin="anonymous"></script>
@@ -2478,6 +2510,7 @@ window.addEventListener('DOMContentLoaded', function() {
 					 data-ad-slot="5952625242"
 					 data-ad-format="auto"
 					 data-full-width-responsive="true"></ins>
+					 
 	<script>
 
 window.addEventListener('DOMContentLoaded', function() {
@@ -3428,10 +3461,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 	
-	console.log(`left-sideOffsetWidth: ${document.querySelector('.left-side').offsetWidth}`);
+console.log(`left-sideOffsetWidth: ${document.querySelector('.left-side').offsetWidth}`);
+	console.log(`left-sideDIVOffsetWidth: ${document.querySelector('.left-side > div').offsetWidth}`);
 console.log(`CrickettdOffsetWidth: ${document.querySelector('#Crickettd').offsetWidth}`);
 console.log(`centerAdOffsetWidth: ${document.querySelector('.centerAd').offsetWidth}`);
 console.log(`right-sideOffsetWidth: ${document.querySelector('.right-side').offsetWidth}`);
+
+
 });
 
 
