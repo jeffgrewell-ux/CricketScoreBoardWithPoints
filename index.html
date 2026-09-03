@@ -911,7 +911,7 @@ margin: 0px 20px 0px 0px  !important;     /* Clockwise order: Top, Right, Bottom
   }
 
 /* Container dynamically adapts to the native height of its children */
-.dynamic-scroll-container {
+.leftdynamic-scroll-container {
 width: 100%;
   overflow: hidden;
   position: relative;
@@ -919,7 +919,16 @@ width: 100%;
     margin: 20px 20px 0px 0px  !important;     /* Clockwise order: Top, Right, Bottom, Left. */
 }
 
-.dynamic-scroll-track {
+/* Container dynamically adapts to the native height of its children */
+.rightdynamic-scroll-container {
+width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: #f5f5f5;
+    margin: 20px 20px 0px 0px  !important;     /* Clockwise order: Top, Right, Bottom, Left. */
+}
+
+.leftdynamic-scroll-track {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -927,10 +936,30 @@ width: 100%;
   /* CSS Variable --scroll-dist is updated by JS */
   /* CHANGE THIS VALUE TO CONTROL SPEED: */
   /* 10s = Fast | 20s = Medium | 40s = Very Slow */
-  animation: dynamicScroll 150s linear infinite; 
+  animation: leftdynamicScroll 150s linear infinite; 
 }
 
-.scroll-item {
+.rightdynamic-scroll-track {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  will-change: transform;
+  /* CSS Variable --scroll-dist is updated by JS */
+  /* CHANGE THIS VALUE TO CONTROL SPEED: */
+  /* 10s = Fast | 20s = Medium | 40s = Very Slow */
+  animation: rightdynamicScroll 70s linear infinite; 
+}
+
+.leftscroll-item {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.rightscroll-item {
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
@@ -940,19 +969,32 @@ width: 100%;
 }
 
 /* Uses the dynamic CSS variable calculated on resize */
-@keyframes dynamicScroll {
+@keyframes leftdynamicScroll {
   0% {
     transform: translateY(0);
   }
   100% {
-    transform: translateY(var(--scroll-dist, -100px));
+    transform: translateY(var(--leftscroll-dist, -100px));
   }
 }
 
-.dynamic-scroll-container:hover .dynamic-scroll-track {
+.leftdynamic-scroll-container:hover .leftdynamic-scroll-track {
   animation-play-state: paused;
 }
 
+/* Uses the dynamic CSS variable calculated on resize */
+@keyframes rightdynamicScroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(var(--rightscroll-dist, -100px));
+  }
+}
+
+.rightdynamic-scroll-container:hover .rightdynamic-scroll-track {
+  animation-play-state: paused;
+}
 
 
 </style></head>
@@ -1258,10 +1300,10 @@ window.addEventListener('DOMContentLoaded', function() {
 </script>
 					</div>
 																		<main>
-																			  <article class="dynamic-scroll-container">
+																			  <article class="leftdynamic-scroll-container">
 																			          <!-- The track holds the items and handles the animation -->
-																				<div class="dynamic-scroll-track" id="scrollTrack">
-																				<div class="scroll-item" style="text-align: left;">
+																				<div class="leftdynamic-scroll-track" id="leftscrollTrack">
+																				<div class="leftscroll-item" style="text-align: left;">
 																				<!-- Use a standard div for centering or margin management instead of center tags -->
 
 																			<h1>How to Play Cricket Darts: Official Rules, Scoring, and Strategy</h1>
@@ -2650,7 +2692,10 @@ window.addEventListener('DOMContentLoaded', function() {
 </script>
 				</div>
 																			<main>
-																				  <article>
+																				  <article class="rightdynamic-scroll-container">
+																			          <!-- The track holds the items and handles the animation -->
+																				<div class="rightdynamic-scroll-track" id="rightscrollTrack">
+																				<div class="rightscroll-item" style="text-align: left;">
 																					<!-- Use a standard div for centering or margin management instead of center tags -->
 																				  
 																				  <h2>How to Use the Site</h2>
@@ -2674,7 +2719,8 @@ window.addEventListener('DOMContentLoaded', function() {
 																				  <p>Thank you for visiting CricketDarts.net</p>
 																				  
 																				  <center><footer><div class="footer-container" id="AdsenseBS"><a href="https://cricketdarts.net/TermsofService.html" target="_blank">Terms of Service</a> &nbsp; <a href="https://cricketdarts.net/AboutUs.html" target="_blank">About Us</a> &nbsp; <a href="https://cricketdarts.net/privacy-policy/PrivacyPolicy.html" target="_blank">Privacy Policy</a> &nbsp; <a href="https://cricketdarts.net/Contact.html" target="_blank">Contact Us</a> &nbsp; <a href="https://cricketdarts.net/Readme.html" target="_blank">Read Me</a></div></footer></center>
-																				  
+																				  </div>
+																			</div>
 																				</article>
 
 																				</main>
@@ -3631,30 +3677,76 @@ console.log(`right-sideOffsetWidth: ${document.querySelector('.right-side').offs
 
 </script>
 <script>
-const track = document.getElementById('scrollTrack');
-const originalItems = Array.from(track.children);
+const lefttrack = document.getElementById('leftscrollTrack');
+const leftoriginalItems = Array.from(lefttrack.children);
 
 // 1. Clone items to create a seamless duplicate pool
-originalItems.forEach(item => {
-  const clone = item.cloneNode(true);
-  clone.setAttribute('aria-hidden', 'true'); // Hide from screen readers
-  track.appendChild(clone);
+leftoriginalItems.forEach(item => {
+  const leftclone = item.cloneNode(true);
+  leftclone.setAttribute('aria-hidden', 'true'); // Hide from screen readers
+  lefttrack.appendChild(leftclone);
 });
 
 // 2. Automatically measure heights and update CSS variables on resize
-const resizeObserver = new ResizeObserver(() => {
-  let totalOriginalHeight = 0;
+const leftresizeObserver = new ResizeObserver(() => {
+  let lefttotalOriginalHeight = 0;
   
   // Calculate total height of only the original elements
-  originalItems.forEach(item => {
-    totalOriginalHeight += item.offsetHeight;
+  leftoriginalItems.forEach(item => {
+    lefttotalOriginalHeight += item.offsetHeight;
   });
 
   // Inject the precise negative pixel distance into the CSS animation
-  track.style.setProperty('--scroll-dist', `-${totalOriginalHeight}px`);
+  lefttrack.style.setProperty('--leftscroll-dist', `-${lefttotalOriginalHeight}px`);
 });
 
 // Start monitoring the track for layout changes
-resizeObserver.observe(track);
+leftresizeObserver.observe(lefttrack);
+
+</script>
+<script>
+const righttrack = document.getElementById('rightscrollTrack');
+const rightoriginalItems = Array.from(righttrack.children);
+
+// 1. Clone items to create a seamless duplicate pool
+rightoriginalItems.forEach(item => {
+  const rightclone = item.cloneNode(true);
+  rightclone.setAttribute('aria-hidden', 'true'); // Hide from screen readers
+  righttrack.appendChild(rightclone);
+});
+
+// 2. Automatically measure heights and update CSS variables on resize
+const rightresizeObserver = new ResizeObserver(() => {
+  let righttotalOriginalHeight = 0;
+  
+  // Calculate total height of only the original elements
+  rightoriginalItems.forEach(item => {
+    righttotalOriginalHeight += item.offsetHeight;
+  });
+
+  // Inject the precise negative pixel distance into the CSS animation
+  righttrack.style.setProperty('--rightscroll-dist', `-${righttotalOriginalHeight}px`);
+});
+
+// Start monitoring the track for layout changes
+rightresizeObserver.observe(righttrack);
+
+</script>
+<script>
+// Example JavaScript logic adjustment
+const leftTrack = document.querySelector('.leftdynamic-scroll-track');
+const rightTrack = document.querySelector('.rightdynamic-scroll-track');
+
+function updateScrollDistances() {
+  // Calculate half of total height if content is duplicated for seamless looping
+  const leftDist = leftTrack.offsetHeight / 2; 
+  const rightDist = rightTrack.offsetHeight / 2;
+
+  leftTrack.style.setProperty('--left-scroll-dist', `-${leftDist}px`);
+  rightTrack.style.setProperty('--right-scroll-dist', `-${rightDist}px`);
+}
+
+window.addEventListener('resize', updateScrollDistances);
+window.addEventListener('load', updateScrollDistances);
 
 </script>
