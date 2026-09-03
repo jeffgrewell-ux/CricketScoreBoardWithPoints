@@ -834,7 +834,7 @@ font-size: 50%;
 }
 
 /* Desktop View: Trigger centered 3-column layout  992 */
-@media (min-width: 1040px) {
+@media (min-width: 1150px) {
   .page-wrapper {
     display: grid;
     /* '1fr' columns stretch equally, 'auto' keeps table exactly its natural size */
@@ -875,13 +875,13 @@ width: 100%;
   .left-side > div > * {
   text-align: right;      /* Centers inline/inline-block text and images horizontally */
     max-width: 100% !important; /* Added !important to override Google inline widths */
-  margin: 0px 0px 0px 0px;     /*  Clockwise order: Top, Right, Bottom, Left. */
+margin: 0px 20px 0px 0px  !important;     /* Clockwise order: Top, Right, Bottom, Left. */
   box-sizing: border-box;
 }
 
   .right-side > div > * {
     max-width: 100% !important; /* Added !important to override Google inline widths */
-  margin: 0px 0px 0px 0px;     /* Clockwise order: Top, Right, Bottom, Left. */
+    margin: 0px 0px 0px 20px  !important;     /* Clockwise order: Top, Right, Bottom, Left. */
   box-sizing: border-box;
 }
 
@@ -891,6 +891,7 @@ width: 100%;
 	    background-color: #f5f5f5; /* Example styling to visualize the filled space  #f5f5f5*/
 		width: 385px !important;
 		height: 385px !important;
+		  border: 1px solid #ff0000;
   }
   .right-side > div {
   display: inline-block;
@@ -898,6 +899,7 @@ width: 100%;
 	    background-color: #f5f5f5; /* Example styling to visualize the filled space  #f5f5f5*/
 		width: 385px !important;
 		height: 385px !important;
+		  border: 1px solid #ff0000;
   }
   
   .my-responsive-ad { 
@@ -907,6 +909,51 @@ width: 100%;
   		max-width: 385px !important;
 		max-height: 385px !important;
   }
+
+/* Container dynamically adapts to the native height of its children */
+.dynamic-scroll-container {
+width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: #f5f5f5;
+    margin: 20px 20px 0px 0px  !important;     /* Clockwise order: Top, Right, Bottom, Left. */
+}
+
+.dynamic-scroll-track {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  will-change: transform;
+  /* CSS Variable --scroll-dist is updated by JS */
+  /* CHANGE THIS VALUE TO CONTROL SPEED: */
+  /* 10s = Fast | 20s = Medium | 40s = Very Slow */
+  animation: dynamicScroll 150s linear infinite; 
+}
+
+.scroll-item {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Uses the dynamic CSS variable calculated on resize */
+@keyframes dynamicScroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(var(--scroll-dist, -100px));
+  }
+}
+
+.dynamic-scroll-container:hover .dynamic-scroll-track {
+  animation-play-state: paused;
+}
+
+
 
 </style></head>
 
@@ -1210,6 +1257,68 @@ window.addEventListener('DOMContentLoaded', function() {
 
 </script>
 					</div>
+																		<main>
+																			  <article class="dynamic-scroll-container">
+																			          <!-- The track holds the items and handles the animation -->
+																				<div class="dynamic-scroll-track" id="scrollTrack">
+																				<div class="scroll-item" style="text-align: left;">
+																				<!-- Use a standard div for centering or margin management instead of center tags -->
+
+																			<h1>How to Play Cricket Darts: Official Rules, Scoring, and Strategy</h1>
+																			  
+																			  <p>Cricket is one of the most popular dart games in the world, played in homes, pubs, and competitive tournaments globally. Unlike simple countdown games like 501, Cricket requires a mix of accurate hitting and tactical decision-making. Whether you are using our free digital cricket darts scoreboard or scoring on a traditional scoreboard, mastering the rules is essential for winning.</p>
+
+																			  <h2>The Objective of Cricket Darts</h2>
+																			  <p>The main goal in Cricket darts is to "close" a specific set of numbers on the board and accumulate the highest point total. The game is typically played between two players or two teams. To win the game, a player must be the first to close all required numbers and have an equal or higher score than their opponent.</p>
+
+																			  <h2>The In-Play Numbers</h2>
+																			  <p>In standard Cricket, only a subset of the dartboard is used. Targets hit outside of these numbers do not count toward your score or your status. The valid target zones are:</p>
+																			  <ul role="list">
+																				<li role="listitem"><p><strong>20, 19, 18, 17, 16, 15</strong></p></li>
+																				<li role="listitem"><p><strong>The Bullseye</strong> (Outer and Inner Bull)</p></li>
+																			  </ul>
+
+																			  <h2>How to "Close" a Number</h2>
+																			  <p>To close a number, a player must hit that specific target a total of <strong>three times</strong>. Hits are cumulative across turns. The segments on the dartboard alter the count as follows:</p>
+																			  <ul role="list">
+																				<li role="listitem"><p><strong>Single Segment:</strong> Counts as 1 hit.</p></li>
+																				<li role="listitem"><p><strong>Double Ring (Outer Ring):</strong> Counts as 2 hits.</p></li>
+																				<li role="listitem"><p><strong>Triple Ring (Inner Ring):</strong> Counts as 3 hits (instantly closes a single number).</p></li>
+																				<li role="listitem"><p><strong>Outer Bullseye:</strong> Counts as 1 hit toward the bullseye.</p></li>
+																				<li role="listitem"><p><strong>Inner Bullseye (Double Bull):</strong> Counts as 2 hits toward the bullseye.</p></li>
+																			  </ul>
+
+																			  <h2>Scoring Points in Cricket Darts</h2>
+																			  <p>Once you have hit a number three times, that number is considered <strong>open</strong> for you to score points on, provided your opponent has not closed it yet.</p>
+																			  <ul role="list">
+																				<li role="listitem"><p>If you hit an open number, you gain points equal to the value of that segment (e.g., hitting a single 20 awards 20 points; hitting a triple 20 awards 60 points).</p></li>
+																				<li role="listitem"><p>Once <strong>both</strong> players have hit a specific number three times, that number becomes <strong>closed</strong>. No further points can be scored on it by either player for the rest of the game.</p></li>
+																			  </ul>
+
+																			  <h2>Winning the Game</h2>
+																			  <p>A game of Cricket darts ends immediately when a player satisfies two conditions simultaneously:</p>
+																			  <ul role="list">
+																				<li role="listitem"><p>They have closed all numbers from 15 through 20, plus the Bullseye.</p></li>
+																				<li role="listitem"><p>Their total score is <strong>equal to or higher</strong> than the opponent's score.</p></li>
+																			  </ul>
+																			  <p>If you close all your numbers but are behind on points, you must continue throwing at your open numbers to catch up or surpass your opponent's score before they finish closing their targets.</p>
+
+																			  <h2>Top Cricket Darts Strategies</h2>
+																			  <p>To move from a beginner to an advanced player, keep these tactical tips in mind while playing:</p>
+																			  <ul role="list">
+																				<li role="listitem"><p><strong>Always Chase Points First:</strong> If your opponent is ahead on points, do not keep trying to close new numbers. Focus on your open numbers to erase their point lead.</p></li>
+																				<li role="listitem"><p><strong>Secure the 20s:</strong> The 20 segment offers the highest scoring potential. Closing and protecting the 20s early gives you a major point engine.</p></li>
+																				<li role="listitem"><p><strong>Do Not Ignore the Bullseye:</strong> The bullseye requires three total marks (with double bulls counting as two). It is often the hardest target to close at the end of the game, so chip away at it if your scoring numbers are safe.</p></li>
+																			  </ul>
+
+																			
+																			  
+																			  <center><footer><div class="footer-container" id="AdsenseBS"><a href="https://cricketdarts.net/TermsofService.html" target="_blank">Terms of Service</a> &nbsp; <a href="https://cricketdarts.net/AboutUs.html" target="_blank">About Us</a> &nbsp; <a href="https://cricketdarts.net/privacy-policy/PrivacyPolicy.html" target="_blank">Privacy Policy</a> &nbsp; <a href="https://cricketdarts.net/Contact.html" target="_blank">Contact Us</a> &nbsp; <a href="https://cricketdarts.net/Readme.html" target="_blank">Read Me</a></div></footer></center>
+																			  </div>
+    </div>
+																			</article>
+
+																		</main>
 	  </div>
 
 	 <!-- Main Centered Table (Untouched) -->
@@ -2540,6 +2649,35 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 				</div>
+																			<main>
+																				  <article>
+																					<!-- Use a standard div for centering or margin management instead of center tags -->
+																				  
+																				  <h2>How to Use the Site</h2>
+																				  <p>This is a super sleek and intuitive online scoreboard that makes it easy for up to 4 players to track their cricket darts matches in real-time. It’s a great way for players to focus on the game rather than the math!</p>
+																				  <p>Large iPads work best.</p>
+																				  <p>Remember to set your screen not to sleep.</p>
+																				  <ul role="list">
+																					<li role="listitem"><p><strong>Select number of Players.</strong></p></li>
+																					<li role="listitem"><p><strong>Pick a Color</strong> for each column.</p></li>
+																					<li role="listitem"><p><strong>Enter Name</strong> for each column. For Teams, enter two names per column.</p></li>
+																					<li role="listitem"><p><strong>Helpful note:</strong> Tap to the right of existing text, so backspace can be used to erase existing text. Then type name or names you desire. Use Enter/Return to enter second name.</p></li>
+																					<li role="listitem"><p><strong>Tap cell</strong> to add one mark at a time.</p></li>
+																					<li role="listitem"><p><strong>3 marks opens</strong> a target for a player. Once open, a player can score until the opponent closes the target with 3 marks.</p></li>
+																					<li role="listitem"><p><strong>Hold cell</strong> to undo a mark. Remain still while holding.</p></li>
+																					<li role="listitem"><p><strong>Tap button labeled "Press to End Turn"</strong> at the end of each turn to increment player/round</p></li>
+																					<li role="listitem"><p><strong>Hold the "Press to End Turn" button</strong> to undo incremented player/round. Remain still while holding.</p></li>
+																					<li role="listitem"><p><strong>First Player/Team</strong> to 3-mark each number and have a high score wins.</p></li>
+																					<li role="listitem"><p><strong>Refresh Page</strong> to Start Over.</p></li>
+																				  </ul>
+
+																				  <p>Thank you for visiting CricketDarts.net</p>
+																				  
+																				  <center><footer><div class="footer-container" id="AdsenseBS"><a href="https://cricketdarts.net/TermsofService.html" target="_blank">Terms of Service</a> &nbsp; <a href="https://cricketdarts.net/AboutUs.html" target="_blank">About Us</a> &nbsp; <a href="https://cricketdarts.net/privacy-policy/PrivacyPolicy.html" target="_blank">Privacy Policy</a> &nbsp; <a href="https://cricketdarts.net/Contact.html" target="_blank">Contact Us</a> &nbsp; <a href="https://cricketdarts.net/Readme.html" target="_blank">Read Me</a></div></footer></center>
+																				  
+																				</article>
+
+																				</main>
 		
 	  </div>
 </div>
@@ -3490,5 +3628,33 @@ console.log(`right-sideOffsetWidth: ${document.querySelector('.right-side').offs
 
 });
 
+
+</script>
+<script>
+const track = document.getElementById('scrollTrack');
+const originalItems = Array.from(track.children);
+
+// 1. Clone items to create a seamless duplicate pool
+originalItems.forEach(item => {
+  const clone = item.cloneNode(true);
+  clone.setAttribute('aria-hidden', 'true'); // Hide from screen readers
+  track.appendChild(clone);
+});
+
+// 2. Automatically measure heights and update CSS variables on resize
+const resizeObserver = new ResizeObserver(() => {
+  let totalOriginalHeight = 0;
+  
+  // Calculate total height of only the original elements
+  originalItems.forEach(item => {
+    totalOriginalHeight += item.offsetHeight;
+  });
+
+  // Inject the precise negative pixel distance into the CSS animation
+  track.style.setProperty('--scroll-dist', `-${totalOriginalHeight}px`);
+});
+
+// Start monitoring the track for layout changes
+resizeObserver.observe(track);
 
 </script>
